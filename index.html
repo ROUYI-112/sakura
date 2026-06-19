@@ -6,297 +6,274 @@
 <title>くちなしの花 ・ 日文講義</title>
 <style>
 :root{
-  --pink-50:#fff5f8;
-  --pink-100:#ffe6ef;
-  --pink-200:#ffd0e0;
-  --pink-300:#ffb6d0;
-  --rose:#f06a96;
-  --rose-deep:#d94f7e;
-  --plum:#7c4a63;
-  --ink:#5a3a4a;
-  --ink-soft:#8a6b78;
-  --cream:#fffafc;
-  --leaf:#9ccc9c;
-  --gold:#e8a04a;
-  --card:#ffffff;
-  --shadow:rgba(214,110,150,.16);
+  --pink-50:#fff6fa; --pink-100:#ffe8f1; --pink-200:#ffd3e2; --pink-300:#ffb8d2;
+  --rose:#ef6e9a; --rose-deep:#d64f7e; --plum:#7c4a63; --ink:#553647; --ink-soft:#8d6c7a;
+  --leaf:#8cc08c; --gold:#e3973f; --card:#ffffff; --shadow:rgba(214,110,150,.18);
 }
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{
   margin:0;
-  font-family:"Hiragino Maru Gothic ProN","ヒラギノ丸ゴ ProN W4","Noto Sans TC","Noto Sans JP",system-ui,sans-serif;
-  color:var(--ink);
+  font-family:"Hiragino Maru Gothic ProN","Noto Sans TC","Noto Sans JP",system-ui,sans-serif;
+  color:var(--ink); line-height:1.7; -webkit-font-smoothing:antialiased;
   background:
-    radial-gradient(circle at 12% 8%, #fff0f6 0, transparent 38%),
-    radial-gradient(circle at 88% 4%, #ffeaf3 0, transparent 40%),
-    linear-gradient(180deg,#fff7fb 0%, #fdeef5 100%);
-  background-attachment:fixed;
-  min-height:100vh;
-  line-height:1.65;
-  -webkit-font-smoothing:antialiased;
+    radial-gradient(circle at 10% 6%,#fff0f6 0,transparent 36%),
+    radial-gradient(circle at 92% 3%,#ffe9f3 0,transparent 38%),
+    radial-gradient(circle at 50% 100%,#fce4ef 0,transparent 55%),
+    linear-gradient(180deg,#fff8fc 0%,#fceef5 100%);
+  background-attachment:fixed; min-height:100vh;
 }
-
-/* floating petals */
 .petals{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0;}
-.petal{position:absolute;top:-40px;font-size:18px;opacity:.55;animation:fall linear infinite;will-change:transform;}
-@keyframes fall{
-  0%{transform:translateY(-40px) translateX(0) rotate(0);opacity:0;}
-  10%{opacity:.6;}
-  100%{transform:translateY(105vh) translateX(40px) rotate(320deg);opacity:.15;}
-}
-@media (prefers-reduced-motion: reduce){
-  .petal{display:none;}
-}
+.petal{position:absolute;top:-40px;animation:fall linear infinite;will-change:transform;}
+@keyframes fall{0%{transform:translateY(-40px) translateX(0) rotate(0);opacity:0;}
+  12%{opacity:.55;}100%{transform:translateY(106vh) translateX(46px) rotate(330deg);opacity:.12;}}
+@media (prefers-reduced-motion: reduce){.petal{display:none;}}
 
-.wrap{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:0 18px 80px;}
+.wrap{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:0 18px 90px;}
 
-/* ===== header ===== */
-header{text-align:center;padding:46px 12px 26px;}
-.sakura-mark{font-size:40px;line-height:1;filter:drop-shadow(0 3px 5px var(--shadow));}
-h1{
-  font-size:clamp(30px,7vw,46px);
-  margin:.18em 0 .12em;
-  letter-spacing:.04em;
-  color:var(--rose-deep);
-  text-shadow:0 2px 0 #fff,0 4px 12px var(--shadow);
-}
-.sub-jp{font-size:15px;color:var(--plum);letter-spacing:.18em;}
-.sub-zh{font-size:13px;color:var(--ink-soft);margin-top:6px;letter-spacing:.05em;}
-.teacher{
-  display:inline-block;margin-top:14px;padding:5px 16px;border-radius:999px;
-  background:var(--pink-100);color:var(--rose-deep);font-size:12.5px;
-  border:1px solid var(--pink-200);
-}
+header{text-align:center;padding:48px 12px 22px;}
+.sakura-mark{font-size:42px;line-height:1;filter:drop-shadow(0 4px 6px var(--shadow));animation:sway 5s ease-in-out infinite;}
+@keyframes sway{0%,100%{transform:rotate(-6deg);}50%{transform:rotate(6deg);}}
+h1{font-size:clamp(32px,7vw,48px);margin:.16em 0 .1em;letter-spacing:.05em;color:var(--rose-deep);
+  text-shadow:0 2px 0 #fff,0 5px 14px var(--shadow);}
+.sub-jp{font-size:15px;color:var(--plum);letter-spacing:.2em;}
+.sub-zh{font-size:12.5px;color:var(--ink-soft);margin-top:6px;letter-spacing:.06em;}
+.teacher{display:inline-block;margin-top:14px;padding:5px 18px;border-radius:999px;
+  background:var(--pink-100);color:var(--rose-deep);font-size:12.5px;border:1px solid var(--pink-200);}
 
-/* ===== day buttons ===== */
-.day-nav{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:11px;
-  margin:14px 0 30px;
-}
-@media(max-width:560px){.day-nav{grid-template-columns:repeat(2,1fr);}}
-.day-btn{
-  position:relative;cursor:pointer;border:none;
-  background:var(--card);
-  border-radius:20px;padding:15px 10px 14px;
-  box-shadow:0 4px 14px var(--shadow);
-  border:2px solid transparent;
-  transition:transform .18s cubic-bezier(.34,1.56,.64,1),box-shadow .18s,border-color .18s;
-  text-align:center;font-family:inherit;color:var(--ink);
-  overflow:hidden;
-}
-.day-btn:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 10px 22px var(--shadow);}
+/* youtube */
+.video-card{background:var(--card);border-radius:24px;padding:14px;margin:6px 0 26px;
+  box-shadow:0 8px 26px var(--shadow);border:1px solid var(--pink-100);}
+.video-card .vtitle{font-size:13px;color:var(--rose-deep);font-weight:700;text-align:center;
+  margin:2px 0 11px;letter-spacing:.04em;}
+.video-card .vtitle .mk{margin:0 5px;}
+.video-frame{position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;
+  background:#000;box-shadow:0 3px 10px var(--shadow);}
+.video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+
+.day-nav{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 32px;}
+@media(max-width:580px){.day-nav{grid-template-columns:repeat(2,1fr);}}
+.day-btn{position:relative;cursor:pointer;border:2px solid transparent;background:var(--card);
+  border-radius:22px;padding:16px 10px 15px;box-shadow:0 5px 16px var(--shadow);
+  transition:transform .2s cubic-bezier(.34,1.56,.64,1),box-shadow .2s,border-color .2s;
+  text-align:center;font-family:inherit;color:var(--ink);}
+.day-btn:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 12px 24px var(--shadow);}
 .day-btn:focus-visible{outline:3px solid var(--rose);outline-offset:2px;}
-.day-btn .flower{font-size:21px;display:block;margin-bottom:5px;transition:transform .3s;}
-.day-btn:hover .flower{transform:rotate(20deg) scale(1.15);}
-.day-btn .d-date{font-size:16px;font-weight:700;color:var(--rose-deep);letter-spacing:.02em;}
-.day-btn .d-title{font-size:11px;color:var(--ink-soft);margin-top:3px;line-height:1.4;
+.day-btn .flower{font-size:22px;display:block;margin-bottom:6px;transition:transform .35s;}
+.day-btn:hover .flower{transform:rotate(22deg) scale(1.18);}
+.day-btn .d-date{font-size:16px;font-weight:800;color:var(--rose-deep);}
+.day-btn .d-title{font-size:11px;color:var(--ink-soft);margin-top:3px;line-height:1.45;
   display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
-.day-btn.active{
-  border-color:var(--rose);
-  background:linear-gradient(180deg,#fff 0%,var(--pink-50) 100%);
-  box-shadow:0 8px 20px var(--shadow);
-}
-.day-btn.active::after{
-  content:"";position:absolute;left:50%;bottom:7px;transform:translateX(-50%);
-  width:24px;height:3px;border-radius:3px;background:var(--rose);
-}
+.day-btn .d-count{font-size:10px;color:var(--rose);margin-top:5px;opacity:.85;}
+.day-btn.active{border-color:var(--rose);background:linear-gradient(180deg,#fff,var(--pink-50));}
+.day-btn.active::after{content:"";position:absolute;left:50%;bottom:8px;transform:translateX(-50%);
+  width:26px;height:3px;border-radius:3px;background:var(--rose);}
 
-/* ===== content card ===== */
-.lesson{
-  background:var(--card);
-  border-radius:28px;
-  padding:30px 26px 36px;
-  box-shadow:0 12px 40px var(--shadow);
-  border:1px solid var(--pink-100);
-  animation:pop .4s cubic-bezier(.34,1.4,.6,1);
-}
-@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.99);}to{opacity:1;transform:none;}}
-@media(max-width:560px){.lesson{padding:24px 16px 28px;border-radius:22px;}}
+.lesson{background:var(--card);border-radius:30px;padding:34px 30px 40px;
+  box-shadow:0 14px 46px var(--shadow);border:1px solid var(--pink-100);
+  animation:pop .42s cubic-bezier(.34,1.4,.6,1);}
+@keyframes pop{from{opacity:0;transform:translateY(16px) scale(.99);}to{opacity:1;transform:none;}}
+@media(max-width:580px){.lesson{padding:26px 17px 30px;border-radius:24px;}}
 
-.lesson-head{display:flex;align-items:center;gap:12px;margin-bottom:6px;flex-wrap:wrap;}
-.lesson-date{
-  font-size:24px;font-weight:800;color:var(--rose-deep);
-  background:var(--pink-100);padding:3px 16px;border-radius:999px;white-space:nowrap;
-}
+.lesson-head{display:flex;align-items:center;gap:13px;flex-wrap:wrap;}
+.lesson-date{font-size:25px;font-weight:800;color:var(--rose-deep);background:var(--pink-100);
+  padding:4px 18px;border-radius:999px;white-space:nowrap;}
 .lesson-title{font-size:18px;color:var(--plum);font-weight:700;}
-.lesson-sub{font-size:12.5px;color:var(--ink-soft);margin:8px 0 20px;
-  padding-bottom:16px;border-bottom:2px dotted var(--pink-200);letter-spacing:.02em;}
+.lesson-sub{font-size:12.5px;color:var(--ink-soft);margin:10px 0 8px;letter-spacing:.02em;}
+.lesson-meta{font-size:11.5px;color:var(--rose);margin:0 0 18px;padding-bottom:18px;
+  border-bottom:2px dotted var(--pink-200);}
 
-.lead{font-size:13px;color:var(--ink-soft);font-style:italic;margin:0 0 16px;
-  background:var(--pink-50);padding:9px 14px;border-radius:12px;}
+.lead{font-size:13px;color:var(--ink-soft);font-style:italic;margin:0 0 18px;
+  background:var(--pink-50);padding:10px 15px;border-radius:13px;border:1px dashed var(--pink-200);}
 
-h2.sec{
-  font-size:18px;color:var(--rose-deep);margin:26px 0 12px;
-  display:flex;align-items:center;gap:8px;font-weight:800;letter-spacing:.02em;
-}
-h2.sec::before{content:"🌸";font-size:15px;}
-h3.subh{font-size:14.5px;color:var(--plum);margin:16px 0 8px;font-weight:700;
-  padding-left:10px;border-left:4px solid var(--pink-300);}
+h2.sec{font-size:18px;color:var(--rose-deep);margin:30px 0 14px;display:flex;align-items:center;
+  gap:10px;font-weight:800;letter-spacing:.02em;}
+h2.sec .num{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--rose),var(--rose-deep));color:#fff;font-size:13px;
+  box-shadow:0 3px 8px var(--shadow);}
+h2.sec:first-of-type{margin-top:6px;}
+h3.subh{font-size:14.5px;color:var(--plum);margin:18px 0 9px;font-weight:700;
+  padding-left:11px;border-left:4px solid var(--pink-300);}
 
-.note{font-size:13px;color:var(--ink-soft);background:#fbf4f8;border-radius:12px;
-  padding:9px 14px;margin:8px 0 12px;border:1px dashed var(--pink-200);}
-.warn{font-size:13px;color:#b14a6b;background:#fff0f3;border-radius:12px;
-  padding:9px 14px;margin:8px 0 12px;border:1px solid var(--pink-300);font-weight:600;}
-.poem{font-size:13.5px;color:var(--plum);font-style:italic;margin:6px 0 14px;
-  padding:10px 16px;background:linear-gradient(90deg,var(--pink-50),transparent);
-  border-radius:12px;border-left:3px solid var(--rose);}
+.note{font-size:13px;color:var(--ink-soft);background:#fbf3f7;border-radius:13px;
+  padding:10px 15px;margin:9px 0 13px;border:1px dashed var(--pink-200);}
+.warn{font-size:13px;color:#b14a6b;background:#fff0f3;border-radius:13px;
+  padding:10px 15px;margin:9px 0 13px;border:1px solid var(--pink-300);font-weight:600;}
+.poem{font-size:13.5px;color:var(--plum);font-style:italic;margin:8px 0 15px;
+  padding:11px 17px;background:linear-gradient(90deg,var(--pink-50),transparent);
+  border-radius:13px;border-left:3px solid var(--rose);}
 
-/* example sentences */
-.ex,.line{padding:9px 14px;border-radius:14px;margin:7px 0;background:var(--pink-50);
-  border:1px solid #fdeaf1;transition:background .15s;}
-.ex:hover,.line:hover{background:var(--pink-100);}
-.ex .jp,.line .jp{font-size:16px;font-weight:600;color:var(--ink);letter-spacing:.01em;}
-.ex .jp::before,.line .jp::before{content:"🌷 ";font-size:12px;}
-.ex .kana{font-size:12.5px;color:var(--rose);margin-top:2px;}
-.ex .zh{font-size:13px;color:var(--ink-soft);margin-top:3px;}
+.ex,.line{padding:10px 15px;border-radius:15px;margin:8px 0;background:var(--pink-50);
+  border:1px solid #fdeaf1;transition:background .15s,transform .12s;}
+.ex:hover,.line:hover{background:var(--pink-100);transform:translateX(3px);}
+.ex .jp,.line .jp{font-size:16.5px;font-weight:600;color:var(--ink);letter-spacing:.01em;}
+.ex .jp .mk,.line .jp .mk{font-size:12px;margin-right:3px;}
+.ex .kana{font-size:12.5px;color:var(--rose);margin-top:3px;letter-spacing:.04em;}
+.ex .kana::before{content:"ふりがな ";font-size:9px;color:var(--pink-300);letter-spacing:.1em;}
+.ex .zh{font-size:13px;color:var(--ink-soft);margin-top:4px;}
 .ex .zh::before{content:"— ";color:var(--pink-300);}
+.line .kana-inline{font-size:12px;color:var(--rose);}
 
-/* tables */
-.tbl-wrap{overflow-x:auto;margin:10px 0 16px;border-radius:16px;
-  box-shadow:0 2px 10px var(--shadow);}
-table{border-collapse:collapse;width:100%;min-width:330px;background:#fff;font-size:13.5px;}
-thead th{
-  background:linear-gradient(180deg,var(--pink-200),var(--pink-100));
-  color:var(--rose-deep);font-weight:700;padding:9px 12px;text-align:left;
-  white-space:nowrap;border-bottom:2px solid var(--pink-300);
-}
-tbody td{padding:8px 12px;border-bottom:1px solid var(--pink-50);color:var(--ink);}
+.tbl-wrap{overflow-x:auto;margin:11px 0 17px;border-radius:17px;box-shadow:0 3px 12px var(--shadow);}
+table{border-collapse:collapse;width:100%;min-width:320px;background:#fff;font-size:13.5px;}
+thead th{background:linear-gradient(180deg,var(--pink-200),var(--pink-100));color:var(--rose-deep);
+  font-weight:700;padding:10px 13px;text-align:left;white-space:nowrap;border-bottom:2px solid var(--pink-300);}
+tbody td{padding:9px 13px;border-bottom:1px solid var(--pink-50);color:var(--ink);}
 tbody tr:nth-child(even){background:var(--pink-50);}
 tbody tr:hover{background:var(--pink-100);}
 tbody tr:last-child td{border-bottom:none;}
 
-footer{text-align:center;margin-top:34px;color:var(--ink-soft);font-size:11.5px;letter-spacing:.05em;}
-footer .f-flower{font-size:18px;display:block;margin-bottom:6px;}
+footer{text-align:center;margin-top:36px;color:var(--ink-soft);font-size:11.5px;letter-spacing:.05em;}
+footer .f-flower{font-size:18px;display:block;margin-bottom:7px;}
 
-.scroll-top{
-  position:fixed;right:18px;bottom:18px;z-index:5;
-  width:48px;height:48px;border-radius:50%;border:none;cursor:pointer;
-  background:var(--rose);color:#fff;font-size:20px;
-  box-shadow:0 6px 16px var(--shadow);opacity:0;pointer-events:none;
-  transition:opacity .25s,transform .2s;
-}
+.scroll-top{position:fixed;right:18px;bottom:18px;z-index:5;width:48px;height:48px;border-radius:50%;
+  border:none;cursor:pointer;background:var(--rose);color:#fff;font-size:20px;box-shadow:0 6px 16px var(--shadow);
+  opacity:0;pointer-events:none;transition:opacity .25s,transform .2s;}
 .scroll-top.show{opacity:1;pointer-events:auto;}
 .scroll-top:hover{transform:translateY(-3px) scale(1.08);}
+
+/* lyrics view */
+.lyric-credit{font-size:12px;color:var(--ink-soft);text-align:center;margin:2px 0 4px;}
+.lyric-meta{font-size:11px;color:var(--rose);text-align:center;margin:0 0 20px;padding-bottom:18px;
+  border-bottom:2px dotted var(--pink-200);}
+.verse{margin:0 0 26px;}
+.verse-no{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:800;
+  color:var(--rose-deep);background:var(--pink-100);padding:4px 16px;border-radius:999px;margin-bottom:12px;}
+.verse-no::before{content:"🌸";font-size:13px;}
+.lrow{padding:11px 16px;border-radius:15px;margin:7px 0;background:var(--pink-50);
+  border:1px solid #fdeaf1;transition:background .15s;}
+.lrow:hover{background:var(--pink-100);}
+.lrow.refrain{background:linear-gradient(100deg,#fff4f9,#ffe9f2);border:1px solid var(--pink-200);}
+.lrow .l-kana{font-size:11.5px;color:var(--rose);letter-spacing:.05em;margin-bottom:1px;}
+.lrow .l-jp{font-size:17px;font-weight:600;color:var(--ink);letter-spacing:.02em;}
+.lrow.refrain .l-jp{color:var(--rose-deep);}
+.lrow .l-zh{font-size:13px;color:var(--ink-soft);margin-top:3px;}
+.lrow .l-zh::before{content:"— ";color:var(--pink-300);}
+.lyric-foot{text-align:center;font-size:12px;color:var(--plum);font-style:italic;
+  margin-top:8px;padding:12px;background:var(--pink-50);border-radius:14px;}
+
 </style>
 </head>
 <body>
 <div class="petals" id="petals" aria-hidden="true"></div>
-
 <div class="wrap">
   <header>
     <div class="sakura-mark">🌸</div>
     <h1>くちなしの花</h1>
     <div class="sub-jp">梔子花　日文講義</div>
-    <div class="sub-zh">渡哲也　演歌教材 ・ 依日期整理</div>
+    <div class="sub-zh">渡哲也　演歌教材 ・ 依日期整理（新 → 舊）</div>
     <div class="teacher">張正修 老師　授課筆記</div>
   </header>
-
+  <div class="video-card">
+    <div class="vtitle"><span class="mk">🎵</span>くちなしの花 ・ 渡哲也<span class="mk">🎵</span></div>
+    <div class="video-frame">
+      <iframe src="https://www.youtube-nocookie.com/embed/VFHFakdCbuI?rel=0"
+        title="くちなしの花 渡哲也"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
   <nav class="day-nav" id="dayNav" aria-label="上課日期"></nav>
-
   <main class="lesson" id="lesson" tabindex="-1"></main>
-
-  <footer>
-    <span class="f-flower">🌸 🌷 🌸</span>
-    くちなしの花 ・ 日文講義　|　全 8 堂課
-  </footer>
+  <footer><span class="f-flower">🌸 🌷 🌸</span>くちなしの花 ・ 日文講義　|　全 8 堂課</footer>
 </div>
-
 <button class="scroll-top" id="scrollTop" aria-label="回到頂部">↑</button>
 
 <script>
-const DATA = [{"date": "6/25 ・ 6/18", "title": "困らせた・我儘・みたい", "subtitle": "困る／困らせる・我儘・〜ては・〜みたい・締め付ける", "sections": [{"t": "lead", "text": "6/25 與 6/18 為同一範圍，以下為完整課堂逐句記錄。"}, {"t": "h", "text": "一、困る／困らせる"}, {"t": "table", "head": ["日文", "平假名", "詞性", "中文"], "rows": [["困る", "こまる", "自動詞", "自己覺得困擾、為難"], ["困らせる", "こまらせる", "使役形", "讓別人困擾、使人為難"]]}, {"t": "sub", "text": "困る（自己困擾）"}, {"t": "line", "jp": "困る。", "kana": "こまる"}, {"t": "ex", "jp": "ああ、困った。", "kana": "ああ、こまった。", "zh": "啊，真傷腦筋。"}, {"t": "ex", "jp": "歯痛で困る。", "kana": "はいたでこまる。", "zh": "因為牙痛而困擾。"}, {"t": "ex", "jp": "歯痛で困っている。", "kana": "はいたでこまっている。", "zh": "正在因牙痛而困擾。"}, {"t": "ex", "jp": "お金がなくて困っている。", "kana": "おかねがなくてこまっている。", "zh": "因為沒有錢而困擾。"}, {"t": "ex", "jp": "車の音で困った。", "kana": "くるまのおとでこまった。", "zh": "因為車子的聲音而困擾。"}, {"t": "sub", "text": "困らせる（讓別人困擾）：人を困らせる"}, {"t": "line", "jp": "母を困らせた。", "kana": "ははをこまらせた"}, {"t": "line", "jp": "長男を困らせた。", "kana": "ちょうなんをこまらせた"}, {"t": "line", "jp": "校長を困らせた。", "kana": "こうちょうをこまらせた"}, {"t": "line", "jp": "課長を困らせた。", "kana": "かちょうをこまらせた"}, {"t": "line", "jp": "部長を困らせた。", "kana": "ぶちょうをこまらせた"}, {"t": "line", "jp": "社長を困らせた。", "kana": "しゃちょうをこまらせた"}, {"t": "line", "jp": "彼女を困らせた。", "kana": "かのじょをこまらせた"}, {"t": "line", "jp": "娘を困らせた。", "kana": "むすめをこまらせた"}, {"t": "line", "jp": "息子を困らせた。", "kana": "むすこをこまらせた"}, {"t": "line", "jp": "弟を困らせた。", "kana": "おとうとをこまらせた"}, {"t": "line", "jp": "マネージャーを困らせた。", "kana": ""}, {"t": "h", "text": "二、我儘（わがまま）任性"}, {"t": "table", "head": ["日文", "平假名", "中文"], "rows": [["我儘な人", "わがままなひと", "任性的人"], ["我儘な子供", "わがままなこども", "任性的孩子"], ["我儘を言う", "わがままをいう", "說任性的話、提出任性要求"], ["我儘を通す", "わがままをとおす", "任性到底、堅持自己的任性"]]}, {"t": "ex", "jp": "彼は我儘な人だ。", "kana": "かれはわがままなひとだ。", "zh": "他是任性的人。"}, {"t": "ex", "jp": "子供が我儘を言って困る。", "kana": "こどもがわがままをいってこまる。", "zh": "孩子說任性的話，讓人困擾。"}, {"t": "ex", "jp": "彼女は最後まで我儘を通した。", "kana": "かのじょはさいごまでわがままをとおした。", "zh": "她到最後都堅持自己的任性。"}, {"t": "h", "text": "三、我儘言っては困らせた"}, {"t": "ex", "jp": "我儘言っては困らせた。", "kana": "わがままいってはこまらせた。", "zh": "總是說任性的話，讓人困擾。"}, {"t": "ex", "jp": "私は我儘言っては彼女を困らせた。", "kana": "わたしはわがままいってはかのじょをこまらせた。", "zh": "我總是說任性的話，讓她困擾。"}, {"t": "note", "text": "文法：Vては ＋ 不好的結果。含「反覆（每次這樣做就造成某結果）」與「不好的假設（要是這樣就糟了）」兩種語氣。"}, {"t": "h", "text": "四、〜ては／たら／ば／と／なら 比較"}, {"t": "table", "head": ["形式", "例句", "語感"], "rows": [["と", "そう食べると困るよ。", "一旦那樣做，結果自然如此"], ["たら", "雨が降ったら困る。", "假設下雨，就會困擾"], ["ば", "雨が降れば困る。", "文法書式「如果A就B」"], ["なら", "雨なら困る。", "針對「雨」這情況判斷"], ["ては", "雨が降っては困る。", "要是下雨可就麻煩了／每次都麻煩"]]}, {"t": "ex", "jp": "黙っては駄目です。", "kana": "だまってはだめです。", "zh": "不可以沉默不說。"}, {"t": "ex", "jp": "そんなことがあっては大変だ。", "kana": "そんなことがあってはたいへんだ。", "zh": "要是有那種事就糟了。"}, {"t": "h", "text": "五、まま／儘（保持原樣）"}, {"t": "table", "head": ["日文", "平假名", "中文"], "rows": [["そのまま", "そのまま", "就那樣、照原樣"], ["このまま", "このまま", "就這樣"], ["昔の儘", "むかしのまま", "和以前一樣"], ["Vたまま", "Vたまま", "做了某動作後，狀態保持著"]]}, {"t": "ex", "jp": "そのままにして。", "kana": "そのままにして。", "zh": "就那樣放著。"}, {"t": "ex", "jp": "そのままにしておいて。", "kana": "", "zh": "就那樣先放著，不要動。"}, {"t": "ex", "jp": "そのままにして置いてください。", "kana": "そのままにしておいてください。", "zh": "請保持原樣放著。"}, {"t": "ex", "jp": "窓を開けた儘、眠った。", "kana": "まどをあけたまま、ねむった。", "zh": "窗戶開著就睡著了。"}, {"t": "ex", "jp": "窓を開けたまま寝た。", "kana": "まどをあけたままねた。", "zh": "窗戶開著就睡了。"}, {"t": "ex", "jp": "昔の儘の姿。", "kana": "むかしのままのすがた。", "zh": "一如往昔的樣子。"}, {"t": "h", "text": "六、〜みたい（像…）"}, {"t": "note", "text": "用法三類：終止法（〜みたいだ）／連体法（〜みたいな N）／副詞法（〜みたいに ＋ 形容詞・形容動詞・動詞）。"}, {"t": "sub", "text": "名詞＋みたい（連体・終止）"}, {"t": "line", "jp": "彼は子供みたいだ。", "kana": ""}, {"t": "line", "jp": "子供みたい／先生みたい／女みたい", "kana": ""}, {"t": "line", "jp": "やくざみたい／俳優みたい", "kana": "はいゆう"}, {"t": "line", "jp": "警察みたい／踊り子みたい", "kana": "おどりこ"}, {"t": "line", "jp": "公務員みたい／学生みたい／店員みたい／太陽みたい", "kana": ""}, {"t": "line", "jp": "彼は子供みたいです。", "kana": ""}, {"t": "line", "jp": "彼は先生みたいです。", "kana": ""}, {"t": "line", "jp": "彼は木村拓哉みたいだ。", "kana": ""}, {"t": "sub", "text": "〜みたいな ＋ 名詞"}, {"t": "line", "jp": "子供みたいな張さん", "kana": ""}, {"t": "line", "jp": "彼女みたいな先生", "kana": "かのじょ"}, {"t": "ex", "jp": "太陽みたいな月。", "kana": "たいようみたいなつき。", "zh": "像太陽一樣的月亮。"}, {"t": "ex", "jp": "総統府みたいなビル／たてもの。", "kana": "", "zh": "像總統府一樣的大樓／建築。"}, {"t": "ex", "jp": "掌みたいな手の平。", "kana": "てのひら。", "zh": "像手掌一樣（的掌）。"}, {"t": "ex", "jp": "太陽みたいな笑顔。", "kana": "たいようみたいなえがお。", "zh": "像太陽一樣的笑容。"}, {"t": "ex", "jp": "酒みたいな飲み物。", "kana": "さけみたいなのみもの。", "zh": "像酒一樣的飲料。"}, {"t": "line", "jp": "子供みたいな先生", "kana": ""}, {"t": "sub", "text": "〜みたいに ＋ 形容詞・動詞（副詞法）"}, {"t": "ex", "jp": "太陽みたいに明るい。", "kana": "たいようみたいにあかるい。", "zh": "像太陽一樣明亮。"}, {"t": "ex", "jp": "鳥が鴎みたいに飛ぶ。", "kana": "とりがかもめみたいにとぶ。", "zh": "鳥像海鷗一樣飛。"}, {"t": "ex", "jp": "彼は子供みたいに泣いている。", "kana": "", "zh": "他像孩子一樣地哭著。"}, {"t": "ex", "jp": "彼は日本人みたいに日本語を話している。", "kana": "", "zh": "他像日本人一樣地說日語。"}, {"t": "ex", "jp": "彼女は俳優みたいに綺麗です。", "kana": "", "zh": "她像演員一樣漂亮。"}, {"t": "h", "text": "七、子供みたいなあの日のお前（歌詞拆解）"}, {"t": "line", "jp": "子供みたいなお前", "kana": ""}, {"t": "line", "jp": "あの日、お前は子供みたいだ", "kana": ""}, {"t": "line", "jp": "あの日、子供みたいなお前", "kana": ""}, {"t": "ex", "jp": "子供みたいなあの日のお前。", "kana": "", "zh": "像孩子一樣的、那天的你。"}, {"t": "h", "text": "八、締め付ける（揪緊、壓迫）"}, {"t": "note", "text": "締める ＋ 付ける → 締め付ける。"}, {"t": "ex", "jp": "両手で相手を締め付ける。", "kana": "りょうてであいてをしめつける。", "zh": "用兩手勒緊對方。"}, {"t": "ex", "jp": "ネクタイを締め付ける。", "kana": "", "zh": "勒緊領帶。"}, {"t": "ex", "jp": "胸を締め付けられるみたいだ。", "kana": "むねをしめつけられるみたいだ。", "zh": "像被揪緊胸口一樣。"}, {"t": "h", "text": "九、本課核心句"}, {"t": "ex", "jp": "山梔子の雨の別れは今でも心を締め付ける。", "kana": "くちなしのあめのわかれはいまでもこころをしめつける。", "zh": "梔子花雨中的離別，至今仍揪緊我的心。"}]}, {"date": "6/11", "title": "困らせる・黙る・歌詞", "subtitle": "困る／困らせる・我儘・〜ては・まま・黙る／駄目・歌詞抒情句", "sections": [{"t": "h", "text": "一、困る／困らせる"}, {"t": "note", "text": "基本差異：困る（こまる，自動詞）＝自己困擾；困らせる（こまらせる，使役）＝讓別人困擾。"}, {"t": "sub", "text": "A. 困る：自己困擾"}, {"t": "line", "jp": "困る。／ああ、困った。", "kana": ""}, {"t": "line", "jp": "歯痛で困る。／歯痛で困っている。", "kana": ""}, {"t": "line", "jp": "お金がなくて困っている。", "kana": ""}, {"t": "line", "jp": "車の音で困った。", "kana": ""}, {"t": "sub", "text": "B. 困らせる：讓別人困擾（人を困らせる）"}, {"t": "table", "head": ["日文", "平假名", "中文"], "rows": [["母を困らせた", "ははをこまらせた", "讓媽媽困擾了"], ["長男を困らせた", "ちょうなんをこまらせた", "讓長男困擾了"], ["校長を困らせた", "こうちょうをこまらせた", "讓校長困擾了"], ["課長を困らせた", "かちょうをこまらせた", "讓課長困擾了"], ["部長を困らせた", "ぶちょうをこまらせた", "讓部長困擾了"], ["社長を困らせた", "しゃちょうをこまらせた", "讓社長困擾了"], ["彼女を困らせた", "かのじょをこまらせた", "讓她／女朋友困擾了"], ["娘を困らせた", "むすめをこまらせた", "讓女兒困擾了"], ["息子を困らせた", "むすこをこまらせた", "讓兒子困擾了"], ["弟を困らせた", "おとうとをこまらせた", "讓弟弟困擾了"], ["マネージャーを困らせた", "", "讓經理困擾了"]]}, {"t": "h", "text": "二、我儘（わがまま）"}, {"t": "table", "head": ["日文", "平假名", "中文"], "rows": [["我儘な人", "わがままなひと", "任性的人"], ["我儘な子供", "わがままなこども", "任性的孩子"], ["我儘を言う", "わがままをいう", "說任性的話、提出任性要求"], ["我儘を通す", "わがままをとおす", "任性到底、堅持自己的任性"]]}, {"t": "ex", "jp": "彼は我儘な人だ。", "kana": "かれはわがままなひとだ。", "zh": "他是任性的人。"}, {"t": "ex", "jp": "子供が我儘を言って困る。", "kana": "こどもがわがままをいってこまる。", "zh": "孩子說任性的話，讓人困擾。"}, {"t": "ex", "jp": "彼女は最後まで我儘を通した。", "kana": "かのじょはさいごまでわがままをとおした。", "zh": "她到最後都堅持自己的任性。"}, {"t": "h", "text": "三、我儘言っては困らせた（Vては＋不好的結果）"}, {"t": "table", "head": ["感覺", "說明"], "rows": [["反覆", "每次這樣做，就造成某種結果"], ["不好的假設", "要是這樣做，就糟了／就麻煩了"]]}, {"t": "ex", "jp": "私は我儘言っては彼女を困らせた。", "kana": "わたしはわがままいってはかのじょをこまらせた。", "zh": "我總是說任性的話，讓她困擾。"}, {"t": "h", "text": "四、〜ては／たら／ば／と／なら 比較"}, {"t": "table", "head": ["形式", "例句", "平假名／語感"], "rows": [["と", "そう食べると困るよ。", "そうたべるとこまるよ／一旦那樣吃，結果自然會困擾"], ["たら", "雨が降ったら困る。", "あめがふったらこまる／假設下雨，就會困擾"], ["ば", "雨が降れば困る。", "あめがふればこまる／文法書式「如果A就B」"], ["なら", "雨なら困る。", "あめならこまる／針對「雨」這情況判斷"], ["ては", "雨が降っては困る。", "あめがふってはこまる／要是下雨可就麻煩了"]]}, {"t": "ex", "jp": "黙っては駄目です。", "kana": "だまってはだめです。", "zh": "不可以沉默不說。"}, {"t": "ex", "jp": "そんなことがあっては大変だ。", "kana": "そんなことがあってはたいへんだ。", "zh": "要是有那種事就糟了。"}, {"t": "h", "text": "五、まま／儘（保持原樣）"}, {"t": "table", "head": ["日文", "平假名", "中文"], "rows": [["そのまま", "そのまま", "就那樣、照原樣"], ["このまま", "このまま", "就這樣"], ["昔の儘", "むかしのまま", "和以前一樣"], ["Vたまま", "Vたまま", "做了某動作後，狀態保持著"]]}, {"t": "ex", "jp": "そのままにして。", "kana": "", "zh": "就那樣放著。"}, {"t": "ex", "jp": "そのままにしておいて。", "kana": "", "zh": "就那樣先放著，不要動。"}, {"t": "ex", "jp": "そのままにして置いてください。", "kana": "そのままにしておいてください。", "zh": "請保持原樣放著。"}, {"t": "ex", "jp": "窓を開けた儘、眠った。", "kana": "まどをあけたまま、ねむった。", "zh": "窗戶開著就睡著了。"}, {"t": "ex", "jp": "窓を開けたまま寝た。", "kana": "まどをあけたままねた。", "zh": "窗戶開著就睡了。"}, {"t": "ex", "jp": "昔の儘の姿。", "kana": "むかしのままのすがた。", "zh": "一如往昔的樣子。"}, {"t": "h", "text": "六、黙る／駄目"}, {"t": "table", "head": ["日文", "平假名", "中文"], "rows": [["黙る", "だまる", "沉默、閉嘴"], ["黙って", "だまって", "沉默地、不說話地"], ["駄目", "だめ", "不行、不可以"], ["大変", "たいへん", "糟糕、不得了、辛苦"]]}, {"t": "ex", "jp": "黙っては駄目です。", "kana": "だまってはだめです。", "zh": "沉默不說是不行的。"}, {"t": "ex", "jp": "そんなことがあっては大変だ。", "kana": "そんなことがあってはたいへんだ。", "zh": "要是發生那種事就糟了。"}, {"t": "h", "text": "七、歌詞抒情句"}, {"t": "ex", "jp": "くちなしの花。", "kana": "くちなしのはな。", "zh": "梔子花。"}, {"t": "ex", "jp": "雨の別れが今でも心を締め付ける。", "kana": "あめのわかれがいまでもこころをしめつける。", "zh": "雨中的離別，到現在仍揪住我的心。"}, {"t": "table", "head": ["日文", "平假名", "中文"], "rows": [["雨", "あめ", "雨"], ["別れ", "わかれ", "離別"], ["今でも", "いまでも", "到現在仍然"], ["心", "こころ", "心"], ["締め付ける", "しめつける", "勒緊、壓迫、揪住"]]}, {"t": "poem", "text": "心を締め付ける：不是物理上勒緊心臟，而是讓人心痛、胸口發緊、被回憶壓住。"}, {"t": "ex", "jp": "思い出迷子。", "kana": "おもいでまいご。", "zh": "在回憶裡迷路的人。"}, {"t": "poem", "text": "人已經在現在，但心還停在過去，走不出那段回憶。"}, {"t": "h", "text": "八、本課核心總結"}, {"t": "note", "text": "困る＝自己困擾；困らせる＝讓別人困擾。我儘言っては困らせた＝一再任性，讓對方為難。まま＝保持原狀。ては 常帶「這樣做就糟了／會造成困擾」的語氣。"}]}, {"date": "6/4", "title": "香り・旅路・果て・らしい", "subtitle": "香り・旅路・ついてくる・果て・まで・どこまでも・ような／らしい", "sections": [{"t": "h", "text": "一、香り（かおり）"}, {"t": "table", "head": ["日文", "平假名", "中文"], "rows": [["コーヒーの香り", "コーヒーのかおり", "咖啡的香氣"], ["梅の香り", "うめのかおり", "梅花／梅子的香氣"], ["いい香りがする", "いいかおりがする", "有好聞的味道"], ["酒の香", "さけのか", "酒香"], ["香りの高い果物", "かおりのたかいくだもの", "香氣濃郁的水果"]]}, {"t": "note", "text": "文法：N の香り（某物的香味）；する＝發出某種氣味／聲音／感覺。"}, {"t": "ex", "jp": "コーヒーの香りがする。", "kana": "コーヒーのかおりがする。", "zh": "有咖啡香。"}, {"t": "ex", "jp": "この花はいい香りがする。", "kana": "このはなはいいかおりがする。", "zh": "這朵花有好聞的香味。"}, {"t": "ex", "jp": "文学の香り高い作品。", "kana": "ぶんがくのかおりたかいさくひん。", "zh": "富有文學氣息的作品（比喻氣息、風格）。"}, {"t": "h", "text": "二、旅路（たびじ）"}, {"t": "table", "head": ["日文", "平假名", "中文"], "rows": [["旅路", "たびじ", "旅途、人生道路"], ["長い旅路", "ながいたびじ", "漫長旅途"], ["人生", "じんせい", "人生"], ["共にする", "ともにする", "共同經歷、一起度過"], ["路地裏", "ろじうら", "巷弄深處、小巷裡"]]}, {"t": "note", "text": "文法：N を共にする（共同經歷某件事）。"}, {"t": "ex", "jp": "人生は長い旅路だ。", "kana": "じんせいはながいたびじだ。", "zh": "人生是一段漫長的旅途。"}, {"t": "ex", "jp": "二人で旅路を共にする。", "kana": "ふたりでたびじをともにする。", "zh": "兩個人一起走人生的旅途。"}, {"t": "ex", "jp": "苦労を共にする。", "kana": "くろうをともにする。", "zh": "一起吃苦。"}, {"t": "ex", "jp": "人生を共にする。", "kana": "じんせいをともにする。", "zh": "共度人生。"}, {"t": "h", "text": "三、ついてくる（跟著來／附帶而來）"}, {"t": "table", "head": ["寫法", "平假名", "意思"], "rows": [["付いてくる", "ついてくる", "跟著來、附著、伴隨而來"], ["就いて学ぶ", "ついてまなぶ", "師從某人學習"]]}, {"t": "sub", "text": "A. 付いてくる：跟著來"}, {"t": "ex", "jp": "子供が母親について来る。", "kana": "こどもがははおやについてくる。", "zh": "孩子跟著媽媽來。"}, {"t": "ex", "jp": "彼は彼女の家までついてきた。", "kana": "かれはかのじょのいえまでついてきた。", "zh": "他跟到她家。"}, {"t": "sub", "text": "B. 抽象用法：某狀態跟著來"}, {"t": "ex", "jp": "年を取ると、病気がついて来る。", "kana": "としをとると、びょうきがついてくる。", "zh": "年紀大了，疾病也會跟著來。"}, {"t": "ex", "jp": "責任には不安がついてくる。", "kana": "せきにんにはふあんがついてくる。", "zh": "責任常常伴隨著不安。"}, {"t": "ex", "jp": "年を取るのが怖い。", "kana": "としをとるのがこわい。", "zh": "害怕變老。"}, {"t": "sub", "text": "C. 就いて学ぶ：師從某人"}, {"t": "ex", "jp": "先生に就いて学ぶ。", "kana": "せんせいについてまなぶ。", "zh": "跟著老師學習／師從老師。"}, {"t": "ex", "jp": "私は先生に就いてきた。", "kana": "わたしはせんせいについてきた。", "zh": "我一路跟著老師學來。"}, {"t": "warn", "text": "⚠️ 人跟人走→付いてくる／ついてくる；師從老師→就いて学ぶ。"}, {"t": "h", "text": "四、果て（はて）"}, {"t": "table", "head": ["日文", "平假名", "中文"], "rows": [["命の果て", "いのちのはて", "生命的盡頭"], ["戦いの果て", "たたかいのはて", "戰鬥的盡頭"], ["努力の果て", "どりょくのはて", "努力到最後"], ["議論の果てに", "ぎろんのはてに", "經過討論到最後"], ["結論", "けつろん", "結論"], ["果てしない", "はてしない", "無止境的、無邊無際的"], ["愚痴", "ぐち", "抱怨"]]}, {"t": "note", "text": "文法：N の果てに（經過某事到最後，終於…）；果てしない＋N（沒有盡頭的…）。"}, {"t": "ex", "jp": "議論の果てに結論が出た。", "kana": "ぎろんのはてにけつろんがでた。", "zh": "經過長時間討論後終於得出結論。"}, {"t": "ex", "jp": "努力の果てに成功した。", "kana": "どりょくのはてにせいこうした。", "zh": "努力到最後終於成功了。"}, {"t": "ex", "jp": "果てしない夢。", "kana": "はてしないゆめ。", "zh": "無邊無際的夢想。"}, {"t": "ex", "jp": "果てしない議論。", "kana": "はてしないぎろん。", "zh": "沒完沒了的討論。"}, {"t": "ex", "jp": "果てしない愚痴。", "kana": "はてしないぐち。", "zh": "沒完沒了的抱怨。"}, {"t": "ex", "jp": "果てしない道。", "kana": "はてしないみち。", "zh": "沒有盡頭的路。"}, {"t": "h", "text": "五、まで（到…為止）"}, {"t": "ex", "jp": "台北から基隆まで。", "kana": "たいぺいからきーるんまで。", "zh": "從台北到基隆。"}, {"t": "ex", "jp": "旅路の果てまで。", "kana": "たびじのはてまで。", "zh": "直到旅途的盡頭。"}, {"t": "ex", "jp": "学校から家まで歩く。", "kana": "がっこうからいえまであるく。", "zh": "從學校走到家。"}, {"t": "h", "text": "六、どこ／どこまで／どこまでも"}, {"t": "table", "head": ["日文", "平假名", "中文"], "rows": [["どこ", "どこ", "哪裡"], ["どこまで", "どこまで", "到哪裡為止"], ["どこまでも", "どこまでも", "無論到哪裡、一直到任何地方"]]}, {"t": "ex", "jp": "どこまでですか。", "kana": "", "zh": "到哪裡？"}, {"t": "ex", "jp": "何処までもついて来る。", "kana": "どこまでもついてくる。", "zh": "無論到哪裡都跟著來。"}, {"t": "h", "text": "七、ような（像…一樣的）"}, {"t": "note", "text": "文法：N のような N（像 N 一樣的 N）。"}, {"t": "ex", "jp": "山梔子の白い花はお前のような花だった。", "kana": "くちなしのしろいはなはおまえのようなはなだった。", "zh": "梔子花的白花，是像你一樣的花。"}, {"t": "ex", "jp": "この薔薇は君のような花です。", "kana": "このばらはきみのようなはなです。", "zh": "這朵玫瑰是像你一樣的花。"}, {"t": "ex", "jp": "猫のような犬。", "kana": "ねこのよういぬ。", "zh": "像貓一樣的狗。"}, {"t": "ex", "jp": "UFOのような車。", "kana": "ユーフォーのようなくるま。", "zh": "像 UFO 一樣的車。"}, {"t": "h", "text": "八、らしい（很像、具典型特徵）"}, {"t": "ex", "jp": "張さんは先生らしい先生です。", "kana": "ちょうさんはせんせいらしいせんせいです。", "zh": "張先生是很有老師樣子的老師。"}, {"t": "ex", "jp": "春らしい天気ですね。", "kana": "はるらしいてんきですね。", "zh": "真是有春天感覺的天氣。"}, {"t": "ex", "jp": "男らしい。／女らしい。", "kana": "おとこらしい／おんならしい。", "zh": "有男子氣概／有女性氣質。"}, {"t": "h", "text": "九、ような vs らしい"}, {"t": "table", "head": ["文法", "中文感覺", "重點"], "rows": [["N のような", "像……一樣", "外表、感覺、比喻（不一定是）"], ["N らしい", "很有……樣子", "符合典型特徵（本來就是）"]]}, {"t": "note", "text": "先生のような人＝像老師一樣的人（可能不是老師）。先生らしい先生＝很有老師樣子的老師（他就是老師，且很符合形象）。"}, {"t": "h", "text": "十、のようなもの（像…那樣的東西／差不多是…）"}, {"t": "ex", "jp": "この大学は高等学校のようなものです。", "kana": "このだいがくはこうとうがっこうのようなものです。", "zh": "這所大學簡直像高中一樣。"}, {"t": "ex", "jp": "この車はUFOのようなものです。", "kana": "このくるまはユーフォーのようなものです。", "zh": "這台車像 UFO 一樣。"}, {"t": "ex", "jp": "この犬は猫のようなものです。", "kana": "このいぬはねこのようなものです。", "zh": "這隻狗簡直像貓一樣。"}, {"t": "h", "text": "十一、本課核心句"}, {"t": "ex", "jp": "くちなしの花の香りが旅路の果てまでついて来る。", "kana": "くちなしのはなのかおりがたびじのはてまでついてくる。", "zh": "梔子花的香氣，一直跟隨到旅途的盡頭。"}, {"t": "poem", "text": "不只寫花香，而是：那個人的記憶像梔子花香一樣，一直跟著自己走到人生很遠的地方。"}, {"t": "h", "text": "十二、補充單字"}, {"t": "table", "head": ["日文", "平假名", "中文"], "rows": [["単語", "たんご", "單字"], ["音痴", "おんち", "音癡"], ["演歌", "えんか", "演歌（日本傳統流行歌風格）"], ["門地", "もんち", "門第、家世"], ["母親／父親", "ははおや／ちちおや", "母親／父親"], ["怖い", "こわい", "可怕、害怕"], ["病気", "びょうき", "疾病"], ["議論", "ぎろん", "討論、爭論"]]}]}, {"date": "5/28", "title": "痩せる・ほど・噂", "subtitle": "核心歌詞・痩せる／やつれる・〜ほど・噂によると〜そうだ／らしい（p.186）", "sections": [{"t": "h", "text": "一、核心歌詞句"}, {"t": "ex", "jp": "くちなしの花の香が旅路の果てまで就いて來る。", "kana": "", "zh": "梔子花的香氣一直跟到旅途的盡頭。"}, {"t": "ex", "jp": "口なしの白い花、お前の様な花だった。", "kana": "", "zh": "梔子的白花，是像你一樣的花。"}, {"t": "note", "text": "くちなしの花＝梔子花。"}, {"t": "h", "text": "二、痩せる／やつれる（消瘦／憔悴）"}, {"t": "ex", "jp": "お前が痩せてやつれた。", "kana": "", "zh": "你消瘦憔悴了。"}, {"t": "h", "text": "三、〜ほど（到…的程度）"}, {"t": "line", "jp": "指輪が回る／地球が回る", "kana": "まわる"}, {"t": "ex", "jp": "お前が指輪も回るほど痩せた。", "kana": "", "zh": "你瘦到連戒指都會轉動的程度。"}, {"t": "ex", "jp": "私は死ぬほど疲れた。", "kana": "", "zh": "我累得要死。"}, {"t": "ex", "jp": "私は涙が出るほど感動した。", "kana": "なみだ", "zh": "我感動到流淚。"}, {"t": "h", "text": "四、噂によると〜そうだ／らしい（傳聞）"}, {"t": "note", "text": "句型：噂によると … そうだ／らしい。"}, {"t": "ex", "jp": "今ではお前が指輪も回るほど痩せてやつれた。", "kana": "", "zh": "現在你瘦到戒指會轉、憔悴不堪。"}, {"t": "ex", "jp": "噂によると今ではお前が指輪も回るほど痩せてやつれたそうだ。", "kana": "うわさ", "zh": "聽說你現在瘦到戒指都會轉、憔悴不堪。"}, {"t": "ex", "jp": "（今では指輪も回るほど痩せてやつれた）お前の噂。", "kana": "", "zh": "（瘦到戒指都會轉、憔悴）關於你的傳聞。"}, {"t": "h", "text": "五、香り相關用字"}, {"t": "table", "head": ["日文", "平假名", "中文"], "rows": [["香る", "かおる", "散發香氣"], ["香り／いい香り", "かおり", "香氣／好香味"], ["香織", "かおり", "（人名／用字）"], ["果てる→果て", "はてる→はて", "到盡頭→盡頭"], ["就く", "つく", "跟隨、師事"]]}, {"t": "ex", "jp": "先生に就いてください。", "kana": "", "zh": "請跟著老師（學）。"}, {"t": "ex", "jp": "山梔子の白い花がお前の様な花でした。", "kana": "", "zh": "梔子的白花，是像你一樣的花。"}]}, {"date": "5/21", "title": "らしい・みたい・よう", "subtitle": "らしい・みたい・ような・そうだ／と聞いている（傳聞與推測，p.186）", "sections": [{"t": "h", "text": "一、傳聞與推測的比較"}, {"t": "note", "text": "らしい／みたい／そうだ／と聞いている，皆可表示「聽說、好像」。"}, {"t": "ex", "jp": "彼は来年結婚するらしい。", "kana": "", "zh": "聽說他明年要結婚。"}, {"t": "ex", "jp": "彼は来年結婚するそうだ。", "kana": "", "zh": "聽說他明年要結婚。"}, {"t": "ex", "jp": "彼は来年結婚すると聞いている。", "kana": "", "zh": "我聽說他明年要結婚。"}, {"t": "ex", "jp": "この店は人気があるらしい。", "kana": "", "zh": "這家店好像很受歡迎。"}, {"t": "h", "text": "二、らしい（很像、具典型特徵）"}, {"t": "note", "text": "含義：符合該事物的本質（ほんしつ）、角色（やくわり），典型、相稱（ふさわしい）。"}, {"t": "ex", "jp": "春らしい天気ですね。", "kana": "", "zh": "真有春天感覺的天氣。"}, {"t": "ex", "jp": "春の様な天気です。", "kana": "", "zh": "像春天一樣的天氣。"}, {"t": "line", "jp": "冬らしい天気", "kana": ""}, {"t": "ex", "jp": "彼は学生らしい服装をしている。", "kana": "ふくそう", "zh": "他穿著很有學生樣子的服裝。"}, {"t": "ex", "jp": "彼は学生のような服装をしている。", "kana": "", "zh": "他穿著像學生一樣的服裝。"}, {"t": "line", "jp": "男らしい／女らしい", "kana": ""}, {"t": "ex", "jp": "彼は警察らしい。", "kana": "", "zh": "他像是警察（很有警察樣子）。"}, {"t": "ex", "jp": "子どもらしい無邪気さ。", "kana": "むじゃき", "zh": "孩子般的天真無邪。"}, {"t": "line", "jp": "無邪気な子供／無邪気さ", "kana": ""}, {"t": "h", "text": "三、らしい／みたい／そうだ 並列"}, {"t": "ex", "jp": "彼は病気らしい。", "kana": "", "zh": "他好像生病了。"}, {"t": "ex", "jp": "病人の様です。", "kana": "びょうにんのようです。", "zh": "像病人一樣。"}, {"t": "line", "jp": "日本人らしい", "kana": ""}, {"t": "ex", "jp": "先生はもう結婚したらしい。", "kana": "", "zh": "老師好像已經結婚了。"}, {"t": "h", "text": "四、與歌詞結合"}, {"t": "ex", "jp": "彼女は失恋のため痩せている。", "kana": "しつれん", "zh": "她因為失戀而消瘦。"}, {"t": "ex", "jp": "彼女は失恋のため痩せているらしい。", "kana": "", "zh": "她好像因為失戀而消瘦。"}, {"t": "ex", "jp": "噂によると彼女は痩せてやつれた。", "kana": "うわさ", "zh": "聽說她瘦了、憔悴了。"}, {"t": "ex", "jp": "噂によると彼女は指輪も回るほど痩せてやつれた。", "kana": "ゆびわ・まわる", "zh": "聽說她瘦到戒指會轉、憔悴不堪。"}, {"t": "ex", "jp": "今では指輪も回るほど痩せてやつれたお前の噂。", "kana": "", "zh": "現在瘦到戒指會轉、憔悴的關於你的傳聞。"}, {"t": "note", "text": "補充：痩せ我慢（やせがまん）＝硬撐、逞強。やつれる＝憔悴。"}, {"t": "h", "text": "五、核心歌詞句"}, {"t": "ex", "jp": "くちなしの花、花の香が旅路の果てまで就いてくる。", "kana": "", "zh": "梔子花，花香一直跟到旅途的盡頭。"}, {"t": "ex", "jp": "くちなしの白い花、お前のような花だった。", "kana": "", "zh": "梔子的白花，是像你一樣的花。"}, {"t": "note", "text": "補充：渡哲也／相応しい（ふさわしい）／男らしい・女らしい。"}]}, {"date": "5/14", "title": "あと・予定・によると", "subtitle": "あと＋數量・予定／つもり・Aによると〜だそうです（傳聞，p.184）", "sections": [{"t": "h", "text": "一、あと＋數量（還剩…）"}, {"t": "ex", "jp": "勉強まであと一日！／試験まであと一日！", "kana": "", "zh": "離考試還剩一天！"}, {"t": "ex", "jp": "あと一日辛抱すれば、自由だ。", "kana": "しんぼう", "zh": "再忍一天就自由了。"}, {"t": "ex", "jp": "あと一日待ってください。", "kana": "", "zh": "請再等一天。"}, {"t": "ex", "jp": "あと一日頑張れば休みだ。", "kana": "がんばる・やすみ", "zh": "再加油一天就放假了。"}, {"t": "ex", "jp": "あと一日で夏休みが終わる。", "kana": "おわる", "zh": "再一天暑假就結束了。"}, {"t": "ex", "jp": "締め切りまであと一日しかない。", "kana": "しめきり", "zh": "離截稿只剩一天。"}, {"t": "note", "text": "其他：あと三時間、あと二人（ふたり）、あと五分。"}, {"t": "h", "text": "二、予定／つもり"}, {"t": "ex", "jp": "あと一日で完成する予定です。", "kana": "かんせい", "zh": "預定再一天完成。"}, {"t": "ex", "jp": "四月にアメリカへ行く予定です。", "kana": "", "zh": "預定四月去美國。"}, {"t": "ex", "jp": "四月にアメリカへ行くつもりです。", "kana": "", "zh": "打算四月去美國。"}, {"t": "h", "text": "三、Aによると〜だそうです（傳聞）"}, {"t": "note", "text": "文法：根據某來源（拠る）所聽到的傳聞。"}, {"t": "ex", "jp": "天気予報によると、明日は雨だそうです。", "kana": "てんきよほう", "zh": "根據天氣預報，明天會下雨。"}, {"t": "ex", "jp": "先生の話によると、この本はとても有名だそうです。", "kana": "", "zh": "據老師說，這本書很有名。"}, {"t": "ex", "jp": "彼の話によると先生は来ないそうです。", "kana": "", "zh": "據他說老師不會來。"}, {"t": "ex", "jp": "噂によると彼女はとても美しいそうです。", "kana": "うわさ・うつくしい", "zh": "聽說她非常美麗。"}, {"t": "ex", "jp": "政府の情報によると彼はロシヤ政府に殺されたそうです。", "kana": "じょうほう・ころす", "zh": "據政府情報，他被俄羅斯政府殺害了。"}, {"t": "ex", "jp": "歴史によると汐止は綺麗な街だったそうです。", "kana": "", "zh": "根據歷史，汐止以前是個漂亮的城鎮。"}, {"t": "ex", "jp": "お医者さんの話によると彼の病気はよく成らないそうだ。", "kana": "", "zh": "據醫生說，他的病不會好。"}, {"t": "ex", "jp": "彼女の話によるとこの映画は面白いそうです。", "kana": "", "zh": "據她說這部電影很有趣。"}, {"t": "h", "text": "四、天氣與災害詞彙"}, {"t": "table", "head": ["日文", "平假名", "中文"], "rows": [["晴れる", "はれる", "放晴"], ["曇る", "くもる", "陰天"], ["大雨／ザアザア降り", "おおあめ", "大雨／嘩啦嘩啦地下"], ["台風", "たいふう", "颱風"], ["竜巻", "たつまき", "龍捲風"], ["津波", "つなみ", "海嘯"], ["地震", "じしん", "地震"], ["襲う／襲われる", "おそう／おそわれる", "襲擊／被襲擊"]]}, {"t": "ex", "jp": "天気予報によると明日晴れるそうです。", "kana": "", "zh": "據氣象預報，明天會放晴。"}, {"t": "ex", "jp": "天気予報によると明日曇るそうです。", "kana": "", "zh": "據氣象預報，明天會陰天。"}, {"t": "ex", "jp": "天気予報によると明日大雨だそうです。", "kana": "", "zh": "據氣象預報，明天會下大雨。"}, {"t": "ex", "jp": "天気予報によると台風が来るそうです。", "kana": "", "zh": "據氣象預報，颱風會來。"}, {"t": "ex", "jp": "天気予報によると明日竜巻が起るそうです。", "kana": "たつまきがおこる", "zh": "據氣象預報，明天會起龍捲風。"}, {"t": "ex", "jp": "地震が津波を起こす。", "kana": "じしんがつなみをおこす。", "zh": "地震引發海嘯。"}, {"t": "ex", "jp": "津波に襲われる。", "kana": "つなみにおそわれる。", "zh": "被海嘯襲擊。"}]}, {"date": "5/7", "title": "そうだ・わざわざ・く成る", "subtitle": "〜そうだ（樣態 vs 傳聞）・わざわざ／折角・〜く成る（變化）・あと（p.184）", "sections": [{"t": "h", "text": "一、樣態 vs 傳聞的そうだ"}, {"t": "table", "head": ["樣態（看起來）", "傳聞（聽說）"], "rows": [["この花は綺麗そうだ", "この花は綺麗だそうだ"], ["真面目そうだ", "—"], ["美味しそうだ", "—"], ["高そうだ", "この本は高いそうだ"], ["この子供は元気そうだ", "この子供は元気だそうだ"], ["この町は賑やかそうだ", "この町は賑やかだそうだ"], ["この町は不便そうだ", "この町は不便だそうだ"]]}, {"t": "note", "text": "樣態：形容詞語幹／形容動詞語幹 ＋ そうだ。傳聞：終止形（三變）＋ そうだ。"}, {"t": "line", "jp": "たかそうだ／やすそうだ／さむそうだ／きれいそうだ／まじめそうだ", "kana": ""}, {"t": "h", "text": "二、わざわざ／折角（せっかく）"}, {"t": "ex", "jp": "わざわざ来てくれてありがとう。", "kana": "", "zh": "謝謝你特地前來。"}, {"t": "ex", "jp": "わざわざ悪戯書きをする。", "kana": "いたずらがき", "zh": "特地塗鴉。"}, {"t": "ex", "jp": "わざわざそんなことをしなくてもいいのに。", "kana": "", "zh": "用不著特地做那種事的。"}, {"t": "ex", "jp": "わざわざ電話して確認した。", "kana": "", "zh": "特地打電話確認。"}, {"t": "ex", "jp": "わざわざ言わなくてもいい。", "kana": "", "zh": "用不著特地說。"}, {"t": "ex", "jp": "せっかくですが結構です。", "kana": "", "zh": "難得（您的好意），但不用了。"}, {"t": "ex", "jp": "せっかくのお心遣いありがとうございます。", "kana": "こころづかい", "zh": "感謝您難得的關心。"}, {"t": "h", "text": "三、〜く成る／〜に成る（變化）"}, {"t": "line", "jp": "よく成った", "kana": ""}, {"t": "ex", "jp": "玉子が高く成った。", "kana": "", "zh": "蛋變貴了。"}, {"t": "ex", "jp": "りんごが美味しく成った。", "kana": "", "zh": "蘋果變好吃了。"}, {"t": "ex", "jp": "今日は寒く成った。／今日は暑くなった。", "kana": "", "zh": "今天變冷了／變熱了。"}, {"t": "ex", "jp": "このジュースは甘く成った。", "kana": "", "zh": "這果汁變甜了。"}, {"t": "ex", "jp": "天気が暗くなった。", "kana": "", "zh": "天色變暗了。"}, {"t": "ex", "jp": "昼間が長く成った。", "kana": "ひるま", "zh": "白天變長了。"}, {"t": "sub", "text": "〜く成らない（不會變…）"}, {"t": "line", "jp": "仕合わせ（幸福）が短く成らない／短く成った", "kana": ""}, {"t": "line", "jp": "そのいのちは短く成らない", "kana": ""}, {"t": "line", "jp": "卵は高く成らない", "kana": ""}, {"t": "line", "jp": "昼間は短く成らない／長く成らない", "kana": ""}, {"t": "line", "jp": "白菜は安くならない", "kana": ""}, {"t": "ex", "jp": "水は清くならない。", "kana": "きよい", "zh": "水不會變清。"}, {"t": "ex", "jp": "この子供は背が高く成らない。", "kana": "", "zh": "這孩子個子不會長高。"}, {"t": "ex", "jp": "この道は広く成らない。", "kana": "ひろい", "zh": "這條路不會變寬。"}, {"t": "ex", "jp": "この納豆は甘く成らない。", "kana": "", "zh": "這納豆不會變甜。"}, {"t": "ex", "jp": "この本は白く成らない。", "kana": "しろく", "zh": "這本書不會變白。"}, {"t": "ex", "jp": "月給は多くならない。", "kana": "げっきゅう", "zh": "月薪不會變多。"}, {"t": "ex", "jp": "家賃は安く成らない。", "kana": "やちん", "zh": "房租不會變便宜。"}, {"t": "ex", "jp": "管理費は安く成らない。", "kana": "", "zh": "管理費不會變便宜。"}, {"t": "ex", "jp": "この病気はよくならない。", "kana": "", "zh": "這病不會好。"}, {"t": "h", "text": "四、あと（時間／之後）"}, {"t": "note", "text": "試験まであと一日だ。あと一週間／あと一カ月（いっかげつかん）／あと三ケ月／あと一年。"}, {"t": "ex", "jp": "後で電話します。／後で説明するね。", "kana": "あとで", "zh": "之後打電話／之後說明。"}, {"t": "ex", "jp": "後で連絡します。", "kana": "あとでれんらくします。", "zh": "之後再聯絡。"}]}, {"date": "4/30", "title": "三變＋そうだ・補助動詞", "subtitle": "活用語三變＋そうだ（傳聞）・形容動詞語幹＋そうだ（樣態）・補助動詞（p.184）", "sections": [{"t": "h", "text": "一、動詞三變＋そうだ（傳聞）"}, {"t": "ex", "jp": "先生はご飯を食べるそうだ。", "kana": "", "zh": "聽說老師要吃飯。"}, {"t": "ex", "jp": "先生がご飯を食べたそうだ。", "kana": "", "zh": "聽說老師吃了飯。"}, {"t": "ex", "jp": "先生はご飯を食べているそうだ。", "kana": "", "zh": "聽說老師正在吃飯。"}, {"t": "h", "text": "二、形容詞＋そうだ（傳聞）"}, {"t": "ex", "jp": "この林檎が美味しいそうだ。", "kana": "", "zh": "聽說這蘋果好吃。"}, {"t": "ex", "jp": "青森のりんごが美味しかったそうだ。", "kana": "", "zh": "聽說青森的蘋果以前很好吃。"}, {"t": "ex", "jp": "先生はご飯が食べたいそうだ。", "kana": "", "zh": "聽說老師想吃飯。"}, {"t": "ex", "jp": "先生はご飯が食べたかった（そうだ）。", "kana": "", "zh": "（聽說）老師那時想吃飯。"}, {"t": "h", "text": "三、形容動詞：樣態 vs 傳聞"}, {"t": "note", "text": "語幹＋そうだ＝樣態（看起來）；三變（〜だ）＋そうだ＝傳聞（聽說）。以「綺麗だ」為例：語根＝綺麗；三變＝綺麗だ。"}, {"t": "table", "head": ["原形", "樣態（看起來）", "傳聞（聽說）"], "rows": [["綺麗だ", "綺麗そうだ", "綺麗だそうだ"], ["真面目だ", "真面目そうだ", "真面目だそうだ"], ["賑やかだ", "賑やかそうだ", "賑やかだそうだ"], ["静かだ", "静かそうだ", "静かだそうだ"], ["不便だ", "不便そうだ", "不便だそうだ"], ["利口だ", "利口そうだ", "利口だそうだ"], ["元気だ", "元気そうだ", "元気だそうだ"], ["丈夫だ", "丈夫そうだ", "丈夫だそうだ"], ["素敵だ", "素敵そうだ", "素敵だそうだ"], ["馬鹿だ", "馬鹿そうだ", "馬鹿だそうだ"], ["簡単だ", "簡単そうだ", "簡単だそうだ"], ["好きだ", "好きそうだ", "好きだそうだ"], ["柔らかだ", "柔らかそうだ", "柔らかだそうだ"], ["立派だ", "立派そうだ", "立派だそうだ"], ["残念だ", "残念そうだ", "残念だそうだ"]]}, {"t": "h", "text": "四、形容詞樣態整理（語幹＋そうだ）"}, {"t": "table", "head": ["原形", "樣態", "傳聞"], "rows": [["美味しい", "美味しそうだ", "美味しいそうだ"], ["高い", "高そうだ", "高いそうだ"], ["安い", "安そうだ", "安いそうだ"], ["長い", "長そうだ", "長いそうだ"], ["少ない", "少なそうだ", "少ないそうだ"], ["大きい", "大きそうだ", "大きいそうだ"], ["小さい", "小さそうだ", "小さいそうだ"], ["多い", "多そうだ", "多いそうだ"], ["甘い", "甘そうだ", "甘いそうだ"], ["寂しい", "寂しそうだ", "寂しいそうだ"], ["悲しい", "悲しそうだ", "悲しいそうだ"], ["暖かい", "暖かそうだ", "暖かいそうだ"], ["清い", "清そうだ", "清いそうだ"], ["新しい", "新しそうだ", "新しいそうだ"]]}, {"t": "h", "text": "五、補助動詞與中止法"}, {"t": "ex", "jp": "先生に聞いてください。／先生から聞いてください。", "kana": "", "zh": "請問老師／請向老師打聽。"}, {"t": "note", "text": "先生に聞く／先生から聞く。"}, {"t": "ex", "jp": "聞いてびっくりして飛んで来ました。", "kana": "", "zh": "一聽到就嚇了一跳飛奔而來。"}, {"t": "note", "text": "文法概念：中止法・終止法・補助動詞（飛んでくる的くる）。"}]}];
+const DATA = [{"date": "6/25 ・ 6/18", "title": "困らせた・我儘・みたい", "subtitle": "困る／困らせる・我儘・〜ては・〜みたい・締め付ける", "sections": [{"t": "lead", "text": "6/25 與 6/18 為同一範圍，以下為完整課堂逐句記錄。"}, {"t": "h", "text": "一、見る／見たい（順帶複習）"}, {"t": "note", "text": "見る（看）→ 〜が見たい（想看…）。注意與後面「みたい（像…）」發音相同但意思不同。"}, {"t": "ex", "jp": "私は映画を見る。", "kana": "", "zh": "我看電影。"}, {"t": "ex", "jp": "私は映画が見たい。", "kana": "", "zh": "我想看電影。"}, {"t": "ex", "jp": "私は公園が見たい。", "kana": "", "zh": "我想看公園。"}, {"t": "line", "jp": "映画が見たい／男見たい／女見たい", "kana": ""}, {"t": "h", "text": "二、困る／困らせる"}, {"t": "table", "head": ["日文", "平假名", "詞性", "中文"], "rows": [["困る", "こまる", "自動詞", "自己覺得困擾、為難"], ["困らせる", "こまらせる", "使役形", "讓別人困擾、使人為難"]]}, {"t": "sub", "text": "困る（自己困擾）"}, {"t": "line", "jp": "困る。", "kana": "こまる"}, {"t": "ex", "jp": "ああ、困った。", "kana": "ああ、こまった。", "zh": "啊，真傷腦筋。"}, {"t": "ex", "jp": "歯痛で困る。", "kana": "はいたでこまる。", "zh": "因為牙痛而困擾。"}, {"t": "ex", "jp": "歯痛で困っている。", "kana": "はいたでこまっている。", "zh": "正在因牙痛而困擾。"}, {"t": "ex", "jp": "お金がなくて困っている。", "kana": "おかねがなくてこまっている。", "zh": "因為沒有錢而困擾。"}, {"t": "ex", "jp": "車の音で困った。", "kana": "くるまのおとでこまった。", "zh": "因為車子的聲音而困擾。"}, {"t": "sub", "text": "困らせる（讓別人困擾）：人を困らせる"}, {"t": "line", "jp": "母を困らせた。", "kana": "ははをこまらせた"}, {"t": "line", "jp": "長男を困らせた。", "kana": "ちょうなんをこまらせた"}, {"t": "line", "jp": "校長を困らせた。", "kana": "こうちょうをこまらせた"}, {"t": "line", "jp": "課長を困らせた。", "kana": "かちょうをこまらせた"}, {"t": "line", "jp": "部長を困らせた。", "kana": "ぶちょうをこまらせた"}, {"t": "line", "jp": "社長を困らせた。", "kana": "しゃちょうをこまらせた"}, {"t": "line", "jp": "彼女を困らせた。", "kana": "かのじょをこまらせた"}, {"t": "line", "jp": "娘を困らせた。", "kana": "むすめをこまらせた"}, {"t": "line", "jp": "息子を困らせた。", "kana": "むすこをこまらせた"}, {"t": "line", "jp": "弟を困らせた。", "kana": "おとうとをこまらせた"}, {"t": "line", "jp": "マネージャーを困らせた。", "kana": ""}, {"t": "h", "text": "三、我儘（わがまま）任性"}, {"t": "table", "head": ["日文", "平假名", "中文"], "rows": [["我儘な人", "わがままなひと", "任性的人"], ["我儘な子供", "わがままなこども", "任性的孩子"], ["我儘を言う", "わがままをいう", "說任性的話、提出任性要求"], ["我儘を通す", "わがままをとおす", "任性到底、堅持自己的任性"]]}, {"t": "ex", "jp": "彼は我儘な人だ。", "kana": "かれはわがままなひとだ。", "zh": "他是任性的人。"}, {"t": "ex", "jp": "子供が我儘を言って困る。", "kana": "こどもがわがままをいってこまる。", "zh": "孩子說任性的話，讓人困擾。"}, {"t": "ex", "jp": "彼女は最後まで我儘を通した。", "kana": "かのじょはさいごまでわがままをとおした。", "zh": "她到最後都堅持自己的任性。"}, {"t": "h", "text": "四、我儘言っては困らせた"}, {"t": "ex", "jp": "我儘言っては困らせた。", "kana": "わがままいってはこまらせた。", "zh": "總是說任性的話，讓人困擾。"}, {"t": "ex", "jp": "私は我儘言っては彼女を困らせた。", "kana": "わたしはわがままいってはかのじょをこまらせた。", "zh": "我總是說任性的話，讓她困擾。"}, {"t": "note", "text": "文法：Vては ＋ 不好的結果。含「反覆（每次這樣做就造成某結果）」與「不好的假設（要是這樣就糟了）」兩種語氣。"}, {"t": "h", "text": "五、〜ては／たら／ば／と／なら 比較"}, {"t": "table", "head": ["形式", "例句", "語感"], "rows": [["と", "そう食べると困るよ。", "一旦那樣做，結果自然如此"], ["たら", "雨が降ったら困る。", "假設下雨，就會困擾"], ["ば", "雨が降れば困る。", "文法書式「如果A就B」"], ["なら", "雨なら困る。", "針對「雨」這情況判斷"], ["ては", "雨が降っては困る。", "要是下雨可就麻煩了／每次都麻煩"]]}, {"t": "ex", "jp": "黙っては駄目です。", "kana": "だまってはだめです。", "zh": "不可以沉默不說。"}, {"t": "ex", "jp": "そんなことがあっては大変だ。", "kana": "そんなことがあってはたいへんだ。", "zh": "要是有那種事就糟了。"}, {"t": "h", "text": "六、まま／儘（保持原樣）"}, {"t": "table", "head": ["日文", "平假名", "中文"], "rows": [["そのまま", "そのまま", "就那樣、照原樣"], ["このまま", "このまま", "就這樣"], ["昔の儘", "むかしのまま", "和以前一樣"], ["Vたまま", "Vたまま", "做了某動作後，狀態保持著"]]}, {"t": "ex", "jp": "そのままにして。", "kana": "そのままにして。", "zh": "就那樣放著。"}, {"t": "ex", "jp": "そのままにしておいて。", "kana": "", "zh": "就那樣先放著，不要動。"}, {"t": "ex", "jp": "そのままにして置いてください。", "kana": "そのままにしておいてください。", "zh": "請保持原樣放著。"}, {"t": "ex", "jp": "窓を開けた儘、眠った。", "kana": "まどをあけたまま、ねむった。", "zh": "窗戶開著就睡著了。"}, {"t": "ex", "jp": "窓を開けたまま寝た。", "kana": "まどをあけたままねた。", "zh": "窗戶開著就睡了。"}, {"t": "ex", "jp": "昔の儘の姿。", "kana": "むかしのままのすがた。", "zh": "一如往昔的樣子。"}, {"t": "h", "text": "七、〜みたい（像…）"}, {"t": "note", "text": "用法三類：終止法（〜みたいだ）／連体法（〜みたいな N）／副詞法（〜みたいに ＋ 形容詞・形容動詞・動詞）。"}, {"t": "sub", "text": "名詞＋みたい（連体・終止）"}, {"t": "line", "jp": "彼は子供みたいだ。", "kana": ""}, {"t": "line", "jp": "子供みたい／先生みたい／女みたい", "kana": ""}, {"t": "line", "jp": "やくざみたい／俳優みたい", "kana": "はいゆう"}, {"t": "line", "jp": "警察みたい／踊り子みたい", "kana": "おどりこ"}, {"t": "line", "jp": "公務員みたい／学生みたい／店員みたい／太陽みたい", "kana": ""}, {"t": "line", "jp": "彼は子供みたいです。", "kana": ""}, {"t": "line", "jp": "彼は先生みたいです。", "kana": ""}, {"t": "line", "jp": "彼は木村拓哉みたいだ。", "kana": ""}, {"t": "sub", "text": "〜みたいな ＋ 名詞"}, {"t": "line", "jp": "子供みたいな張さん", "kana": ""}, {"t": "line", "jp": "彼女みたいな先生", "kana": "かのじょ"}, {"t": "ex", "jp": "太陽みたいな月。", "kana": "たいようみたいなつき。", "zh": "像太陽一樣的月亮。"}, {"t": "ex", "jp": "総統府みたいなビル／たてもの。", "kana": "", "zh": "像總統府一樣的大樓／建築。"}, {"t": "ex", "jp": "掌みたいな手の平。", "kana": "てのひら。", "zh": "像手掌一樣（的掌）。"}, {"t": "ex", "jp": "太陽みたいな笑顔。", "kana": "たいようみたいなえがお。", "zh": "像太陽一樣的笑容。"}, {"t": "ex", "jp": "酒みたいな飲み物。", "kana": "さけみたいなのみもの。", "zh": "像酒一樣的飲料。"}, {"t": "line", "jp": "子供みたいな先生", "kana": ""}, {"t": "sub", "text": "〜みたいに ＋ 形容詞・動詞（副詞法）"}, {"t": "ex", "jp": "太陽みたいに明るい。", "kana": "たいようみたいにあかるい。", "zh": "像太陽一樣明亮。"}, {"t": "ex", "jp": "鳥が鴎みたいに飛ぶ。", "kana": "とりがかもめみたいにとぶ。", "zh": "鳥像海鷗一樣飛。"}, {"t": "ex", "jp": "彼は子供みたいに泣いている。", "kana": "", "zh": "他像孩子一樣地哭著。"}, {"t": "ex", "jp": "彼は日本人みたいに日本語を話している。", "kana": "", "zh": "他像日本人一樣地說日語。"}, {"t": "ex", "jp": "彼女は俳優みたいに綺麗です。", "kana": "", "zh": "她像演員一樣漂亮。"}, {"t": "h", "text": "八、子供みたいなあの日のお前（歌詞拆解）"}, {"t": "line", "jp": "子供みたいなお前", "kana": ""}, {"t": "line", "jp": "あの日、お前は子供みたいだ", "kana": ""}, {"t": "line", "jp": "あの日、子供みたいなお前", "kana": ""}, {"t": "ex", "jp": "子供みたいなあの日のお前。", "kana": "", "zh": "像孩子一樣的、那天的你。"}, {"t": "h", "text": "九、締め付ける（揪緊、壓迫）"}, {"t": "note", "text": "締める ＋ 付ける → 締め付ける。"}, {"t": "ex", "jp": "両手で相手を締め付ける。", "kana": "りょうてであいてをしめつける。", "zh": "用兩手勒緊對方。"}, {"t": "ex", "jp": "ネクタイを締め付ける。", "kana": "", "zh": "勒緊領帶。"}, {"t": "ex", "jp": "胸を締め付けられるみたいだ。", "kana": "むねをしめつけられるみたいだ。", "zh": "像被揪緊胸口一樣。"}, {"t": "h", "text": "十、本課核心句"}, {"t": "ex", "jp": "山梔子の雨の別れは今でも心を締め付ける。", "kana": "くちなしのあめのわかれはいまでもこころをしめつける。", "zh": "梔子花雨中的離別，至今仍揪緊我的心。"}]}, {"date": "6/11", "title": "困らせる・黙る・歌詞", "subtitle": "困る／困らせる・我儘・〜ては・まま・黙る／駄目・歌詞抒情句", "sections": [{"t": "h", "text": "一、困る／困らせる"}, {"t": "note", "text": "基本差異：困る（こまる，自動詞）＝自己困擾；困らせる（こまらせる，使役）＝讓別人困擾。"}, {"t": "sub", "text": "A. 困る：自己困擾"}, {"t": "line", "jp": "困る。／ああ、困った。", "kana": ""}, {"t": "line", "jp": "歯痛で困る。／歯痛で困っている。", "kana": ""}, {"t": "line", "jp": "お金がなくて困っている。", "kana": ""}, {"t": "line", "jp": "車の音で困った。", "kana": ""}, {"t": "sub", "text": "B. 困らせる：讓別人困擾（人を困らせる）"}, {"t": "table", "head": ["日文", "平假名", "中文"], "rows": [["母を困らせた", "ははをこまらせた", "讓媽媽困擾了"], ["長男を困らせた", "ちょうなんをこまらせた", "讓長男困擾了"], ["校長を困らせた", "こうちょうをこまらせた", "讓校長困擾了"], ["課長を困らせた", "かちょうをこまらせた", "讓課長困擾了"], ["部長を困らせた", "ぶちょうをこまらせた", "讓部長困擾了"], ["社長を困らせた", "しゃちょうをこまらせた", "讓社長困擾了"], ["彼女を困らせた", "かのじょをこまらせた", "讓她／女朋友困擾了"], ["娘を困らせた", "むすめをこまらせた", "讓女兒困擾了"], ["息子を困らせた", "むすこをこまらせた", "讓兒子困擾了"], ["弟を困らせた", "おとうとをこまらせた", "讓弟弟困擾了"], ["マネージャーを困らせた", "", "讓經理困擾了"]]}, {"t": "h", "text": "二、我儘（わがまま）"}, {"t": "table", "head": ["日文", "平假名", "中文"], "rows": [["我儘な人", "わがままなひと", "任性的人"], ["我儘な子供", "わがままなこども", "任性的孩子"], ["我儘を言う", "わがままをいう", "說任性的話、提出任性要求"], ["我儘を通す", "わがままをとおす", "任性到底、堅持自己的任性"]]}, {"t": "ex", "jp": "彼は我儘な人だ。", "kana": "かれはわがままなひとだ。", "zh": "他是任性的人。"}, {"t": "ex", "jp": "子供が我儘を言って困る。", "kana": "こどもがわがままをいってこまる。", "zh": "孩子說任性的話，讓人困擾。"}, {"t": "ex", "jp": "彼女は最後まで我儘を通した。", "kana": "かのじょはさいごまでわがままをとおした。", "zh": "她到最後都堅持自己的任性。"}, {"t": "h", "text": "三、我儘言っては困らせた（Vては＋不好的結果）"}, {"t": "table", "head": ["感覺", "說明"], "rows": [["反覆", "每次這樣做，就造成某種結果"], ["不好的假設", "要是這樣做，就糟了／就麻煩了"]]}, {"t": "ex", "jp": "私は我儘言っては彼女を困らせた。", "kana": "わたしはわがままいってはかのじょをこまらせた。", "zh": "我總是說任性的話，讓她困擾。"}, {"t": "h", "text": "四、〜ては／たら／ば／と／なら 比較"}, {"t": "table", "head": ["形式", "例句", "平假名／語感"], "rows": [["と", "そう食べると困るよ。", "そうたべるとこまるよ／一旦那樣吃，結果自然會困擾"], ["たら", "雨が降ったら困る。", "あめがふったらこまる／假設下雨，就會困擾"], ["ば", "雨が降れば困る。", "あめがふればこまる／文法書式「如果A就B」"], ["なら", "雨なら困る。", "あめならこまる／針對「雨」這情況判斷"], ["ては", "雨が降っては困る。", "あめがふってはこまる／要是下雨可就麻煩了"]]}, {"t": "ex", "jp": "黙っては駄目です。", "kana": "だまってはだめです。", "zh": "不可以沉默不說。"}, {"t": "ex", "jp": "そんなことがあっては大変だ。", "kana": "そんなことがあってはたいへんだ。", "zh": "要是有那種事就糟了。"}, {"t": "h", "text": "五、まま／儘（保持原樣）"}, {"t": "table", "head": ["日文", "平假名", "中文"], "rows": [["そのまま", "そのまま", "就那樣、照原樣"], ["このまま", "このまま", "就這樣"], ["昔の儘", "むかしのまま", "和以前一樣"], ["Vたまま", "Vたまま", "做了某動作後，狀態保持著"]]}, {"t": "ex", "jp": "そのままにして。", "kana": "", "zh": "就那樣放著。"}, {"t": "ex", "jp": "そのままにしておいて。", "kana": "", "zh": "就那樣先放著，不要動。"}, {"t": "ex", "jp": "そのままにして置いてください。", "kana": "そのままにしておいてください。", "zh": "請保持原樣放著。"}, {"t": "ex", "jp": "窓を開けた儘、眠った。", "kana": "まどをあけたまま、ねむった。", "zh": "窗戶開著就睡著了。"}, {"t": "ex", "jp": "窓を開けたまま寝た。", "kana": "まどをあけたままねた。", "zh": "窗戶開著就睡了。"}, {"t": "ex", "jp": "昔の儘の姿。", "kana": "むかしのままのすがた。", "zh": "一如往昔的樣子。"}, {"t": "h", "text": "六、黙る／駄目"}, {"t": "table", "head": ["日文", "平假名", "中文"], "rows": [["黙る", "だまる", "沉默、閉嘴"], ["黙って", "だまって", "沉默地、不說話地"], ["駄目", "だめ", "不行、不可以"], ["大変", "たいへん", "糟糕、不得了、辛苦"]]}, {"t": "ex", "jp": "黙っては駄目です。", "kana": "だまってはだめです。", "zh": "沉默不說是不行的。"}, {"t": "ex", "jp": "そんなことがあっては大変だ。", "kana": "そんなことがあってはたいへんだ。", "zh": "要是發生那種事就糟了。"}, {"t": "h", "text": "七、歌詞抒情句"}, {"t": "ex", "jp": "くちなしの花。", "kana": "くちなしのはな。", "zh": "梔子花。"}, {"t": "ex", "jp": "雨の別れが今でも心を締め付ける。", "kana": "あめのわかれがいまでもこころをしめつける。", "zh": "雨中的離別，到現在仍揪住我的心。"}, {"t": "table", "head": ["日文", "平假名", "中文"], "rows": [["雨", "あめ", "雨"], ["別れ", "わかれ", "離別"], ["今でも", "いまでも", "到現在仍然"], ["心", "こころ", "心"], ["締め付ける", "しめつける", "勒緊、壓迫、揪住"]]}, {"t": "poem", "text": "心を締め付ける：不是物理上勒緊心臟，而是讓人心痛、胸口發緊、被回憶壓住。"}, {"t": "ex", "jp": "思い出迷子。", "kana": "おもいでまいご。", "zh": "在回憶裡迷路的人。"}, {"t": "poem", "text": "人已經在現在，但心還停在過去，走不出那段回憶。"}, {"t": "h", "text": "八、本課核心總結"}, {"t": "note", "text": "困る＝自己困擾；困らせる＝讓別人困擾。我儘言っては困らせた＝一再任性，讓對方為難。まま＝保持原狀。ては 常帶「這樣做就糟了／會造成困擾」的語氣。"}]}, {"date": "6/4", "title": "香り・旅路・果て・らしい", "subtitle": "香り・旅路・ついてくる・果て・まで・どこまでも・ような／らしい", "sections": [{"t": "h", "text": "一、香り（かおり）"}, {"t": "table", "head": ["日文", "平假名", "中文"], "rows": [["コーヒーの香り", "コーヒーのかおり", "咖啡的香氣"], ["梅の香り", "うめのかおり", "梅花／梅子的香氣"], ["いい香りがする", "いいかおりがする", "有好聞的味道"], ["酒の香", "さけのか", "酒香"], ["香りの高い果物", "かおりのたかいくだもの", "香氣濃郁的水果"]]}, {"t": "note", "text": "文法：N の香り（某物的香味）；する＝發出某種氣味／聲音／感覺。"}, {"t": "ex", "jp": "コーヒーの香りがする。", "kana": "コーヒーのかおりがする。", "zh": "有咖啡香。"}, {"t": "ex", "jp": "この花はいい香りがする。", "kana": "このはなはいいかおりがする。", "zh": "這朵花有好聞的香味。"}, {"t": "ex", "jp": "文学の香り高い作品。", "kana": "ぶんがくのかおりたかいさくひん。", "zh": "富有文學氣息的作品（比喻氣息、風格）。"}, {"t": "h", "text": "二、旅路（たびじ）"}, {"t": "table", "head": ["日文", "平假名", "中文"], "rows": [["旅路", "たびじ", "旅途、人生道路"], ["長い旅路", "ながいたびじ", "漫長旅途"], ["人生", "じんせい", "人生"], ["共にする", "ともにする", "共同經歷、一起度過"], ["路地裏", "ろじうら", "巷弄深處、小巷裡"]]}, {"t": "note", "text": "文法：N を共にする（共同經歷某件事）。"}, {"t": "ex", "jp": "人生は長い旅路だ。", "kana": "じんせいはながいたびじだ。", "zh": "人生是一段漫長的旅途。"}, {"t": "ex", "jp": "二人で旅路を共にする。", "kana": "ふたりでたびじをともにする。", "zh": "兩個人一起走人生的旅途。"}, {"t": "ex", "jp": "苦労を共にする。", "kana": "くろうをともにする。", "zh": "一起吃苦。"}, {"t": "ex", "jp": "人生を共にする。", "kana": "じんせいをともにする。", "zh": "共度人生。"}, {"t": "h", "text": "三、ついてくる（跟著來／附帶而來）"}, {"t": "table", "head": ["寫法", "平假名", "意思"], "rows": [["付いてくる", "ついてくる", "跟著來、附著、伴隨而來"], ["就いて学ぶ", "ついてまなぶ", "師從某人學習"]]}, {"t": "sub", "text": "A. 付いてくる：跟著來"}, {"t": "ex", "jp": "子供が母親について来る。", "kana": "こどもがははおやについてくる。", "zh": "孩子跟著媽媽來。"}, {"t": "ex", "jp": "彼は彼女の家までついてきた。", "kana": "かれはかのじょのいえまでついてきた。", "zh": "他跟到她家。"}, {"t": "sub", "text": "B. 抽象用法：某狀態跟著來"}, {"t": "ex", "jp": "年を取ると、病気がついて来る。", "kana": "としをとると、びょうきがついてくる。", "zh": "年紀大了，疾病也會跟著來。"}, {"t": "ex", "jp": "責任には不安がついてくる。", "kana": "せきにんにはふあんがついてくる。", "zh": "責任常常伴隨著不安。"}, {"t": "ex", "jp": "年を取るのが怖い。", "kana": "としをとるのがこわい。", "zh": "害怕變老。"}, {"t": "sub", "text": "C. 就いて学ぶ：師從某人"}, {"t": "ex", "jp": "先生に就いて学ぶ。", "kana": "せんせいについてまなぶ。", "zh": "跟著老師學習／師從老師。"}, {"t": "ex", "jp": "私は先生に就いてきた。", "kana": "わたしはせんせいについてきた。", "zh": "我一路跟著老師學來。"}, {"t": "warn", "text": "⚠️ 人跟人走→付いてくる／ついてくる；師從老師→就いて学ぶ。"}, {"t": "h", "text": "四、果て（はて）"}, {"t": "table", "head": ["日文", "平假名", "中文"], "rows": [["命の果て", "いのちのはて", "生命的盡頭"], ["戦いの果て", "たたかいのはて", "戰鬥的盡頭"], ["努力の果て", "どりょくのはて", "努力到最後"], ["議論の果てに", "ぎろんのはてに", "經過討論到最後"], ["結論", "けつろん", "結論"], ["果てしない", "はてしない", "無止境的、無邊無際的"], ["愚痴", "ぐち", "抱怨"]]}, {"t": "note", "text": "文法：N の果てに（經過某事到最後，終於…）；果てしない＋N（沒有盡頭的…）。"}, {"t": "ex", "jp": "議論の果てに結論が出た。", "kana": "ぎろんのはてにけつろんがでた。", "zh": "經過長時間討論後終於得出結論。"}, {"t": "ex", "jp": "努力の果てに成功した。", "kana": "どりょくのはてにせいこうした。", "zh": "努力到最後終於成功了。"}, {"t": "ex", "jp": "果てしない夢。", "kana": "はてしないゆめ。", "zh": "無邊無際的夢想。"}, {"t": "ex", "jp": "果てしない議論。", "kana": "はてしないぎろん。", "zh": "沒完沒了的討論。"}, {"t": "ex", "jp": "果てしない愚痴。", "kana": "はてしないぐち。", "zh": "沒完沒了的抱怨。"}, {"t": "ex", "jp": "果てしない道。", "kana": "はてしないみち。", "zh": "沒有盡頭的路。"}, {"t": "h", "text": "五、まで（到…為止）"}, {"t": "ex", "jp": "台北から基隆まで。", "kana": "たいぺいからきーるんまで。", "zh": "從台北到基隆。"}, {"t": "ex", "jp": "旅路の果てまで。", "kana": "たびじのはてまで。", "zh": "直到旅途的盡頭。"}, {"t": "ex", "jp": "学校から家まで歩く。", "kana": "がっこうからいえまであるく。", "zh": "從學校走到家。"}, {"t": "h", "text": "六、どこ／どこまで／どこまでも"}, {"t": "table", "head": ["日文", "平假名", "中文"], "rows": [["どこ", "どこ", "哪裡"], ["どこまで", "どこまで", "到哪裡為止"], ["どこまでも", "どこまでも", "無論到哪裡、一直到任何地方"]]}, {"t": "ex", "jp": "どこまでですか。", "kana": "", "zh": "到哪裡？"}, {"t": "ex", "jp": "何処までもついて来る。", "kana": "どこまでもついてくる。", "zh": "無論到哪裡都跟著來。"}, {"t": "h", "text": "七、ような（像…一樣的）"}, {"t": "note", "text": "文法：N のような N（像 N 一樣的 N）。"}, {"t": "ex", "jp": "山梔子の白い花はお前のような花だった。", "kana": "くちなしのしろいはなはおまえのようなはなだった。", "zh": "梔子花的白花，是像你一樣的花。"}, {"t": "ex", "jp": "この薔薇は君のような花です。", "kana": "このばらはきみのようなはなです。", "zh": "這朵玫瑰是像你一樣的花。"}, {"t": "ex", "jp": "猫のような犬。", "kana": "ねこのよういぬ。", "zh": "像貓一樣的狗。"}, {"t": "ex", "jp": "UFOのような車。", "kana": "ユーフォーのようなくるま。", "zh": "像 UFO 一樣的車。"}, {"t": "h", "text": "八、らしい（很像、具典型特徵）"}, {"t": "ex", "jp": "張さんは先生らしい先生です。", "kana": "ちょうさんはせんせいらしいせんせいです。", "zh": "張先生是很有老師樣子的老師。"}, {"t": "ex", "jp": "春らしい天気ですね。", "kana": "はるらしいてんきですね。", "zh": "真是有春天感覺的天氣。"}, {"t": "ex", "jp": "男らしい。／女らしい。", "kana": "おとこらしい／おんならしい。", "zh": "有男子氣概／有女性氣質。"}, {"t": "h", "text": "九、ような vs らしい"}, {"t": "table", "head": ["文法", "中文感覺", "重點"], "rows": [["N のような", "像……一樣", "外表、感覺、比喻（不一定是）"], ["N らしい", "很有……樣子", "符合典型特徵（本來就是）"]]}, {"t": "note", "text": "先生のような人＝像老師一樣的人（可能不是老師）。先生らしい先生＝很有老師樣子的老師（他就是老師，且很符合形象）。"}, {"t": "h", "text": "十、のようなもの（像…那樣的東西／差不多是…）"}, {"t": "ex", "jp": "この大学は高等学校のようなものです。", "kana": "このだいがくはこうとうがっこうのようなものです。", "zh": "這所大學簡直像高中一樣。"}, {"t": "ex", "jp": "この車はUFOのようなものです。", "kana": "このくるまはユーフォーのようなものです。", "zh": "這台車像 UFO 一樣。"}, {"t": "ex", "jp": "この犬は猫のようなものです。", "kana": "このいぬはねこのようなものです。", "zh": "這隻狗簡直像貓一樣。"}, {"t": "h", "text": "十一、本課核心句"}, {"t": "ex", "jp": "くちなしの花の香りが旅路の果てまでついて来る。", "kana": "くちなしのはなのかおりがたびじのはてまでついてくる。", "zh": "梔子花的香氣，一直跟隨到旅途的盡頭。"}, {"t": "poem", "text": "不只寫花香，而是：那個人的記憶像梔子花香一樣，一直跟著自己走到人生很遠的地方。"}, {"t": "h", "text": "十二、補充單字"}, {"t": "table", "head": ["日文", "平假名", "中文"], "rows": [["単語", "たんご", "單字"], ["音痴", "おんち", "音癡"], ["演歌", "えんか", "演歌（日本傳統流行歌風格）"], ["門地", "もんち", "門第、家世"], ["母親／父親", "ははおや／ちちおや", "母親／父親"], ["怖い", "こわい", "可怕、害怕"], ["病気", "びょうき", "疾病"], ["議論", "ぎろん", "討論、爭論"]]}]}, {"date": "5/28", "title": "痩せる・ほど・噂", "subtitle": "核心歌詞・痩せる／やつれる・〜ほど・噂によると〜そうだ／らしい（p.186）", "sections": [{"t": "h", "text": "一、核心歌詞句"}, {"t": "ex", "jp": "くちなしの花の香が旅路の果てまで就いて來る。", "kana": "", "zh": "梔子花的香氣一直跟到旅途的盡頭。"}, {"t": "ex", "jp": "口なしの白い花、お前の様な花だった。", "kana": "", "zh": "梔子的白花，是像你一樣的花。"}, {"t": "note", "text": "くちなしの花＝梔子花。"}, {"t": "h", "text": "二、痩せる／やつれる（消瘦／憔悴）"}, {"t": "ex", "jp": "お前が痩せてやつれた。", "kana": "", "zh": "你消瘦憔悴了。"}, {"t": "h", "text": "三、〜ほど（到…的程度）"}, {"t": "line", "jp": "指輪が回る／地球が回る", "kana": "まわる"}, {"t": "ex", "jp": "お前が指輪も回るほど痩せた。", "kana": "", "zh": "你瘦到連戒指都會轉動的程度。"}, {"t": "ex", "jp": "私は死ぬほど疲れた。", "kana": "", "zh": "我累得要死。"}, {"t": "ex", "jp": "私は涙が出るほど感動した。", "kana": "なみだ", "zh": "我感動到流淚。"}, {"t": "h", "text": "四、噂によると〜そうだ／らしい（傳聞）"}, {"t": "note", "text": "句型：噂によると … そうだ／らしい。"}, {"t": "ex", "jp": "今ではお前が指輪も回るほど痩せてやつれた。", "kana": "", "zh": "現在你瘦到戒指會轉、憔悴不堪。"}, {"t": "ex", "jp": "噂によると今ではお前が指輪も回るほど痩せてやつれたそうだ。", "kana": "うわさ", "zh": "聽說你現在瘦到戒指都會轉、憔悴不堪。"}, {"t": "ex", "jp": "（今では指輪も回るほど痩せてやつれた）お前の噂。", "kana": "", "zh": "（瘦到戒指都會轉、憔悴）關於你的傳聞。"}, {"t": "h", "text": "五、香り相關用字"}, {"t": "table", "head": ["日文", "平假名", "中文"], "rows": [["香る", "かおる", "散發香氣"], ["香り／いい香り", "かおり", "香氣／好香味"], ["香織", "かおり", "（人名／用字）"], ["果てる→果て", "はてる→はて", "到盡頭→盡頭"], ["就く", "つく", "跟隨、師事"]]}, {"t": "ex", "jp": "先生に就いてください。", "kana": "", "zh": "請跟著老師（學）。"}, {"t": "ex", "jp": "山梔子の白い花がお前の様な花でした。", "kana": "", "zh": "梔子的白花，是像你一樣的花。"}]}, {"date": "5/21", "title": "らしい・みたい・よう", "subtitle": "らしい・みたい・ような・そうだ／と聞いている（傳聞與推測，p.186）", "sections": [{"t": "h", "text": "一、傳聞與推測的比較"}, {"t": "note", "text": "らしい／みたい／そうだ／と聞いている，皆可表示「聽說、好像」。"}, {"t": "ex", "jp": "彼は来年結婚するらしい。", "kana": "", "zh": "聽說他明年要結婚。"}, {"t": "ex", "jp": "彼は来年結婚するそうだ。", "kana": "", "zh": "聽說他明年要結婚。"}, {"t": "ex", "jp": "彼は来年結婚すると聞いている。", "kana": "", "zh": "我聽說他明年要結婚。"}, {"t": "ex", "jp": "この店は人気があるらしい。", "kana": "", "zh": "這家店好像很受歡迎。"}, {"t": "h", "text": "二、らしい（很像、具典型特徵）"}, {"t": "note", "text": "含義：符合該事物的本質（ほんしつ）、角色（やくわり），典型、相稱（ふさわしい）。"}, {"t": "ex", "jp": "春らしい天気ですね。", "kana": "", "zh": "真有春天感覺的天氣。"}, {"t": "ex", "jp": "春の様な天気です。", "kana": "", "zh": "像春天一樣的天氣。"}, {"t": "line", "jp": "冬らしい天気", "kana": ""}, {"t": "ex", "jp": "彼は学生らしい服装をしている。", "kana": "ふくそう", "zh": "他穿著很有學生樣子的服裝。"}, {"t": "ex", "jp": "彼は学生のような服装をしている。", "kana": "", "zh": "他穿著像學生一樣的服裝。"}, {"t": "line", "jp": "男らしい／女らしい", "kana": ""}, {"t": "ex", "jp": "彼は警察らしい。", "kana": "", "zh": "他像是警察（很有警察樣子）。"}, {"t": "ex", "jp": "子どもらしい無邪気さ。", "kana": "むじゃき", "zh": "孩子般的天真無邪。"}, {"t": "line", "jp": "無邪気な子供／無邪気さ", "kana": ""}, {"t": "h", "text": "三、らしい／みたい／そうだ 並列"}, {"t": "ex", "jp": "彼は病気らしい。", "kana": "", "zh": "他好像生病了。"}, {"t": "ex", "jp": "病人の様です。", "kana": "びょうにんのようです。", "zh": "像病人一樣。"}, {"t": "line", "jp": "日本人らしい", "kana": ""}, {"t": "ex", "jp": "先生はもう結婚したらしい。", "kana": "", "zh": "老師好像已經結婚了。"}, {"t": "h", "text": "四、與歌詞結合"}, {"t": "ex", "jp": "彼女は失恋のため痩せている。", "kana": "しつれん", "zh": "她因為失戀而消瘦。"}, {"t": "ex", "jp": "彼女は失恋のため痩せているらしい。", "kana": "", "zh": "她好像因為失戀而消瘦。"}, {"t": "ex", "jp": "噂によると彼女は痩せてやつれた。", "kana": "うわさ", "zh": "聽說她瘦了、憔悴了。"}, {"t": "ex", "jp": "噂によると彼女は指輪も回るほど痩せてやつれた。", "kana": "ゆびわ・まわる", "zh": "聽說她瘦到戒指會轉、憔悴不堪。"}, {"t": "ex", "jp": "今では指輪も回るほど痩せてやつれたお前の噂。", "kana": "", "zh": "現在瘦到戒指會轉、憔悴的關於你的傳聞。"}, {"t": "note", "text": "補充：痩せ我慢（やせがまん）＝硬撐、逞強。やつれる＝憔悴。"}, {"t": "h", "text": "五、核心歌詞句"}, {"t": "ex", "jp": "くちなしの花、花の香が旅路の果てまで就いてくる。", "kana": "", "zh": "梔子花，花香一直跟到旅途的盡頭。"}, {"t": "ex", "jp": "くちなしの白い花、お前のような花だった。", "kana": "", "zh": "梔子的白花，是像你一樣的花。"}, {"t": "note", "text": "補充：渡哲也／相応しい（ふさわしい）／男らしい・女らしい。"}]}, {"date": "5/14", "title": "あと・予定・によると", "subtitle": "あと＋數量・予定／つもり・Aによると〜だそうです（傳聞，p.184）", "sections": [{"t": "h", "text": "一、あと＋數量（還剩…）"}, {"t": "ex", "jp": "勉強まであと一日！／試験まであと一日！", "kana": "", "zh": "離考試還剩一天！"}, {"t": "ex", "jp": "あと一日辛抱すれば、自由だ。", "kana": "しんぼう", "zh": "再忍一天就自由了。"}, {"t": "ex", "jp": "あと一日待ってください。", "kana": "", "zh": "請再等一天。"}, {"t": "ex", "jp": "あと一日頑張れば休みだ。", "kana": "がんばる・やすみ", "zh": "再加油一天就放假了。"}, {"t": "ex", "jp": "あと一日で夏休みが終わる。", "kana": "おわる", "zh": "再一天暑假就結束了。"}, {"t": "ex", "jp": "締め切りまであと一日しかない。", "kana": "しめきり", "zh": "離截稿只剩一天。"}, {"t": "note", "text": "其他：あと三時間、あと二人（ふたり）、あと五分。"}, {"t": "h", "text": "二、予定／つもり"}, {"t": "ex", "jp": "あと一日で完成する予定です。", "kana": "かんせい", "zh": "預定再一天完成。"}, {"t": "ex", "jp": "四月にアメリカへ行く予定です。", "kana": "", "zh": "預定四月去美國。"}, {"t": "ex", "jp": "四月にアメリカへ行くつもりです。", "kana": "", "zh": "打算四月去美國。"}, {"t": "h", "text": "三、Aによると〜だそうです（傳聞）"}, {"t": "note", "text": "文法：根據某來源（拠る）所聽到的傳聞。"}, {"t": "ex", "jp": "天気予報によると、明日は雨だそうです。", "kana": "てんきよほう", "zh": "根據天氣預報，明天會下雨。"}, {"t": "ex", "jp": "先生の話によると、この本はとても有名だそうです。", "kana": "", "zh": "據老師說，這本書很有名。"}, {"t": "ex", "jp": "彼の話によると先生は来ないそうです。", "kana": "", "zh": "據他說老師不會來。"}, {"t": "ex", "jp": "噂によると彼女はとても美しいそうです。", "kana": "うわさ・うつくしい", "zh": "聽說她非常美麗。"}, {"t": "ex", "jp": "政府の情報によると彼はロシヤ政府に殺されたそうです。", "kana": "じょうほう・ころす", "zh": "據政府情報，他被俄羅斯政府殺害了。"}, {"t": "ex", "jp": "歴史によると汐止は綺麗な街だったそうです。", "kana": "", "zh": "根據歷史，汐止以前是個漂亮的城鎮。"}, {"t": "ex", "jp": "お医者さんの話によると彼の病気はよく成らないそうだ。", "kana": "", "zh": "據醫生說，他的病不會好。"}, {"t": "ex", "jp": "彼女の話によるとこの映画は面白いそうです。", "kana": "", "zh": "據她說這部電影很有趣。"}, {"t": "h", "text": "四、天氣與災害詞彙"}, {"t": "table", "head": ["日文", "平假名", "中文"], "rows": [["晴れる", "はれる", "放晴"], ["曇る", "くもる", "陰天"], ["大雨／ザアザア降り", "おおあめ", "大雨／嘩啦嘩啦地下"], ["台風", "たいふう", "颱風"], ["竜巻", "たつまき", "龍捲風"], ["津波", "つなみ", "海嘯"], ["地震", "じしん", "地震"], ["襲う／襲われる", "おそう／おそわれる", "襲擊／被襲擊"]]}, {"t": "ex", "jp": "天気予報によると明日晴れるそうです。", "kana": "", "zh": "據氣象預報，明天會放晴。"}, {"t": "ex", "jp": "天気予報によると明日曇るそうです。", "kana": "", "zh": "據氣象預報，明天會陰天。"}, {"t": "ex", "jp": "天気予報によると明日大雨だそうです。", "kana": "", "zh": "據氣象預報，明天會下大雨。"}, {"t": "ex", "jp": "天気予報によると台風が来るそうです。", "kana": "", "zh": "據氣象預報，颱風會來。"}, {"t": "ex", "jp": "天気予報によると明日竜巻が起るそうです。", "kana": "たつまきがおこる", "zh": "據氣象預報，明天會起龍捲風。"}, {"t": "ex", "jp": "地震が津波を起こす。", "kana": "じしんがつなみをおこす。", "zh": "地震引發海嘯。"}, {"t": "ex", "jp": "津波に襲われる。", "kana": "つなみにおそわれる。", "zh": "被海嘯襲擊。"}]}, {"date": "5/7", "title": "そうだ・わざわざ・く成る", "subtitle": "〜そうだ（樣態 vs 傳聞）・わざわざ／折角・〜く成る（變化）・あと（p.184）", "sections": [{"t": "h", "text": "一、樣態 vs 傳聞的そうだ"}, {"t": "table", "head": ["樣態（看起來）", "傳聞（聽說）"], "rows": [["この花は綺麗そうだ", "この花は綺麗だそうだ"], ["真面目そうだ", "—"], ["美味しそうだ", "—"], ["高そうだ", "この本は高いそうだ"], ["この子供は元気そうだ", "この子供は元気だそうだ"], ["この町は賑やかそうだ", "この町は賑やかだそうだ"], ["この町は不便そうだ", "この町は不便だそうだ"]]}, {"t": "note", "text": "樣態：形容詞語幹／形容動詞語幹 ＋ そうだ。傳聞：終止形（三變）＋ そうだ。"}, {"t": "line", "jp": "たかそうだ／やすそうだ／さむそうだ／きれいそうだ／まじめそうだ", "kana": ""}, {"t": "h", "text": "二、わざわざ／折角（せっかく）"}, {"t": "ex", "jp": "わざわざ来てくれてありがとう。", "kana": "", "zh": "謝謝你特地前來。"}, {"t": "ex", "jp": "わざわざ悪戯書きをする。", "kana": "いたずらがき", "zh": "特地塗鴉。"}, {"t": "ex", "jp": "わざわざそんなことをしなくてもいいのに。", "kana": "", "zh": "用不著特地做那種事的。"}, {"t": "ex", "jp": "わざわざ電話して確認した。", "kana": "", "zh": "特地打電話確認。"}, {"t": "ex", "jp": "わざわざ言わなくてもいい。", "kana": "", "zh": "用不著特地說。"}, {"t": "ex", "jp": "せっかくですが結構です。", "kana": "", "zh": "難得（您的好意），但不用了。"}, {"t": "ex", "jp": "せっかくのお心遣いありがとうございます。", "kana": "こころづかい", "zh": "感謝您難得的關心。"}, {"t": "h", "text": "三、〜く成る／〜に成る（變化）"}, {"t": "line", "jp": "よく成った", "kana": ""}, {"t": "ex", "jp": "玉子が高く成った。", "kana": "", "zh": "蛋變貴了。"}, {"t": "ex", "jp": "りんごが美味しく成った。", "kana": "", "zh": "蘋果變好吃了。"}, {"t": "ex", "jp": "今日は寒く成った。／今日は暑くなった。", "kana": "", "zh": "今天變冷了／變熱了。"}, {"t": "ex", "jp": "このジュースは甘く成った。", "kana": "", "zh": "這果汁變甜了。"}, {"t": "ex", "jp": "天気が暗くなった。", "kana": "", "zh": "天色變暗了。"}, {"t": "ex", "jp": "昼間が長く成った。", "kana": "ひるま", "zh": "白天變長了。"}, {"t": "sub", "text": "〜く成らない（不會變…）"}, {"t": "line", "jp": "仕合わせ（幸福）が短く成らない／短く成った", "kana": ""}, {"t": "line", "jp": "そのいのちは短く成らない", "kana": ""}, {"t": "line", "jp": "卵は高く成らない", "kana": ""}, {"t": "line", "jp": "昼間は短く成らない／長く成らない", "kana": ""}, {"t": "line", "jp": "白菜は安くならない", "kana": ""}, {"t": "ex", "jp": "水は清くならない。", "kana": "きよい", "zh": "水不會變清。"}, {"t": "ex", "jp": "この子供は背が高く成らない。", "kana": "", "zh": "這孩子個子不會長高。"}, {"t": "ex", "jp": "この道は広く成らない。", "kana": "ひろい", "zh": "這條路不會變寬。"}, {"t": "ex", "jp": "この納豆は甘く成らない。", "kana": "", "zh": "這納豆不會變甜。"}, {"t": "ex", "jp": "この本は白く成らない。", "kana": "しろく", "zh": "這本書不會變白。"}, {"t": "ex", "jp": "月給は多くならない。", "kana": "げっきゅう", "zh": "月薪不會變多。"}, {"t": "ex", "jp": "家賃は安く成らない。", "kana": "やちん", "zh": "房租不會變便宜。"}, {"t": "ex", "jp": "管理費は安く成らない。", "kana": "", "zh": "管理費不會變便宜。"}, {"t": "ex", "jp": "この病気はよくならない。", "kana": "", "zh": "這病不會好。"}, {"t": "h", "text": "四、あと（時間／之後）"}, {"t": "note", "text": "試験まであと一日だ。あと一週間／あと一カ月（いっかげつかん）／あと三ケ月／あと一年。"}, {"t": "ex", "jp": "後で電話します。／後で説明するね。", "kana": "あとで", "zh": "之後打電話／之後說明。"}, {"t": "ex", "jp": "後で連絡します。", "kana": "あとでれんらくします。", "zh": "之後再聯絡。"}]}, {"date": "4/30", "title": "三變＋そうだ・補助動詞", "subtitle": "活用語三變＋そうだ（傳聞）・形容動詞語幹＋そうだ（樣態）・補助動詞（p.184）", "sections": [{"t": "h", "text": "一、動詞三變＋そうだ（傳聞）"}, {"t": "ex", "jp": "先生はご飯を食べるそうだ。", "kana": "", "zh": "聽說老師要吃飯。"}, {"t": "ex", "jp": "先生がご飯を食べたそうだ。", "kana": "", "zh": "聽說老師吃了飯。"}, {"t": "ex", "jp": "先生はご飯を食べているそうだ。", "kana": "", "zh": "聽說老師正在吃飯。"}, {"t": "h", "text": "二、形容詞＋そうだ（傳聞）"}, {"t": "ex", "jp": "この林檎が美味しいそうだ。", "kana": "", "zh": "聽說這蘋果好吃。"}, {"t": "ex", "jp": "青森のりんごが美味しかったそうだ。", "kana": "", "zh": "聽說青森的蘋果以前很好吃。"}, {"t": "ex", "jp": "先生はご飯が食べたいそうだ。", "kana": "", "zh": "聽說老師想吃飯。"}, {"t": "ex", "jp": "先生はご飯が食べたかった（そうだ）。", "kana": "", "zh": "（聽說）老師那時想吃飯。"}, {"t": "h", "text": "三、形容動詞：樣態 vs 傳聞"}, {"t": "note", "text": "語幹＋そうだ＝樣態（看起來）；三變（〜だ）＋そうだ＝傳聞（聽說）。以「綺麗だ」為例：語根＝綺麗；三變＝綺麗だ。"}, {"t": "table", "head": ["原形", "樣態（看起來）", "傳聞（聽說）"], "rows": [["綺麗だ", "綺麗そうだ", "綺麗だそうだ"], ["真面目だ", "真面目そうだ", "真面目だそうだ"], ["賑やかだ", "賑やかそうだ", "賑やかだそうだ"], ["静かだ", "静かそうだ", "静かだそうだ"], ["不便だ", "不便そうだ", "不便だそうだ"], ["利口だ", "利口そうだ", "利口だそうだ"], ["元気だ", "元気そうだ", "元気だそうだ"], ["丈夫だ", "丈夫そうだ", "丈夫だそうだ"], ["素敵だ", "素敵そうだ", "素敵だそうだ"], ["馬鹿だ", "馬鹿そうだ", "馬鹿だそうだ"], ["簡単だ", "簡単そうだ", "簡単だそうだ"], ["好きだ", "好きそうだ", "好きだそうだ"], ["柔らかだ", "柔らかそうだ", "柔らかだそうだ"], ["立派だ", "立派そうだ", "立派だそうだ"], ["残念だ", "残念そうだ", "残念だそうだ"]]}, {"t": "h", "text": "四、形容詞樣態整理（語幹＋そうだ）"}, {"t": "table", "head": ["原形", "樣態", "傳聞"], "rows": [["美味しい", "美味しそうだ", "美味しいそうだ"], ["高い", "高そうだ", "高いそうだ"], ["安い", "安そうだ", "安いそうだ"], ["長い", "長そうだ", "長いそうだ"], ["少ない", "少なそうだ", "少ないそうだ"], ["大きい", "大きそうだ", "大きいそうだ"], ["小さい", "小さそうだ", "小さいそうだ"], ["多い", "多そうだ", "多いそうだ"], ["甘い", "甘そうだ", "甘いそうだ"], ["寂しい", "寂しそうだ", "寂しいそうだ"], ["悲しい", "悲しそうだ", "悲しいそうだ"], ["暖かい", "暖かそうだ", "暖かいそうだ"], ["清い", "清そうだ", "清いそうだ"], ["新しい", "新しそうだ", "新しいそうだ"]]}, {"t": "h", "text": "五、補助動詞與中止法"}, {"t": "ex", "jp": "先生に聞いてください。／先生から聞いてください。", "kana": "", "zh": "請問老師／請向老師打聽。"}, {"t": "note", "text": "先生に聞く／先生から聞く。"}, {"t": "ex", "jp": "聞いてびっくりして飛んで来ました。", "kana": "", "zh": "一聽到就嚇了一跳飛奔而來。"}, {"t": "note", "text": "文法概念：中止法・終止法・補助動詞（飛んでくる的くる）。"}]}];
+const LYRICS = {"title": "くちなしの花", "title_zh": "梔子花", "credit": "渡哲也（わたりてつや）　作詞：水木かおる　作曲：遠藤実　1974年（昭和49年）", "source": "演歌（中譯）", "verses": [{"no": "一", "lines": [{"jp": "いまでは指輪も　まわるほど", "kana": "いまではゆびわも　まわるほど", "zh": "如今戒指已是鬆動易轉"}, {"jp": "やせてやつれた　おまえのうわさ", "kana": "やせてやつれた　おまえのうわさ", "zh": "傳聞說你消瘦且憔悴不已"}, {"jp": "くちなしの花の　花のかおりが", "kana": "くちなしのはなの　はなのかおりが", "zh": "梔子花的香味"}, {"jp": "旅路のはてまで　ついてくる", "kana": "たびじのはてまで　ついてくる", "zh": "緊緊跟隨，直至旅途的盡頭"}, {"jp": "くちなしの白い花", "kana": "くちなしのしろいはな", "zh": "白色的梔子花", "hl": true}, {"jp": "おまえのような　花だった", "kana": "おまえのような　はなだった", "zh": "這花好似你一般", "hl": true}]}, {"no": "二", "lines": [{"jp": "わがままいっては　困らせた", "kana": "わがままいっては　こまらせた", "zh": "因任性而吃盡苦頭"}, {"jp": "子供みたいな　あの日のおまえ", "kana": "こどもみたいな　あのひのおまえ", "zh": "那日的你，像小孩一般"}, {"jp": "くちなしの雨の　雨の別れが", "kana": "くちなしのあめの　あめのわかれが", "zh": "於無言雨中的離別"}, {"jp": "今でも心を　しめつける", "kana": "いまでもこころを　しめつける", "zh": "現在心內緊緊地勒鎖著"}, {"jp": "くちなしの白い花", "kana": "くちなしのしろいはな", "zh": "白色的梔子花", "hl": true}, {"jp": "おまえのような　花だった", "kana": "おまえのような　はなだった", "zh": "這花好似你一般", "hl": true}]}, {"no": "三", "lines": [{"jp": "小さな幸せ　それさえも", "kana": "ちいさなしあわせ　それさえも", "zh": "連這一丁點兒的幸福"}, {"jp": "捨ててしまった　自分の手から", "kana": "すててしまった　じぶんのてから", "zh": "也從自己手中溜走"}, {"jp": "くちなしの花を　花を見るたび", "kana": "くちなしのはなを　はなをみるたび", "zh": "每次看到梔子花"}, {"jp": "淋しい笑顔が　また浮かぶ", "kana": "さびしいえがおが　またうかぶ", "zh": "寂寞的笑容又浮現出來"}, {"jp": "くちなしの白い花", "kana": "くちなしのしろいはな", "zh": "白色的梔子花", "hl": true}, {"jp": "おまえのような　花だった", "kana": "おまえのような　はなだった", "zh": "這花好似你一般", "hl": true}]}]};
+const FLOWERS=["🌸","🌷","💮","🏵️","🌺","🌸","🌷","💐"];
+const esc=s=>(s==null?"":String(s));
+const CN_NUM=["","一","二","三","四","五","六","七","八","九","十","十一","十二","十三","十四"];
 
-const FLOWERS = ["🌸","🌷","💮","🏵️","🌺","🌸","🌷","💐"];
-const esc = s => (s==null?"":String(s));
+(function(){const box=document.getElementById('petals');const g=['🌸','🌸','🌷','💮','🌸'];
+ for(let i=0;i<16;i++){const p=document.createElement('span');p.className='petal';
+  p.textContent=g[i%g.length];p.style.left=(Math.random()*100)+'%';
+  p.style.fontSize=(12+Math.random()*16)+'px';const d=9+Math.random()*11;
+  p.style.animationDuration=d+'s';p.style.animationDelay=(-Math.random()*d)+'s';
+  p.style.opacity=.5;box.appendChild(p);}})();
 
-/* petals */
-(function(){
-  const box=document.getElementById('petals');
-  const glyphs=['🌸','🌸','🌷','💮','🌸'];
-  const N=14;
-  for(let i=0;i<N;i++){
-    const p=document.createElement('span');
-    p.className='petal';
-    p.textContent=glyphs[i%glyphs.length];
-    p.style.left=(Math.random()*100)+'%';
-    p.style.fontSize=(13+Math.random()*16)+'px';
-    const dur=9+Math.random()*11;
-    p.style.animationDuration=dur+'s';
-    p.style.animationDelay=(-Math.random()*dur)+'s';
-    box.appendChild(p);
-  }
-})();
+function countItems(d){return d.sections.filter(s=>['ex','line'].includes(s.t)).length
+  + d.sections.filter(s=>s.t==='table').reduce((a,s)=>a+s.rows.length,0);}
+function stripNum(t){return t.replace(/^[一二三四五六七八九十]+、/,'');}
 
-/* render one section block */
-function renderSection(s){
+function renderSection(s,secNo){
   switch(s.t){
     case 'lead': return `<p class="lead">${esc(s.text)}</p>`;
-    case 'h':    return `<h2 class="sec">${esc(s.text)}</h2>`;
+    case 'h':    return `<h2 class="sec"><span class="num">${secNo}</span>${esc(stripNum(s.text))}</h2>`;
     case 'sub':  return `<h3 class="subh">${esc(s.text)}</h3>`;
     case 'note': return `<div class="note">${esc(s.text)}</div>`;
     case 'warn': return `<div class="warn">${esc(s.text)}</div>`;
     case 'poem': return `<div class="poem">${esc(s.text)}</div>`;
-    case 'ex':   return `<div class="ex"><div class="jp">${esc(s.jp)}</div>`+
-                        (s.kana?`<div class="kana">${esc(s.kana)}</div>`:``)+
-                        (s.zh?`<div class="zh">${esc(s.zh)}</div>`:``)+`</div>`;
-    case 'line': return `<div class="line"><div class="jp">${esc(s.jp)}`+
-                        (s.kana?` <span class="kana" style="display:inline">（${esc(s.kana)}）</span>`:``)+
-                        `</div></div>`;
-    case 'table':{
-      let h=`<div class="tbl-wrap"><table><thead><tr>`;
-      s.head.forEach(c=>h+=`<th>${esc(c)}</th>`);
-      h+=`</tr></thead><tbody>`;
+    case 'ex':   return `<div class="ex"><div class="jp"><span class="mk">🌷</span>${esc(s.jp)}</div>`+
+                  (s.kana?`<div class="kana">${esc(s.kana)}</div>`:``)+
+                  (s.zh?`<div class="zh">${esc(s.zh)}</div>`:``)+`</div>`;
+    case 'line': return `<div class="line"><div class="jp"><span class="mk">🌱</span>${esc(s.jp)}`+
+                  (s.kana?` <span class="kana-inline">（${esc(s.kana)}）</span>`:``)+`</div></div>`;
+    case 'table':{let h=`<div class="tbl-wrap"><table><thead><tr>`;
+      s.head.forEach(c=>h+=`<th>${esc(c)}</th>`);h+=`</tr></thead><tbody>`;
       s.rows.forEach(r=>{h+=`<tr>`;r.forEach(c=>h+=`<td>${esc(c)}</td>`);h+=`</tr>`;});
-      h+=`</tbody></table></div>`;
-      return h;
-    }
-    default: return '';
+      return h+`</tbody></table></div>`;}
+    default:return '';
   }
 }
-
-function renderDay(idx){
-  const d=DATA[idx];
-  let html=`<div class="lesson-head">`+
-    `<span class="lesson-date">${esc(d.date)}</span>`+
-    `<span class="lesson-title">${esc(d.title)}</span></div>`+
-    `<div class="lesson-sub">${esc(d.subtitle)}</div>`;
-  d.sections.forEach(s=>html+=renderSection(s));
-  const el=document.getElementById('lesson');
-  el.innerHTML=html;
-  // active button
-  document.querySelectorAll('.day-btn').forEach((b,i)=>{
-    b.classList.toggle('active',i===idx);
-    b.setAttribute('aria-selected',i===idx?'true':'false');
-  });
-}
-
-/* build nav */
-(function(){
-  const nav=document.getElementById('dayNav');
-  DATA.forEach((d,i)=>{
-    const b=document.createElement('button');
-    b.className='day-btn';
-    b.setAttribute('role','tab');
-    b.innerHTML=`<span class="flower">${FLOWERS[i%FLOWERS.length]}</span>`+
-      `<span class="d-date">${esc(d.date)}</span>`+
-      `<span class="d-title">${esc(d.title)}</span>`;
-    b.addEventListener('click',()=>{
-      renderDay(i);
-      // scroll the lesson into a comfortable position on mobile
-      const top=document.querySelector('.day-nav').getBoundingClientRect().bottom+window.scrollY-8;
-      window.scrollTo({top, behavior:'smooth'});
+function renderLyrics(){
+  const L=LYRICS;
+  let html=`<div class="lesson-head"><span class="lesson-date">🎵 歌詞</span>`+
+    `<span class="lesson-title">${esc(L.title)} ・ ${esc(L.title_zh)}</span></div>`+
+    `<div class="lyric-credit">${esc(L.credit)}</div>`+
+    `<div class="lyric-meta">日語演歌 ・ 平假名 ＋ 中譯對照</div>`;
+  L.verses.forEach(v=>{
+    html+=`<div class="verse"><div class="verse-no">第 ${esc(v.no)} 段</div>`;
+    v.lines.forEach(ln=>{
+      html+=`<div class="lrow${ln.hl?' refrain':''}">`+
+        `<div class="l-kana">${esc(ln.kana)}</div>`+
+        `<div class="l-jp">${esc(ln.jp)}</div>`+
+        `<div class="l-zh">${esc(ln.zh)}</div></div>`;
     });
-    nav.appendChild(b);
+    html+=`</div>`;
   });
-  renderDay(0);
-})();
-
-/* scroll-to-top */
+  html+=`<div class="lyric-foot">🌸 上方影片可邊聽邊對照，下方各日期分頁是文法講義 🌸</div>`;
+  document.getElementById('lesson').innerHTML=html;
+  document.querySelectorAll('.day-btn').forEach(b=>{
+    const on=b.dataset.kind==='lyric';
+    b.classList.toggle('active',on);b.setAttribute('aria-selected',on?'true':'false');});
+}
+function renderDay(idx){
+  const d=DATA[idx];let secNo=0;
+  let html=`<div class="lesson-head"><span class="lesson-date">${esc(d.date)}</span>`+
+    `<span class="lesson-title">${esc(d.title)}</span></div>`+
+    `<div class="lesson-sub">${esc(d.subtitle)}</div>`+
+    `<div class="lesson-meta">🌸 共 ${d.sections.filter(s=>s.t==='h').length} 個主題 ・ ${countItems(d)} 個例句／詞條</div>`;
+  d.sections.forEach(s=>{if(s.t==='h'){secNo++;html+=renderSection(s,CN_NUM[secNo]||secNo);}else html+=renderSection(s);});
+  document.getElementById('lesson').innerHTML=html;
+  document.querySelectorAll('.day-btn').forEach((b)=>{
+    const on=b.dataset.kind==='day'&&Number(b.dataset.idx)===idx;
+    b.classList.toggle('active',on);b.setAttribute('aria-selected',on?'true':'false');});
+}
+(function(){const nav=document.getElementById('dayNav');
+ // 歌詞分頁（置於最前）
+ const lb=document.createElement('button');lb.className='day-btn';lb.setAttribute('role','tab');
+ lb.dataset.kind='lyric';
+ lb.innerHTML=`<span class="flower">🎵</span><span class="d-date">歌詞</span>`+
+   `<span class="d-title">${esc(LYRICS.title)}</span><span class="d-count">3 段</span>`;
+ lb.addEventListener('click',()=>{renderLyrics();scrollToContent();});
+ nav.appendChild(lb);
+ // 各日期分頁
+ DATA.forEach((d,i)=>{const b=document.createElement('button');b.className='day-btn';b.setAttribute('role','tab');
+  b.dataset.kind='day';b.dataset.idx=i;
+  b.innerHTML=`<span class="flower">${FLOWERS[i%FLOWERS.length]}</span>`+
+   `<span class="d-date">${esc(d.date)}</span><span class="d-title">${esc(d.title)}</span>`+
+   `<span class="d-count">${countItems(d)} 句</span>`;
+  b.addEventListener('click',()=>{renderDay(i);scrollToContent();});
+  nav.appendChild(b);});
+ renderLyrics();})();
+function scrollToContent(){
+  const top=document.querySelector('.day-nav').getBoundingClientRect().bottom+window.scrollY-8;
+  window.scrollTo({top,behavior:'smooth'});
+}
 const st=document.getElementById('scrollTop');
-window.addEventListener('scroll',()=>{
-  st.classList.toggle('show',window.scrollY>320);
-});
+window.addEventListener('scroll',()=>st.classList.toggle('show',window.scrollY>320));
 st.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 </script>
 </body>

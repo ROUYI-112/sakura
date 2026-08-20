@@ -43,6 +43,9 @@ h1{font-size:clamp(32px,7vw,48px);margin:.16em 0 .1em;letter-spacing:.05em;color
 
 /* 歌曲大頁籤 */
 .song-nav{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:6px 0 26px;}
+.song-nav-3{grid-template-columns:1fr 1fr 1fr;}
+@media(max-width:560px){.song-nav-3{grid-template-columns:1fr 1fr 1fr;gap:8px;}
+  .song-nav-3 .song-name{font-size:14px;}.song-nav-3 .song-sub{font-size:10px;}}
 .song-btn{position:relative;cursor:pointer;border:2px solid transparent;background:var(--card);
   border-radius:22px;padding:16px 12px;box-shadow:0 5px 16px var(--shadow);font-family:inherit;
   color:var(--ink);text-align:center;transition:transform .2s cubic-bezier(.34,1.56,.64,1),box-shadow .2s,border-color .2s;}
@@ -229,14 +232,18 @@ footer .f-flower{font-size:18px;display:block;margin-bottom:7px;}
     <div class="sub-zh">張正修 老師　授課筆記</div>
   </header>
 
-  <nav class="song-nav" role="tablist" aria-label="選擇歌曲">
+  <nav class="song-nav song-nav-3" role="tablist" aria-label="選擇歌曲">
     <button class="song-btn" id="songBtnSubaru" role="tab" data-song="subaru">
       <span class="song-flower">✨</span><span class="song-name">昴 -すばる-</span>
       <span class="song-sub">谷村新司</span>
     </button>
     <button class="song-btn active" id="songBtnKuchi" role="tab" data-song="kuchi">
       <span class="song-flower">🌸</span><span class="song-name">くちなしの花</span>
-      <span class="song-sub">渡哲也 ・ 14 堂課</span>
+      <span class="song-sub">渡哲也 ・ 15 堂課</span>
+    </button>
+    <button class="song-btn" id="songBtnMaigo" role="tab" data-song="maigo">
+      <span class="song-flower">🍃</span><span class="song-name">想いで迷子</span>
+      <span class="song-sub">テレサ・テン</span>
     </button>
   </nav>
 
@@ -250,8 +257,14 @@ footer .f-flower{font-size:18px;display:block;margin-bottom:7px;}
         <span class="yt-badge">在 YouTube 觀看 ↗</span>
       </a>
     </div>
-    <div class="subaru-credit">作詞・作曲：谷村新司　｜　中譯：katoxicapture</div>
-    <main class="lesson" id="subaruLyrics"></main>
+    <nav class="day-nav" id="subaruNav" aria-label="昴 內容"></nav>
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input class="search-input" id="subaruSearch" type="search" autocomplete="off"
+        placeholder="搜尋日文、平假名或中文…">
+      <button class="search-clear" id="subaruSearchClear" aria-label="清除">✕</button>
+    </div>
+    <main class="lesson" id="subaruContent" tabindex="-1"></main>
   </div>
 
   <!-- ===== くちなしの花 ===== -->
@@ -274,7 +287,27 @@ footer .f-flower{font-size:18px;display:block;margin-bottom:7px;}
     <main class="lesson" id="lesson" tabindex="-1"></main>
   </div>
 
-  <footer><span class="f-flower">🌸 ✨ 🌸</span>日文演歌講義　|　昴 ・ くちなしの花</footer>
+  <!-- ===== 想いで迷子 ===== -->
+  <div class="song-pane" id="paneMaigo" hidden>
+    <div class="video-card" id="maigoVideoCard">
+      <div class="vtitle"><span class="mk">🍃</span>想い出迷子 ・ テレサ・テン<span class="mk">🍃</span></div>
+      <a class="video-thumb" href="https://www.youtube.com/watch?v=l1hpcGFnzvQ" target="_blank" rel="noopener" aria-label="在 YouTube 觀看 想い出迷子">
+        <img src="https://i.ytimg.com/vi/l1hpcGFnzvQ/hqdefault.jpg" alt="想い出迷子 影片封面" loading="lazy">
+        <span class="play-btn" aria-hidden="true">▶</span>
+        <span class="yt-badge">在 YouTube 觀看 ↗</span>
+      </a>
+    </div>
+    <nav class="day-nav" id="maigoNav" aria-label="想い出迷子 內容"></nav>
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input class="search-input" id="maigoSearch" type="search" autocomplete="off"
+        placeholder="搜尋日文、平假名或中文…">
+      <button class="search-clear" id="maigoSearchClear" aria-label="清除">✕</button>
+    </div>
+    <main class="lesson" id="maigoContent" tabindex="-1"></main>
+  </div>
+
+  <footer><span class="f-flower">🌸 ✨ 🍃</span>日文演歌講義　|　昴 ・ くちなしの花 ・ 想いで迷子</footer>
 </div>
 <button class="scroll-top" id="scrollTop" aria-label="回到頂部">↑</button>
 
@@ -478,32 +511,259 @@ const SUBARU=[
   {jp:`${R('我','われ')}は${R('行','ゆ')}く　さらば${R('昴','すばる')}よ`,zh:"我行走著　再會了昴宿星",r:1},
   {jp:`${R('我','われ')}は${R('行','ゆ')}く　さらば${R('昴','すばる')}よ`,zh:"我行走著　再會了昴宿星",r:1},
 ];
-(function(){
-  let html='';
+const SUBARU_DAYS = [{"date": "8/20", "title": "目を閉じて・見えず・ず／ぬ・より他になし", "subtitle": "目を閉じる／開ける・見える／見えない・文語否定〜ず／〜ぬ・より他に…なし・荒野に向かう道", "sections": [{"t": "lead", "text": "昴 第一堂：逐句解析第一段「目を閉じて 何も見えず 哀しくて 目を開ければ 荒野に向かう道より 他に見えるものはなし」。重點是文語否定〜ず／〜ぬ、より他に…なし、以及睜眼所見唯有荒野之路的孤獨意象。"}, {"t": "h", "text": "一、歌詞第一段全文"}, {"t": "ex", "jp": "目を閉じて　何も見えず　哀しくて", "kana": "めをとじて　なにもみえず　かなしくて", "zh": "閉上雙眼，什麼也看不見，如此悲傷。"}, {"t": "ex", "jp": "目を開ければ", "kana": "めをあければ", "zh": "睜開雙眼的話——"}, {"t": "ex", "jp": "荒野に向かう道より　他に見えるものはなし", "kana": "こうやにむかうみちより　ほかにみえるものはなし", "zh": "除了通往荒野的那條路以外，再也看不見別的東西。"}, {"t": "h", "text": "二、目を閉じる（閉上眼睛）"}, {"t": "table", "head": ["日文", "平假名", "中文", "詞性"], "rows": [["目", "め", "眼睛", "名詞"], ["閉じる", "とじる", "閉上、闔上", "他動詞（上一段）"], ["閉じて", "とじて", "閉上（て形）", "接續／連接"]]}, {"t": "ex", "jp": "目を閉じる。", "kana": "めをとじる。", "zh": "閉上眼睛。"}, {"t": "ex", "jp": "目を閉じて。", "kana": "めをとじて。", "zh": "閉上眼睛（て形，接下一動作或狀態）。"}, {"t": "ex", "jp": "本を閉じる。", "kana": "ほんをとじる。", "zh": "闔上書。"}, {"t": "ex", "jp": "店を閉じる。", "kana": "みせをとじる。", "zh": "結束營業、關店。"}, {"t": "note", "text": "閉じる 是上一段他動詞：閉じ＋る。て形＝閉じて。"}, {"t": "h", "text": "三、何も＋否定（什麼也不…）"}, {"t": "note", "text": "句型：何も＋否定＝什麼也不…、什麼都沒…。疑問詞＋も＋否定＝全面否定。"}, {"t": "ex", "jp": "何も見えない。", "kana": "なにもみえない。", "zh": "什麼也看不見。"}, {"t": "ex", "jp": "何も聞こえない。", "kana": "なにもきこえない。", "zh": "什麼也聽不見。"}, {"t": "ex", "jp": "誰もいない。", "kana": "だれもいない。", "zh": "一個人也沒有。"}, {"t": "ex", "jp": "どこにもない。", "kana": "どこにもない。", "zh": "哪裡都沒有。"}, {"t": "h", "text": "四、見える vs 見る vs 見られる"}, {"t": "table", "head": ["日文", "平假名", "中文", "重點"], "rows": [["見る", "みる", "看", "主動去看（他動詞）"], ["見える", "みえる", "看得見", "自然映入眼中（自動詞）"], ["見られる", "みられる", "能看／被看", "可能・被動"]]}, {"t": "ex", "jp": "星を見る。", "kana": "ほしをみる。", "zh": "看星星（主動）。"}, {"t": "ex", "jp": "星が見える。", "kana": "ほしがみえる。", "zh": "看得見星星（自然看見）。"}, {"t": "ex", "jp": "ここから海が見える。", "kana": "ここからうみがみえる。", "zh": "從這裡看得見海。"}, {"t": "ex", "jp": "映画が見られる。", "kana": "えいががみられる。", "zh": "能看電影（可能）。"}, {"t": "note", "text": "歌詞用「見える／見えず」（自然看見／自然看不見），而非「見る」。強調眼前所映入的景象。"}, {"t": "h", "text": "五、文語否定〜ず（＝〜ない）"}, {"t": "note", "text": "見えず＝見えない 的文語（古典、書面、詩歌）說法。動詞未然形＋ず。詩詞、歌詞常用，語感莊重、文雅、有距離感。"}, {"t": "table", "head": ["口語否定", "文語否定", "中文"], "rows": [["見えない", "見えず", "看不見"], ["行かない", "行かず", "不去"], ["言わない", "言わず", "不說"], ["知らない", "知らず", "不知道"], ["負けない", "負けず", "不輸"], ["泣かない", "泣かず", "不哭"], ["休まない", "休まず", "不休息"]]}, {"t": "ex", "jp": "何も見えない。", "kana": "なにもみえない。", "zh": "什麼也看不見（口語）。"}, {"t": "ex", "jp": "何も見えず。", "kana": "なにもみえず。", "zh": "什麼也看不見（文語，歌詞用法）。"}, {"t": "h", "text": "六、〜ずに（不…而…）"}, {"t": "note", "text": "〜ず＋に＝不做A就做B、沒有A的狀態下做B。＝〜ないで。"}, {"t": "ex", "jp": "何も言わずに去った。", "kana": "なにもいわずにさった。", "zh": "什麼也沒說就離開了。"}, {"t": "ex", "jp": "休まずに働く。", "kana": "やすまずにはたらく。", "zh": "不休息地工作。"}, {"t": "ex", "jp": "諦めずに進む。", "kana": "あきらめずにすすむ。", "zh": "不放棄地前進。"}, {"t": "h", "text": "七、〜ぬ（另一個文語否定）"}, {"t": "note", "text": "〜ぬ 也是文語否定（＝ない），語感比〜ず更古老、更文言。見えぬ＝見えない。"}, {"t": "table", "head": ["口語", "〜ず", "〜ぬ", "中文"], "rows": [["見えない", "見えず", "見えぬ", "看不見"], ["行かない", "行かず", "行かぬ", "不去"], ["知らない", "知らず", "知らぬ", "不知道"]]}, {"t": "ex", "jp": "知らぬ人。", "kana": "しらぬひと。", "zh": "不認識的人（文語）。"}, {"t": "ex", "jp": "見えぬ星。", "kana": "みえぬほし。", "zh": "看不見的星星。"}, {"t": "h", "text": "八、哀しい／悲しい"}, {"t": "note", "text": "哀しい／悲しい（かなしい）＝悲傷。「哀しい」帶更深的哀愁、淒美，文學・歌詞常用；「悲しい」是一般寫法。哀しくて＝悲傷得…（て形，表原因或連接）。"}, {"t": "ex", "jp": "悲しい。", "kana": "かなしい。", "zh": "悲傷。"}, {"t": "ex", "jp": "哀しくて涙が出る。", "kana": "かなしくてなみだがでる。", "zh": "悲傷得流下眼淚。"}, {"t": "ex", "jp": "哀しくて目を開ければ。", "kana": "かなしくてめをあければ。", "zh": "太悲傷了，睜開眼睛的話。"}, {"t": "h", "text": "九、目を開ける／〜ば（假定形）"}, {"t": "note", "text": "開ける（あける）＝打開、睜開（下一段他動詞）。〜ば＝假定形，如果…就…。開ける→開けれ＋ば＝開ければ。"}, {"t": "ex", "jp": "目を開ける。", "kana": "めをあける。", "zh": "睜開眼睛。"}, {"t": "ex", "jp": "目を開ければ。", "kana": "めをあければ。", "zh": "如果睜開眼睛（就會…）。"}, {"t": "ex", "jp": "窓を開ける。", "kana": "まどをあける。", "zh": "打開窗戶。"}, {"t": "ex", "jp": "春になれば花が咲く。", "kana": "はるになればはながさく。", "zh": "到了春天花就會開（〜ば 假定）。"}, {"t": "h", "text": "十、荒野（こうや）"}, {"t": "note", "text": "荒野＝荒涼的原野、荒地。讀音：こうや（正式、書面，歌詞讀這個）／あらの（訓讀）。象徵孤獨、嚴酷、未知的前路。"}, {"t": "ex", "jp": "荒野に立つ。", "kana": "こうやにたつ。", "zh": "站在荒野上。"}, {"t": "ex", "jp": "荒野を歩く。", "kana": "こうやをあるく。", "zh": "走過荒野。"}, {"t": "ex", "jp": "荒野に向かう道。", "kana": "こうやにむかうみち。", "zh": "通往荒野的道路。"}, {"t": "h", "text": "十一、向かう（朝向、前往）"}, {"t": "note", "text": "向かう（むかう）＝朝向、前往、面對（自動詞）。句型：場所に向かう＝朝某地前進。"}, {"t": "ex", "jp": "駅に向かう。", "kana": "えきにむかう。", "zh": "往車站去。"}, {"t": "ex", "jp": "未来に向かう。", "kana": "みらいにむかう。", "zh": "邁向未來。"}, {"t": "ex", "jp": "荒野に向かう道。", "kana": "こうやにむかうみち。", "zh": "通往荒野的道路（動詞連體修飾名詞「道」）。"}, {"t": "note", "text": "「荒野に向かう」整段修飾後面的「道」＝朝荒野而去的那條路。"}, {"t": "h", "text": "十二、より（比較・起點・限定）"}, {"t": "note", "text": "より 多種用法：① 比較「A より B」＝比起 A；② 起點「〜より」＝從…（＝から，文語）；③ 這裡是「〜より他に…なし」＝除了…之外沒有別的。"}, {"t": "sub", "text": "用法①：比較"}, {"t": "ex", "jp": "りんごよりみかんが好きだ。", "kana": "りんごよりみかんがすきだ。", "zh": "比起蘋果更喜歡橘子。"}, {"t": "sub", "text": "用法②：起點（文語＝から）"}, {"t": "ex", "jp": "東京より参りました。", "kana": "とうきょうよりまいりました。", "zh": "我從東京來的（文語、鄭重）。"}, {"t": "sub", "text": "用法③：〜より他に〜なし（除了…以外沒有）"}, {"t": "ex", "jp": "この道より他に道はない。", "kana": "このみちよりほかにみちはない。", "zh": "除了這條路以外，沒有別的路。"}, {"t": "ex", "jp": "君より他に頼る人はいない。", "kana": "きみよりほかにたよるひとはいない。", "zh": "除了你以外，沒有可以依靠的人。"}, {"t": "h", "text": "十三、他（ほか）"}, {"t": "note", "text": "他（ほか）＝其他、別的。他に＝除此之外、另外。"}, {"t": "ex", "jp": "他に方法はない。", "kana": "ほかにほうほうはない。", "zh": "沒有其他方法。"}, {"t": "ex", "jp": "他に見えるものはない。", "kana": "ほかにみえるものはない。", "zh": "看不見其他東西。"}, {"t": "h", "text": "十四、ものはなし（＝ものはない）"}, {"t": "note", "text": "もの＝東西、事物；なし＝ない 的文語。ものはなし＝沒有（那樣的）東西。全句以文語否定莊重收尾，呼應開頭的「見えず」。"}, {"t": "table", "head": ["口語", "文語", "中文"], "rows": [["見えるものはない", "見えるものはなし", "沒有看得見的東西"], ["言うことはない", "言うことはなし", "沒有要說的話"]]}, {"t": "ex", "jp": "見えるものはなし。", "kana": "みえるものはなし。", "zh": "沒有能看見的東西（文語）。"}, {"t": "h", "text": "十五、第一段文語 vs 口語對照"}, {"t": "table", "head": ["文語（歌詞）", "口語（現代）", "中文"], "rows": [["何も見えず", "何も見えない", "什麼也看不見"], ["哀しくて", "悲しくて", "悲傷得…"], ["目を開ければ", "目を開けたら", "睜開眼睛的話"], ["〜より他に", "〜のほかに", "除了…之外"], ["ものはなし", "ものはない", "沒有那樣的東西"]]}, {"t": "h", "text": "十六、第一段完整理解"}, {"t": "poem", "text": "目を閉じて 何も見えず 哀しくて 目を開ければ 荒野に向かう道より 他に見えるものはなし：閉上眼，眼前一片黑，什麼都看不見；正因太過悲傷而睜開眼，映入眼中的，卻只有一條通往荒野的路，除此之外什麼也看不見。閉眼是逃避、睜眼是現實，兩邊都只剩孤獨與前方未知的荒野——這正是「昴」開場那份蒼涼與決絕。"}]}];
+
+// 昴歌詞 HTML
+function subaruLyricsHTML(){
+  let html=`<div class="subaru-credit" style="border:none;padding:0;margin:0 0 16px">作詞・作曲：谷村新司　｜　中譯：katoxicapture</div>`;
   SUBARU.forEach(l=>{
     html+=`<div class="sb-block${l.r?' sb-refrain':''}">`+
       `<div class="sb-jp">${l.jp}</div>`+
       `<div class="sb-zh">${esc(l.zh)}</div></div>`;
   });
-  document.getElementById('subaruLyrics').innerHTML=html;
+  return html;
+}
+// 昴：目前顯示狀態
+let subaruView={kind:'lyric',idx:0};
+function subaruRenderLyrics(){
+  subaruView={kind:'lyric',idx:0};
+  document.getElementById('subaruContent').innerHTML=subaruLyricsHTML();
+  markSubaruActive();
+}
+function subaruRenderDay(idx){
+  subaruView={kind:'day',idx};
+  const d=SUBARU_DAYS[idx];let secNo=0;
+  let html=`<div class="lesson-head"><span class="lesson-date">${esc(d.date)}</span>`+
+    `<span class="lesson-title">${esc(d.title)}</span></div>`+
+    `<div class="lesson-sub">${esc(d.subtitle)}</div>`+
+    `<div class="lesson-meta">✨ 共 ${d.sections.filter(s=>s.t==='h').length} 個主題 ・ ${countItemsG(d)} 個例句／詞條</div>`;
+  d.sections.forEach(s=>{if(s.t==='h'){secNo++;html+=renderSection(s,CN_NUM[secNo]||secNo);}else html+=renderSection(s);});
+  document.getElementById('subaruContent').innerHTML=html;
+  markSubaruActive();
+}
+function markSubaruActive(){
+  document.querySelectorAll('#subaruNav .day-btn').forEach(b=>{
+    let on=false;
+    if(b.dataset.kind==='lyric') on=subaruView.kind==='lyric';
+    else on=subaruView.kind==='day'&&Number(b.dataset.idx)===subaruView.idx;
+    b.classList.toggle('active',on);b.setAttribute('aria-selected',on?'true':'false');});
+}
+function countItemsG(d){return d.sections.filter(s=>['ex','line'].includes(s.t)).length
+  + d.sections.filter(s=>s.t==='table').reduce((a,s)=>a+s.rows.length,0);}
+
+// 建昴分頁列
+(function(){
+  const nav=document.getElementById('subaruNav');
+  const lb=document.createElement('button');lb.className='day-btn';lb.setAttribute('role','tab');
+  lb.dataset.kind='lyric';
+  lb.innerHTML=`<span class="flower">🎵</span><span class="d-date">歌詞</span>`+
+    `<span class="d-title">昴 -すばる-</span><span class="d-count">中日對照</span>`;
+  lb.addEventListener('click',()=>{subaruRenderLyrics();subaruScroll();});
+  nav.appendChild(lb);
+  SUBARU_DAYS.forEach((d,i)=>{
+    const b=document.createElement('button');b.className='day-btn';b.setAttribute('role','tab');
+    b.dataset.kind='day';b.dataset.idx=i;
+    b.innerHTML=`<span class="flower">✨</span><span class="d-date">${esc(d.date)}</span>`+
+      `<span class="d-title">${esc(d.title)}</span><span class="d-count">${countItemsG(d)} 句</span>`;
+    b.addEventListener('click',()=>{subaruRenderDay(i);subaruScroll();});
+    nav.appendChild(b);
+  });
+  subaruRenderLyrics();
+})();
+function subaruScroll(){
+  const top=document.getElementById('subaruNav').getBoundingClientRect().bottom+window.scrollY-8;
+  window.scrollTo({top,behavior:'smooth'});
+}
+
+// 昴搜尋
+const SUBARU_INDEX=[];
+SUBARU_DAYS.forEach((d,di)=>{
+  d.sections.forEach(s=>{
+    if(s.t==='ex'||s.t==='line') SUBARU_INDEX.push({di,date:d.date,jp:s.jp||'',kana:s.kana||'',zh:s.zh||''});
+    else if(s.t==='table') s.rows.forEach(r=>SUBARU_INDEX.push({di,date:d.date,jp:r.join(' / '),kana:'',zh:''}));
+    else if(['note','poem','sub','warn','lead'].includes(s.t)) SUBARU_INDEX.push({di,date:d.date,jp:s.text||'',kana:'',zh:''});
+  });
+});
+function subaruRunSearch(q){
+  q=q.trim();
+  document.getElementById('subaruSearchClear').classList.toggle('show',q.length>0);
+  if(!q){ if(subaruView.kind==='lyric') subaruRenderLyrics(); else subaruRenderDay(subaruView.idx); return; }
+  const ql=q.toLowerCase();
+  const hits=SUBARU_INDEX.filter(r=>r.jp.toLowerCase().includes(ql)||r.kana.toLowerCase().includes(ql)||r.zh.toLowerCase().includes(ql));
+  document.querySelectorAll('#subaruNav .day-btn').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');});
+  const el=document.getElementById('subaruContent');
+  if(hits.length===0){el.innerHTML=`<div class="no-result"><span class="big">✨</span>找不到「${esc(q)}」<br><span style="font-size:12px">換個關鍵字試試</span></div>`;return;}
+  const groups={};hits.forEach(h=>{(groups[h.date]=groups[h.date]||[]).push(h);});
+  let html=`<div class="results-summary">🔍 找到 ${hits.length} 筆「${esc(q)}」的結果</div>`;
+  Object.keys(groups).forEach(date=>{
+    const arr=groups[date];const di=arr[0].di;
+    html+=`<div class="result-group"><button class="result-day" data-di="${di}">✨ ${esc(date)}（${arr.length}）</button>`;
+    arr.forEach(r=>{html+=`<div class="ex"><div class="jp"><span class="mk">✨</span>${hl(r.jp,q)}</div>`+
+      (r.kana?`<div class="kana">${hl(r.kana,q)}</div>`:``)+(r.zh?`<div class="zh">${hl(r.zh,q)}</div>`:``)+`</div>`;});
+    html+=`</div>`;
+  });
+  el.innerHTML=html;
+  el.querySelectorAll('.result-day').forEach(btn=>btn.addEventListener('click',()=>{
+    document.getElementById('subaruSearch').value='';document.getElementById('subaruSearchClear').classList.remove('show');
+    subaruRenderDay(Number(btn.dataset.di));subaruScroll();}));
+}
+(function(){
+  const inp=document.getElementById('subaruSearch');const clr=document.getElementById('subaruSearchClear');
+  let t=null;
+  inp.addEventListener('input',()=>{clearTimeout(t);t=setTimeout(()=>subaruRunSearch(inp.value),120);});
+  clr.addEventListener('click',()=>{inp.value='';clr.classList.remove('show');
+    if(subaruView.kind==='lyric') subaruRenderLyrics(); else subaruRenderDay(subaruView.idx); inp.focus();});
+})();
+
+
+/* ===== 想い出迷子（歌詞） ===== */
+// r:1 = 副歌高亮
+const MAIGO_LYRICS=[
+  {jp:`${R('恋','こい')}に${R('疲','つか')}れたと言うじゃない`,zh:"不要說你已厭倦了愛情"},
+  {jp:`${R('夢','ゆめ')}をなくしたと言うじゃない`,zh:"不要說你已失去了夢想"},
+  {jp:`たった${R('一','ひと')}つの${R('愛','あい')}のために`,zh:"只為了那唯一的愛"},
+  {jp:`${R('傷','きず')}つくことを${R('恐','おそ')}れないで`,zh:"別害怕會因此受傷"},
+  {jp:`${R('人','ひと')}はみな${R('心','こころ')}の${R('中','なか')}に`,zh:"每個人的心中"},
+  {jp:`${R('迷','まよ')}い${R('道','みち')}を${R('持','も')}っている`,zh:"都有一條迷惘的路"},
+  {jp:`ああ${R('想','おも')}い${R('出','で')}${R('迷子','まいご')}`,zh:"啊　回憶的迷途孩子",r:1},
+  {jp:`${R('今','いま')}が${R('大人','おとな')}になる${R('時','とき')}`,zh:"如今正是長大成人的時候",r:1},
+  {jp:`${R('涙','なみだ')}こらえて${R('生','い')}きるより`,zh:"與其強忍淚水地活著"},
+  {jp:`${R('泣','な')}いてすっきりするがいい`,zh:"不如痛快哭一場更好"},
+  {jp:`${R('恋','こい')}に${R('破','やぶ')}れたと言うじゃない`,zh:"不要說你的戀情已破碎"},
+  {jp:`${R('胸','むね')}が${R('痛','いた')}いと言うじゃない`,zh:"不要說你的心口在痛"},
+  {jp:`たった${R('一','ひと')}つの${R('愛','あい')}のために`,zh:"只為了那唯一的愛"},
+  {jp:`${R('見失','みうしな')}うこともあるけれど`,zh:"雖然有時也會迷失方向"},
+  {jp:`${R('人','ひと')}はみな${R('心','こころ')}の${R('中','なか')}に`,zh:"每個人的心中"},
+  {jp:`${R('探','さが')}し${R('物','もの')}を${R('持','も')}っている`,zh:"都有一件在尋找的事物"},
+  {jp:`ああ${R('想','おも')}い${R('出','で')}${R('迷子','まいご')}`,zh:"啊　回憶的迷途孩子",r:1},
+  {jp:`${R('今','いま')}が${R('女','おんな')}になる${R('時','とき')}`,zh:"如今正是成為女人的時候",r:1},
+  {jp:`${R('過','す')}ぎた${R('日','ひ')}のこと${R('悔','く')}やむより`,zh:"與其懊悔逝去的過往"},
+  {jp:`${R('明日','あす')}を${R('信','しん')}じて${R('生','い')}きるがいい`,zh:"不如相信明天地活下去"},
+  {jp:`ああ${R('想','おも')}い${R('出','で')}${R('迷子','まいご')}`,zh:"啊　回憶的迷途孩子",r:1},
+  {jp:`${R('今','いま')}が${R('大人','おとな')}になる${R('時','とき')}`,zh:"如今正是長大成人的時候",r:1},
+  {jp:`${R('涙','なみだ')}こらえて${R('生','い')}きるより`,zh:"與其強忍淚水地活著"},
+  {jp:`${R('泣','な')}いてすっきりするがいい`,zh:"不如痛快哭一場更好"},
+];
+function maigoLyricsHTML(){
+  let html=`<div class="subaru-credit" style="border:none;padding:0;margin:0 0 16px">作詞：荒木とよひさ　｜　作曲：三木たかし　｜　唄：テレサ・テン</div>`;
+  MAIGO_LYRICS.forEach(l=>{
+    html+=`<div class="sb-block${l.r?' sb-refrain':''}">`+
+      `<div class="sb-jp">${l.jp}</div>`+
+      `<div class="sb-zh">${esc(l.zh)}</div></div>`;
+  });
+  return html;
+}
+const MAIGO_DAYS = [{"date": "8/20", "title": "疲れる・と言うじゃない・のために・迷い道", "subtitle": "疲れる／なくす・〜と言うじゃない・たった一つ・〜のために・恐れる・みな・迷い道・〜ている", "sections": [{"t": "lead", "text": "想い出迷子 第一堂：從第一段歌詞進入，學「〜と言うじゃない」（不要說…）、たった（僅僅）、〜のために（為了）、恐れる（害怕）、みな（大家都）、〜ている（狀態持續）。"}, {"t": "h", "text": "一、歌詞第一段"}, {"t": "ex", "jp": "恋に疲れたと言うじゃない", "kana": "こいにつかれたというじゃない", "zh": "不要說你已厭倦了愛情。"}, {"t": "ex", "jp": "夢をなくしたと言うじゃない", "kana": "ゆめをなくしたというじゃない", "zh": "不要說你已失去了夢想。"}, {"t": "ex", "jp": "たった一つの愛のために", "kana": "たったひとつのあいのために", "zh": "只為了那唯一的愛。"}, {"t": "ex", "jp": "傷つくことを恐れないで", "kana": "きずつくことをおそれないで", "zh": "別害怕會因此受傷。"}, {"t": "ex", "jp": "人はみな心の中に", "kana": "ひとはみなこころのなかに", "zh": "每個人的心中。"}, {"t": "ex", "jp": "迷い道を持っている", "kana": "まよいみちをもっている", "zh": "都有一條迷惘的路。"}, {"t": "h", "text": "二、恋に疲れる"}, {"t": "note", "text": "疲れる（つかれる）＝疲累、厭倦（第二類動詞）。句型：Nに疲れる＝對N感到疲累。"}, {"t": "ex", "jp": "仕事に疲れた。", "kana": "しごとにつかれた。", "zh": "對工作感到疲累了。"}, {"t": "ex", "jp": "恋に疲れた。", "kana": "こいにつかれた。", "zh": "對愛情感到疲累、厭倦了愛情。"}, {"t": "ex", "jp": "人生に疲れた。", "kana": "じんせいにつかれた。", "zh": "對人生感到疲累。"}, {"t": "h", "text": "三、夢をなくす"}, {"t": "note", "text": "なくす＝弄丟、失去（他動詞）。なくなる＝不見了、沒了（自動詞）。"}, {"t": "ex", "jp": "財布をなくす。", "kana": "さいふをなくす。", "zh": "弄丟錢包。"}, {"t": "ex", "jp": "夢をなくした。", "kana": "ゆめをなくした。", "zh": "失去了夢想。"}, {"t": "ex", "jp": "自信をなくした。", "kana": "じしんをなくした。", "zh": "失去了自信。"}, {"t": "table", "head": ["自他", "日文", "平假名", "中文"], "rows": [["他動詞", "なくす", "なくす", "把…弄丟、失去"], ["自動詞", "なくなる", "なくなる", "不見了、沒了"]]}, {"t": "h", "text": "四、〜と言うじゃない（不要說…）"}, {"t": "note", "text": "歌詞的「と言うじゃない」＝「別說…」「不要說…」，帶勸慰、鼓勵語氣（口語省略了「の」，完整為 と言うんじゃない）。"}, {"t": "ex", "jp": "疲れたと言うじゃない。", "kana": "つかれたというじゃない。", "zh": "別說你累了。"}, {"t": "ex", "jp": "もう駄目だと言うじゃない。", "kana": "もうだめだというじゃない。", "zh": "別說已經不行了。"}, {"t": "ex", "jp": "諦めると言うじゃない。", "kana": "あきらめるというじゃない。", "zh": "別說要放棄。"}, {"t": "warn", "text": "⚠️ 另有一個意思相反的口語「〜じゃない？」＝「不是…嗎？」（確認、反問）。歌詞這裡是「別說…」的勸慰語氣，靠前後文判斷。"}, {"t": "h", "text": "五、たった（僅僅、只有）"}, {"t": "note", "text": "たった＝只有、僅僅（強調數量之少）。常搭配「一つ・一人・一日」等。"}, {"t": "ex", "jp": "たった一つ。", "kana": "たったひとつ。", "zh": "僅僅一個、唯一一個。"}, {"t": "ex", "jp": "たった一人。", "kana": "たったひとり。", "zh": "只有一個人、孤零零一人。"}, {"t": "ex", "jp": "たった一日で終わった。", "kana": "たったいちにちでおわった。", "zh": "僅僅一天就結束了。"}, {"t": "ex", "jp": "たった一つの愛。", "kana": "たったひとつのあい。", "zh": "唯一的愛。"}, {"t": "h", "text": "六、〜のために（為了…）"}, {"t": "note", "text": "句型：Nのために＝為了N（目的）。也可表原因（因為N）。歌詞是「為了」的意思。"}, {"t": "ex", "jp": "家族のために働く。", "kana": "かぞくのためにはたらく。", "zh": "為了家人而工作。"}, {"t": "ex", "jp": "夢のために頑張る。", "kana": "ゆめのためにがんばる。", "zh": "為了夢想而努力。"}, {"t": "ex", "jp": "たった一つの愛のために。", "kana": "たったひとつのあいのために。", "zh": "只為了那唯一的愛。"}, {"t": "h", "text": "七、傷つく／傷つける"}, {"t": "table", "head": ["自他", "日文", "平假名", "中文"], "rows": [["自動詞", "傷つく", "きずつく", "受傷、受到傷害"], ["他動詞", "傷つける", "きずつける", "使…受傷、傷害…"]]}, {"t": "ex", "jp": "心が傷つく。", "kana": "こころがきずつく。", "zh": "心受傷。"}, {"t": "ex", "jp": "人を傷つける。", "kana": "ひとをきずつける。", "zh": "傷害別人。"}, {"t": "ex", "jp": "傷つくことを恐れる。", "kana": "きずつくことをおそれる。", "zh": "害怕受傷（傷つく＋こと＝名詞化）。"}, {"t": "h", "text": "八、恐れる／〜ないで"}, {"t": "note", "text": "恐れる（おそれる）＝害怕、畏懼。〜ないで＝別…、不要…（柔和的請求／勸告）。"}, {"t": "ex", "jp": "失敗を恐れる。", "kana": "しっぱいをおそれる。", "zh": "害怕失敗。"}, {"t": "ex", "jp": "恐れないで。", "kana": "おそれないで。", "zh": "別害怕。"}, {"t": "ex", "jp": "泣かないで。", "kana": "なかないで。", "zh": "別哭。"}, {"t": "ex", "jp": "傷つくことを恐れないで。", "kana": "きずつくことをおそれないで。", "zh": "別害怕受傷。"}, {"t": "h", "text": "九、みな／みんな（大家、全都）"}, {"t": "note", "text": "みな＝大家、全部（較文語、書面）；みんな＝口語。人はみな＝人人都、每個人都。"}, {"t": "ex", "jp": "人はみな平等だ。", "kana": "ひとはみなびょうどうだ。", "zh": "人人都是平等的。"}, {"t": "ex", "jp": "みな知っている。", "kana": "みなしっている。", "zh": "大家都知道。"}, {"t": "ex", "jp": "人はみな心の中に迷い道を持っている。", "kana": "ひとはみなこころのなかにまよいみちをもっている。", "zh": "每個人的心中都有一條迷惘的路。"}, {"t": "h", "text": "十、迷い道／迷う／迷子"}, {"t": "table", "head": ["日文", "平假名", "中文"], "rows": [["迷う", "まよう", "迷惘、猶豫、迷路"], ["迷い", "まよい", "迷惘、困惑"], ["迷い道", "まよいみち", "迷惘的路、岔路"], ["迷子", "まいご", "迷路的孩子、走失的人"], ["想い出迷子", "おもいでまいご", "在回憶裡迷路的人（歌名）"]]}, {"t": "ex", "jp": "道に迷う。", "kana": "みちにまよう。", "zh": "迷路。"}, {"t": "ex", "jp": "心が迷う。", "kana": "こころがまよう。", "zh": "心裡迷惘、猶豫。"}, {"t": "h", "text": "十一、〜を持っている（狀態持續）"}, {"t": "note", "text": "持つ（もつ）＝拿、擁有。持っている＝擁有著（狀態持續）。Vている 表示動作結果的持續狀態。"}, {"t": "ex", "jp": "夢を持っている。", "kana": "ゆめをもっている。", "zh": "擁有夢想。"}, {"t": "ex", "jp": "迷い道を持っている。", "kana": "まよいみちをもっている。", "zh": "（心中）有一條迷惘的路。"}, {"t": "h", "text": "十二、第一段文法總整理"}, {"t": "table", "head": ["文法", "句型", "中文"], "rows": [["Nに疲れる", "恋に疲れた", "對愛情感到疲累"], ["Nをなくす", "夢をなくした", "失去了夢想"], ["〜と言うじゃない", "疲れたと言うじゃない", "別說你累了"], ["たった", "たった一つ", "僅僅一個、唯一"], ["Nのために", "愛のために", "為了愛"], ["〜ことを恐れる", "傷つくことを恐れる", "害怕受傷"], ["〜ないで", "恐れないで", "別害怕"], ["人はみな", "人はみな…", "人人都…"], ["Vている", "持っている", "擁有著（狀態持續）"]]}, {"t": "h", "text": "十三、第一段完整理解"}, {"t": "poem", "text": "恋に疲れた、夢をなくした——別把這些話說出口。就算只是為了唯一的一份愛，也別害怕受傷。因為每個人的心裡，都藏著一條迷惘的岔路。這一段是溫柔的鼓勵：受傷、迷惘都是人人共有的，不必因此否定自己的愛與夢。"}]}];
+let maigoView={kind:'lyric',idx:0};
+function maigoRenderLyrics(){
+  maigoView={kind:'lyric',idx:0};
+  document.getElementById('maigoContent').innerHTML=maigoLyricsHTML();
+  maigoMarkActive();
+}
+function maigoRenderDay(idx){
+  maigoView={kind:'day',idx};
+  const d=MAIGO_DAYS[idx];let secNo=0;
+  let html=`<div class="lesson-head"><span class="lesson-date">${esc(d.date)}</span>`+
+    `<span class="lesson-title">${esc(d.title)}</span></div>`+
+    `<div class="lesson-sub">${esc(d.subtitle)}</div>`+
+    `<div class="lesson-meta">🍃 共 ${d.sections.filter(s=>s.t==='h').length} 個主題 ・ ${countItemsG(d)} 個例句／詞條</div>`;
+  d.sections.forEach(s=>{if(s.t==='h'){secNo++;html+=renderSection(s,CN_NUM[secNo]||secNo);}else html+=renderSection(s);});
+  document.getElementById('maigoContent').innerHTML=html;
+  maigoMarkActive();
+}
+function maigoMarkActive(){
+  document.querySelectorAll('#maigoNav .day-btn').forEach(b=>{
+    let on=false;
+    if(b.dataset.kind==='lyric') on=maigoView.kind==='lyric';
+    else on=maigoView.kind==='day'&&Number(b.dataset.idx)===maigoView.idx;
+    b.classList.toggle('active',on);b.setAttribute('aria-selected',on?'true':'false');});
+}
+(function(){
+  const nav=document.getElementById('maigoNav');
+  const lb=document.createElement('button');lb.className='day-btn';lb.setAttribute('role','tab');
+  lb.dataset.kind='lyric';
+  lb.innerHTML=`<span class="flower">🎵</span><span class="d-date">歌詞</span>`+
+    `<span class="d-title">想い出迷子</span><span class="d-count">中日對照</span>`;
+  lb.addEventListener('click',()=>{maigoRenderLyrics();maigoScroll();});
+  nav.appendChild(lb);
+  MAIGO_DAYS.forEach((d,i)=>{
+    const b=document.createElement('button');b.className='day-btn';b.setAttribute('role','tab');
+    b.dataset.kind='day';b.dataset.idx=i;
+    b.innerHTML=`<span class="flower">🍃</span><span class="d-date">${esc(d.date)}</span>`+
+      `<span class="d-title">${esc(d.title)}</span><span class="d-count">${countItemsG(d)} 句</span>`;
+    b.addEventListener('click',()=>{maigoRenderDay(i);maigoScroll();});
+    nav.appendChild(b);
+  });
+  maigoRenderLyrics();
+})();
+function maigoScroll(){
+  const top=document.getElementById('maigoNav').getBoundingClientRect().bottom+window.scrollY-8;
+  window.scrollTo({top,behavior:'smooth'});
+}
+// 迷子搜尋（歌詞＋講義）
+const MAIGO_INDEX=[];
+MAIGO_LYRICS.forEach(l=>MAIGO_INDEX.push({di:-1,date:'🎵 歌詞',jp:l.jp.replace(/<[^>]+>/g,''),kana:'',zh:l.zh,ruby:l.jp}));
+MAIGO_DAYS.forEach((d,di)=>{
+  d.sections.forEach(s=>{
+    if(s.t==='ex'||s.t==='line') MAIGO_INDEX.push({di,date:d.date,jp:s.jp||'',kana:s.kana||'',zh:s.zh||''});
+    else if(s.t==='table') s.rows.forEach(r=>MAIGO_INDEX.push({di,date:d.date,jp:r.join(' / '),kana:'',zh:''}));
+    else if(['note','poem','sub','warn','lead'].includes(s.t)) MAIGO_INDEX.push({di,date:d.date,jp:s.text||'',kana:'',zh:''});
+  });
+});
+(function(){
+  const inp=document.getElementById('maigoSearch');const clr=document.getElementById('maigoSearchClear');
+  let t=null;
+  function run(q){
+    q=q.trim();clr.classList.toggle('show',q.length>0);
+    if(!q){ if(maigoView.kind==='lyric') maigoRenderLyrics(); else maigoRenderDay(maigoView.idx); return; }
+    const ql=q.toLowerCase();
+    const hits=MAIGO_INDEX.filter(r=>r.jp.toLowerCase().includes(ql)||(r.kana||'').toLowerCase().includes(ql)||r.zh.toLowerCase().includes(ql));
+    document.querySelectorAll('#maigoNav .day-btn').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');});
+    const el=document.getElementById('maigoContent');
+    if(hits.length===0){el.innerHTML=`<div class="no-result"><span class="big">🍃</span>找不到「${esc(q)}」</div>`;return;}
+    const groups={};hits.forEach(h=>{(groups[h.date]=groups[h.date]||[]).push(h);});
+    let html=`<div class="results-summary">🔍 找到 ${hits.length} 筆「${esc(q)}」的結果</div>`;
+    Object.keys(groups).forEach(date=>{
+      const arr=groups[date];const di=arr[0].di;
+      html+=`<div class="result-group"><button class="result-day" data-di="${di}">🍃 ${esc(date)}（${arr.length}）</button>`;
+      arr.forEach(r=>{
+        if(r.ruby){ html+=`<div class="sb-block"><div class="sb-jp">${r.ruby}</div><div class="sb-zh">${hl(r.zh,q)}</div></div>`; }
+        else{ html+=`<div class="ex"><div class="jp"><span class="mk">🍃</span>${hl(r.jp,q)}</div>`+
+          (r.kana?`<div class="kana">${hl(r.kana,q)}</div>`:``)+(r.zh?`<div class="zh">${hl(r.zh,q)}</div>`:``)+`</div>`; }
+      });
+      html+=`</div>`;
+    });
+    el.innerHTML=html;
+    el.querySelectorAll('.result-day').forEach(btn=>btn.addEventListener('click',()=>{
+      inp.value='';clr.classList.remove('show');
+      const di=Number(btn.dataset.di);
+      if(di<0) maigoRenderLyrics(); else maigoRenderDay(di);
+      maigoScroll();}));
+  }
+  inp.addEventListener('input',()=>{clearTimeout(t);t=setTimeout(()=>run(inp.value),120);});
+  clr.addEventListener('click',()=>{inp.value='';clr.classList.remove('show');
+    if(maigoView.kind==='lyric') maigoRenderLyrics(); else maigoRenderDay(maigoView.idx); inp.focus();});
 })();
 
 
 /* ===== 歌曲大頁籤切換 ===== */
 (function(){
-  const paneS=document.getElementById('paneSubaru');
-  const paneK=document.getElementById('paneKuchi');
-  const btnS=document.getElementById('songBtnSubaru');
-  const btnK=document.getElementById('songBtnKuchi');
+  const panes={subaru:document.getElementById('paneSubaru'),
+    kuchi:document.getElementById('paneKuchi'),
+    maigo:document.getElementById('paneMaigo')};
+  const btns={subaru:document.getElementById('songBtnSubaru'),
+    kuchi:document.getElementById('songBtnKuchi'),
+    maigo:document.getElementById('songBtnMaigo')};
   function show(song){
-    const sub=song==='subaru';
-    paneS.hidden=!sub; paneK.hidden=sub;
-    btnS.classList.toggle('active',sub); btnS.setAttribute('aria-selected',sub);
-    btnK.classList.toggle('active',!sub); btnK.setAttribute('aria-selected',!sub);
+    Object.keys(panes).forEach(k=>{
+      const on=k===song;
+      panes[k].hidden=!on;
+      btns[k].classList.toggle('active',on);
+      btns[k].setAttribute('aria-selected',on?'true':'false');
+    });
     window.scrollTo({top:0,behavior:'smooth'});
   }
-  btnS.addEventListener('click',()=>show('subaru'));
-  btnK.addEventListener('click',()=>show('kuchi'));
+  Object.keys(btns).forEach(k=>btns[k].addEventListener('click',()=>show(k)));
 })();
 </script>
 </body>

@@ -44,8 +44,11 @@ h1{font-size:clamp(32px,7vw,48px);margin:.16em 0 .1em;letter-spacing:.05em;color
 /* 歌曲大頁籤 */
 .song-nav{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:6px 0 26px;}
 .song-nav-3{grid-template-columns:1fr 1fr 1fr;}
+.song-nav-4{grid-template-columns:1fr 1fr 1fr 1fr;}
 @media(max-width:560px){.song-nav-3{grid-template-columns:1fr 1fr 1fr;gap:8px;}
-  .song-nav-3 .song-name{font-size:14px;}.song-nav-3 .song-sub{font-size:10px;}}
+  .song-nav-3 .song-name{font-size:14px;}.song-nav-3 .song-sub{font-size:10px;}
+  .song-nav-4{grid-template-columns:1fr 1fr;gap:8px;}
+  .song-nav-4 .song-name{font-size:14px;}.song-nav-4 .song-sub{font-size:10px;}}
 .song-btn{position:relative;cursor:pointer;border:2px solid transparent;background:var(--card);
   border-radius:22px;padding:16px 12px;box-shadow:0 5px 16px var(--shadow);font-family:inherit;
   color:var(--ink);text-align:center;transition:transform .2s cubic-bezier(.34,1.56,.64,1),box-shadow .2s,border-color .2s;}
@@ -232,7 +235,7 @@ footer .f-flower{font-size:18px;display:block;margin-bottom:7px;}
     <div class="sub-zh">張正修 老師　授課筆記</div>
   </header>
 
-  <nav class="song-nav song-nav-3" role="tablist" aria-label="選擇歌曲">
+  <nav class="song-nav song-nav-4" role="tablist" aria-label="選擇歌曲">
     <button class="song-btn" id="songBtnSubaru" role="tab" data-song="subaru">
       <span class="song-flower">✨</span><span class="song-name">昴 -すばる-</span>
       <span class="song-sub">谷村新司</span>
@@ -242,8 +245,12 @@ footer .f-flower{font-size:18px;display:block;margin-bottom:7px;}
       <span class="song-sub">渡哲也 ・ 15 堂課</span>
     </button>
     <button class="song-btn" id="songBtnMaigo" role="tab" data-song="maigo">
-      <span class="song-flower">🍃</span><span class="song-name">想いで迷子</span>
+      <span class="song-flower">🍃</span><span class="song-name">想い出迷子</span>
       <span class="song-sub">テレサ・テン</span>
+    </button>
+    <button class="song-btn" id="songBtnColor" role="tab" data-song="color">
+      <span class="song-flower">🌈</span><span class="song-name">カラフル</span>
+      <span class="song-sub">ClariS</span>
     </button>
   </nav>
 
@@ -307,7 +314,27 @@ footer .f-flower{font-size:18px;display:block;margin-bottom:7px;}
     <main class="lesson" id="maigoContent" tabindex="-1"></main>
   </div>
 
-  <footer><span class="f-flower">🌸 ✨ 🍃</span>日文演歌講義　|　昴 ・ くちなしの花 ・ 想いで迷子</footer>
+  <!-- ===== カラフル ===== -->
+  <div class="song-pane" id="paneColor" hidden>
+    <div class="video-card" id="colorVideoCard">
+      <div class="vtitle"><span class="mk">🌈</span>カラフル ・ ClariS<span class="mk">🌈</span></div>
+      <a class="video-thumb" href="https://www.youtube.com/watch?v=S-pfGpyK9LM" target="_blank" rel="noopener" aria-label="在 YouTube 觀看 カラフル">
+        <img src="https://i.ytimg.com/vi/S-pfGpyK9LM/hqdefault.jpg" alt="カラフル 影片封面" loading="lazy">
+        <span class="play-btn" aria-hidden="true">▶</span>
+        <span class="yt-badge">在 YouTube 觀看 ↗</span>
+      </a>
+    </div>
+    <nav class="day-nav" id="colorNav" aria-label="カラフル 內容"></nav>
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input class="search-input" id="colorSearch" type="search" autocomplete="off"
+        placeholder="搜尋日文、平假名或中文…">
+      <button class="search-clear" id="colorSearchClear" aria-label="清除">✕</button>
+    </div>
+    <main class="lesson" id="colorContent" tabindex="-1"></main>
+  </div>
+
+  <footer><span class="f-flower">🌸 ✨ 🍃 🌈</span>日文歌講義　|　昴 ・ くちなしの花 ・ 想い出迷子 ・ カラフル</footer>
 </div>
 <button class="scroll-top" id="scrollTop" aria-label="回到頂部">↑</button>
 
@@ -747,14 +774,95 @@ MAIGO_DAYS.forEach((d,di)=>{
 })();
 
 
+/* ===== カラフル（歌詞） ===== */
+const COLOR_LYRICS=[
+  {jp:`いつもモノクロだった${R('瞳','ひとみ')}の${R('奥','おく')}の`,zh:"眼瞳深處總是那樣的黑白"},
+  {jp:`${R('景色','けしき')}${R('捨','す')}てた${R('夢','ゆめ')}${R('見','み')}つけた`,zh:"捨棄掉的景色卻又在夢裡遇見"},
+  {jp:`${R('何','なに')}もない${R('世界','せかい')}で${R('創','つく')}る${R('絆','きずな')}は　${R('強','つよ')}い${R('意志','いし')}${R('与','あた')}えた`,zh:"在什麼都沒有的世界裡建立的羈絆，給予了堅強的意志"},
+  {jp:`${R('裏返','うらがえ')}した${R('日常','にちじょう')}だ　また${R('走','はし')}って${R('行','い')}く${R('先','さき')}に　${R('君','きみ')}はいて`,zh:"是翻轉過來的日常，而你總是跑在前方"},
+  {jp:`${R('触','ふ')}れた${R('心','こころ')}は${R('輝','かがや')}いた　${R('鮮','あざ')}やかな${R('色','いろ')}になって`,zh:"觸碰到的心閃耀著，化作絢麗的色彩",r:1},
+  {jp:`${R('羽','は')}ばたくよ　${R('希望','きぼう')}${R('乗','の')}せて`,zh:"振翅高飛吧，載著希望",r:1},
+  {jp:`${R('無限','むげん')}に${R('広','ひろ')}がる${R('空','そら')}の${R('下','した')}${R('集','あつ')}まった`,zh:"在無限寬廣的天空下匯聚",r:1},
+  {jp:`${R('願','ねが')}い${R('守','まも')}り${R('進','すす')}めば`,zh:"若守護著願望前進",r:1},
+  {jp:`まだ${R('誰','だれ')}も${R('知','し')}らない${R('明日','あす')}へと`,zh:"就朝向還沒有人知道的明天",r:1},
+
+  {jp:`${R('引','ひ')}き${R('寄','よ')}せられるように${R('覗','のぞ')}いた${R('瞬間','しゅんかん')}`,zh:"彷彿被吸引般窺見的那個瞬間"},
+  {jp:`${R('光','ひかり')}の${R('糸','いと')}は${R('君','きみ')}${R('包','つつ')}んだ`,zh:"光的絲線將你包圍"},
+  {jp:`${R('細','ほそ')}く${R('千切','ちぎ')}れそうな${R('絡','から')}まった${R('運命','うんめい')}`,zh:"纖細得幾乎要斷裂、糾纏交織的命運"},
+  {jp:`きっとまだ${R('変','か')}われる`,zh:"一定還可以改變"},
+  {jp:`${R('間違','まちが')}えでも${R('信','しん')}じた${R('道','みち')}は${R('新','あたら')}しい${R('景色','けしき')}を　${R('照','て')}らすだろう`,zh:"就算是錯的，堅信走下去的路也會照亮嶄新的景色"},
+  {jp:`${R('巡','めぐ')}る${R('時','とき')}の${R('中','なか')}${R('笑','わら')}って　${R('様々','さまざま')}な${R('想','おも')}い${R('持','も')}って`,zh:"在流轉的時光中微笑，懷著各式各樣的思緒",r:1},
+  {jp:`${R('始','はじ')}めよう　また${R('一','いち')}から`,zh:"重新開始吧，再一次從頭來過",r:1},
+  {jp:`${R('辿','たど')}り${R('着','つ')}いた${R('儚','はかな')}い${R('奇跡','きせき')}${R('壊','こわ')}れないように`,zh:"為了不讓好不容易抵達的短暫奇蹟崩壞",r:1},
+  {jp:`${R('手','て')}を${R('伸','の')}ばし${R('繋','つな')}げば`,zh:"若伸出手緊緊相繫",r:1},
+  {jp:`ほら${R('君','きみ')}は${R('側','そば')}にいるから...`,zh:"看，你就在我身旁...",r:1},
+  {jp:`まだ${R('透明','とうめい')}な${R('私','わたし')}たちは　どんな${R('色','いろ')}にでも`,zh:"還很透明的我們，無論什麼顏色"},
+  {jp:`${R('染','そ')}まることが${R('出来','でき')}るから　${R('夢','ゆめ')}${R('叶','かな')}えよう`,zh:"都能染上，所以去實現夢想吧"},
+
+  {jp:`${R('走','はし')}って${R('行','い')}く${R('先','さき')}に${R('君','きみ')}はいた`,zh:"你就在我奔跑的前方"},
+  {jp:`${R('触','ふ')}れた${R('心','こころ')}は${R('輝','かがや')}いた　${R('鮮','あざ')}やかな${R('色','いろ')}になって`,zh:"觸碰到的心閃耀著，化作絢麗的色彩",r:1},
+  {jp:`${R('羽','は')}ばたくよ　${R('希望','きぼう')}${R('乗','の')}せて`,zh:"振翅高飛吧，載著希望",r:1},
+  {jp:`${R('無限','むげん')}に${R('広','ひろ')}がる${R('空','そら')}の${R('下','した')}${R('集','あつ')}まった`,zh:"在無限寬廣的天空下匯聚",r:1},
+  {jp:`${R('願','ねが')}い${R('守','まも')}り${R('行','い')}けば`,zh:"若守護著願望前行",r:1},
+  {jp:`${R('君','きみ')}と${R('誓','ちか')}ったあの${R('日','ひ')}の${R('記憶','きおく')}`,zh:"與你立下誓言的那一天的記憶",r:1},
+  {jp:`${R('今','いま')}${R('超','こ')}えて${R('過去','かこ')}から`,zh:"從過去超越現在",r:1},
+  {jp:`まだ${R('誰','だれ')}も${R('知','し')}らない${R('明日','あす')}へと`,zh:"朝向還沒有人知道的明天",r:1},
+];
+function colorLyricsHTML(){
+  let html=`<div class="subaru-credit" style="border:none;padding:0;margin:0 0 16px">魔法少女まどか☆マギカ〔叛逆の物語〕挿入歌　｜　唄：ClariS　｜　作詞・作曲：渡辺翔　｜　編曲：湯浅篤</div>`;
+  COLOR_LYRICS.forEach(l=>{
+    html+=`<div class="sb-block${l.r?' sb-refrain':''}">`+
+      `<div class="sb-jp">${l.jp}</div>`+
+      `<div class="sb-zh">${esc(l.zh)}</div></div>`;
+  });
+  return html;
+}
+function colorRenderLyrics(){
+  document.getElementById('colorContent').innerHTML=colorLyricsHTML();
+  document.querySelectorAll('#colorNav .day-btn').forEach(b=>{
+    const on=b.dataset.kind==='lyric';b.classList.toggle('active',on);b.setAttribute('aria-selected',on?'true':'false');});
+}
+(function(){
+  const nav=document.getElementById('colorNav');
+  const lb=document.createElement('button');lb.className='day-btn';lb.setAttribute('role','tab');
+  lb.dataset.kind='lyric';
+  lb.innerHTML=`<span class="flower">🎵</span><span class="d-date">歌詞</span>`+
+    `<span class="d-title">カラフル</span><span class="d-count">中日對照</span>`;
+  lb.addEventListener('click',()=>{colorRenderLyrics();
+    const top=nav.getBoundingClientRect().bottom+window.scrollY-8;window.scrollTo({top,behavior:'smooth'});});
+  nav.appendChild(lb);
+  colorRenderLyrics();
+})();
+// カラフル搜尋（目前只有歌詞）
+(function(){
+  const inp=document.getElementById('colorSearch');const clr=document.getElementById('colorSearchClear');
+  let t=null;
+  function run(q){
+    q=q.trim();clr.classList.toggle('show',q.length>0);
+    if(!q){colorRenderLyrics();return;}
+    const ql=q.toLowerCase();
+    const hits=COLOR_LYRICS.filter(l=>l.jp.replace(/<[^>]+>/g,'').toLowerCase().includes(ql)||l.zh.toLowerCase().includes(ql));
+    document.querySelectorAll('#colorNav .day-btn').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');});
+    const el=document.getElementById('colorContent');
+    if(hits.length===0){el.innerHTML=`<div class="no-result"><span class="big">🌈</span>找不到「${esc(q)}」</div>`;return;}
+    let html=`<div class="results-summary">🔍 找到 ${hits.length} 筆「${esc(q)}」的結果</div>`;
+    hits.forEach(l=>{html+=`<div class="sb-block${l.r?' sb-refrain':''}"><div class="sb-jp">${l.jp}</div><div class="sb-zh">${esc(l.zh)}</div></div>`;});
+    el.innerHTML=html;
+  }
+  inp.addEventListener('input',()=>{clearTimeout(t);t=setTimeout(()=>run(inp.value),120);});
+  clr.addEventListener('click',()=>{inp.value='';clr.classList.remove('show');colorRenderLyrics();inp.focus();});
+})();
+
 /* ===== 歌曲大頁籤切換 ===== */
 (function(){
   const panes={subaru:document.getElementById('paneSubaru'),
     kuchi:document.getElementById('paneKuchi'),
-    maigo:document.getElementById('paneMaigo')};
+    maigo:document.getElementById('paneMaigo'),
+    color:document.getElementById('paneColor')};
   const btns={subaru:document.getElementById('songBtnSubaru'),
     kuchi:document.getElementById('songBtnKuchi'),
-    maigo:document.getElementById('songBtnMaigo')};
+    maigo:document.getElementById('songBtnMaigo'),
+    color:document.getElementById('songBtnColor')};
   function show(song){
     Object.keys(panes).forEach(k=>{
       const on=k===song;

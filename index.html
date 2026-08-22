@@ -45,10 +45,14 @@ h1{font-size:clamp(32px,7vw,48px);margin:.16em 0 .1em;letter-spacing:.05em;color
 .song-nav{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:6px 0 26px;}
 .song-nav-3{grid-template-columns:1fr 1fr 1fr;}
 .song-nav-4{grid-template-columns:1fr 1fr 1fr 1fr;}
+.song-nav-5{grid-template-columns:repeat(5,1fr);}
 @media(max-width:560px){.song-nav-3{grid-template-columns:1fr 1fr 1fr;gap:8px;}
   .song-nav-3 .song-name{font-size:14px;}.song-nav-3 .song-sub{font-size:10px;}
   .song-nav-4{grid-template-columns:1fr 1fr;gap:8px;}
-  .song-nav-4 .song-name{font-size:14px;}.song-nav-4 .song-sub{font-size:10px;}}
+  .song-nav-4 .song-name{font-size:14px;}.song-nav-4 .song-sub{font-size:10px;}
+  .song-nav-5{grid-template-columns:1fr 1fr 1fr;gap:8px;}
+  .song-nav-5 .song-name{font-size:12px;}.song-nav-5 .song-sub{font-size:9px;}
+  .song-nav-5 .song-flower{font-size:19px;}}
 .song-btn{position:relative;cursor:pointer;border:2px solid transparent;background:var(--card);
   border-radius:22px;padding:16px 12px;box-shadow:0 5px 16px var(--shadow);font-family:inherit;
   color:var(--ink);text-align:center;transition:transform .2s cubic-bezier(.34,1.56,.64,1),box-shadow .2s,border-color .2s;}
@@ -235,7 +239,7 @@ footer .f-flower{font-size:18px;display:block;margin-bottom:7px;}
     <div class="sub-zh">張正修 老師　授課筆記</div>
   </header>
 
-  <nav class="song-nav song-nav-4" role="tablist" aria-label="選擇歌曲">
+  <nav class="song-nav song-nav-5" role="tablist" aria-label="選擇歌曲">
     <button class="song-btn" id="songBtnSubaru" role="tab" data-song="subaru">
       <span class="song-flower">✨</span><span class="song-name">昴 -すばる-</span>
       <span class="song-sub">谷村新司</span>
@@ -251,6 +255,10 @@ footer .f-flower{font-size:18px;display:block;margin-bottom:7px;}
     <button class="song-btn" id="songBtnColor" role="tab" data-song="color">
       <span class="song-flower">🌈</span><span class="song-name">カラフル</span>
       <span class="song-sub">ClariS</span>
+    </button>
+    <button class="song-btn" id="songBtnNiwa" role="tab" data-song="niwa">
+      <span class="song-flower">🌿</span><span class="song-name">君の銀の庭</span>
+      <span class="song-sub">Kalafina</span>
     </button>
   </nav>
 
@@ -334,7 +342,27 @@ footer .f-flower{font-size:18px;display:block;margin-bottom:7px;}
     <main class="lesson" id="colorContent" tabindex="-1"></main>
   </div>
 
-  <footer><span class="f-flower">🌸 ✨ 🍃 🌈</span>日文歌講義　|　昴 ・ くちなしの花 ・ 想い出迷子 ・ カラフル</footer>
+  <!-- ===== 君の銀の庭 ===== -->
+  <div class="song-pane" id="paneNiwa" hidden>
+    <div class="video-card" id="niwaVideoCard">
+      <div class="vtitle"><span class="mk">🌿</span>君の銀の庭 ・ Kalafina<span class="mk">🌿</span></div>
+      <a class="video-thumb" href="https://www.youtube.com/watch?v=LWnkY61Vg9c" target="_blank" rel="noopener" aria-label="在 YouTube 觀看 君の銀の庭">
+        <img src="https://i.ytimg.com/vi/LWnkY61Vg9c/hqdefault.jpg" alt="君の銀の庭 影片封面" loading="lazy">
+        <span class="play-btn" aria-hidden="true">▶</span>
+        <span class="yt-badge">在 YouTube 觀看 ↗</span>
+      </a>
+    </div>
+    <nav class="day-nav" id="niwaNav" aria-label="君の銀の庭 內容"></nav>
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input class="search-input" id="niwaSearch" type="search" autocomplete="off"
+        placeholder="搜尋日文、平假名或中文…">
+      <button class="search-clear" id="niwaSearchClear" aria-label="清除">✕</button>
+    </div>
+    <main class="lesson" id="niwaContent" tabindex="-1"></main>
+  </div>
+
+  <footer><span class="f-flower">🌸 ✨ 🍃 🌈 🌿</span>日文歌講義　|　昴 ・ くちなしの花 ・ 想い出迷子 ・ カラフル ・ 君の銀の庭</footer>
 </div>
 <button class="scroll-top" id="scrollTop" aria-label="回到頂部">↑</button>
 
@@ -853,16 +881,120 @@ function colorRenderLyrics(){
   clr.addEventListener('click',()=>{inp.value='';clr.classList.remove('show');colorRenderLyrics();inp.focus();});
 })();
 
+/* ===== 君の銀の庭（歌詞） ===== */
+const NIWA_LYRICS=[
+  {jp:`そっと${R('開','ひら')}いたドアの${R('向','む')}こうに`,zh:"悄悄地開啟了大門的那一端"},
+  {jp:`${R('壊','こわ')}れそうな${R('世界','せかい')}はある`,zh:"在那存在著崩壞的世界"},
+  {jp:`${R('朝','あさ')}が${R('来','く')}るのか`,zh:"黎明會到來嗎"},
+  {jp:`${R('夜','よる')}になるのか`,zh:"夜晚會降臨嗎"},
+  {jp:`${R('迷','まよ')}いながらひかりは${R('綻','ほころ')}びて`,zh:"迷惘的光芒不安地綻放"},
+
+  {jp:`${R('声','こえ')}が${R('呼','よ')}ぶまではもう${R('少','すこ')}し${R('遊','あそ')}ぼう`,zh:"被聲音呼喚之前再稍微玩耍一下"},
+  {jp:`${R('花','はな')}のように${R('廻','まわ')}る${R('時','とき')}を${R('繰','く')}り${R('返','かえ')}し`,zh:"像花兒謝了又開般，時間不斷循環"},
+
+  {jp:`${R('夢','ゆめ')}はこの${R('部屋','へや')}の${R('中','なか')}で`,zh:"在這夢境所在的房間裡"},
+  {jp:`${R('優','やさ')}しい${R('歌','うた')}をずっと${R('君','きみ')}に${R('歌','うた')}っていた`,zh:"溫柔的歌聲不停地對著你歌唱"},
+  {jp:`${R('何','なに')}がほんとのことなの`,zh:"什麼才是真實的"},
+  {jp:`${R('一番','いちばん')}${R('強','つよ')}く${R('信','しん')}じられる${R('世界','せかい')}を${R('追','お')}いかけて`,zh:"追尋著那最能堅信的世界"},
+
+  {jp:`${R('君','きみ')}の${R('銀','ぎん')}の${R('庭','にわ')}へ`,zh:"走向你的銀色庭園",r:1},
+  {jp:`${R('道','みち')}に${R('迷','まよ')}ったあの${R('子','こ')}が${R('今日','きょう')}も`,zh:"迷路的那個孩子，今天也",r:1},
+  {jp:`${R('一番','いちばん')}${R('早','はや')}く${R('帰','かえ')}り${R('着','つ')}いた`,zh:"最早回來了",r:1},
+  {jp:`${R('正','ただ')}しさよりも${R('明','あか')}るい${R('場所','ばしょ')}を`,zh:"比起正確，找著明亮的地方",r:1},
+  {jp:`${R('見','み')}つけながら${R('走','はし')}ればいいんだね`,zh:"一邊找著一邊跑就好了",r:1},
+
+  {jp:`${R('幼','おさな')}い${R('眠','ねむ')}りを${R('守','まも')}りたい${R('番人','ばんにん')}`,zh:"想守護年幼安眠的守衛"},
+  {jp:`${R('大人','おとな')}になる${R('門','もん')}は${R('固','かた')}く${R('閉','と')}ざされて`,zh:"將踏入大人的大門緊緊封鎖著"},
+
+  {jp:`${R('君','きみ')}は${R('気付','きづ')}いていたかな?`,zh:"你是不是注意到了？"},
+  {jp:`ほんとのことなんて`,zh:"所謂真實這種東西"},
+  {jp:`いつも${R('過去','かこ')}にしか${R('無','な')}い`,zh:"總是只存在於過去"},
+  {jp:`${R('未来','みらい')}や${R('希望','きぼう')}は${R('全','すべ')}て`,zh:"未來與希望全部"},
+  {jp:`${R('誰','だれ')}かが${R('描','えが')}く${R('遠','とお')}い${R('庭','にわ')}の`,zh:"都是某個人所描繪的遙遠庭園裡"},
+  {jp:`${R('我','わ')}が${R('侭','まま')}な${R('物語','ものがたり')}`,zh:"那任性的故事"},
+  {jp:`まだ${R('誰','だれ')}も${R('知','し')}らない`,zh:"還無人知曉"},
+
+  {jp:`ひたむきな${R('小鳥','ことり')}の${R('声','こえ')}で${R('歌','うた')}う${R('子供','こども')}は`,zh:"用一心一意的小鳥般嗓音歌唱的那孩子"},
+  {jp:`${R('何','なに')}を${R('隠','かく')}し${R('何','なに')}を${R('壊','こわ')}し`,zh:"隱藏了什麼，破壞了什麼"},
+  {jp:`${R('燃','も')}える${R('時計','とけい')}`,zh:"燃燒著的時鐘"},
+  {jp:`${R('秘密','ひみつ')}めく${R('花','はな')}の${R('香','かお')}り`,zh:"充滿秘密氣息的花香"},
+  {jp:`「ここにいるよ」`,zh:"「就在這裡唷」"},
+
+  {jp:`${R('静','しず')}かに${R('寄','よ')}り${R('添','そ')}って`,zh:"靜靜地依偎著",r:1},
+  {jp:`${R('何処','どこ')}にも${R('行','い')}かないで`,zh:"哪裡都不要去",r:1},
+  {jp:`${R('窓辺','まどべ')}で${R('囀','さえず')}って`,zh:"就這樣在窗邊鳴唱",r:1},
+  {jp:`${R('何','なに')}を${R('失','な')}くしたって`,zh:"就算失去了些什麼",r:1},
+
+  {jp:`${R('夢','ゆめ')}はその${R('腕','うで')}の${R('中','なか')}に`,zh:"夢在那臂彎之中"},
+  {jp:`${R('優','やさ')}しい${R('人','ひと')}の${R('嘘','うそ')}も${R('嘆','なげ')}きも`,zh:"溫柔的人們，無論謊言又或嘆息"},
+  {jp:`${R('閉','と')}じ${R('込','こ')}めていた`,zh:"都將這些關進其中"},
+  {jp:`${R('何','なに')}か${R('足','た')}りない${R('心','こころ')}で`,zh:"用那缺了些什麼的心"},
+  {jp:`${R('光','ひかり')}を${R('纏','まと')}い${R('飛','と')}んで${R('行','い')}こう`,zh:"讓光芒纏繞著向前飛去"},
+  {jp:`${R('少女','しょうじょ')}のかたちをして`,zh:"化身成少女的模樣"},
+  {jp:`${R('終','お')}わらない${R('始','はじ')}まりへ`,zh:"向著永不結束的開始"},
+  {jp:`ほんとうの${R('終','お')}わりへ`,zh:"向著真正的終結"},
+
+  {jp:`${R('静','しず')}かに${R('寄','よ')}り${R('添','そ')}って`,zh:"靜靜地依偎著",r:1},
+  {jp:`${R('何処','どこ')}にも${R('行','い')}かないで`,zh:"哪裡都不要去",r:1},
+  {jp:`${R('窓辺','まどべ')}で${R('囀','さえず')}って`,zh:"就這樣在窗邊鳴唱",r:1},
+  {jp:`${R('何処','どこ')}にも${R('行','い')}かないで`,zh:"哪裡都不要去",r:1},
+];
+function niwaLyricsHTML(){
+  let html=`<div class="subaru-credit" style="border:none;padding:0;margin:0 0 16px">魔法少女まどか☆マギカ〔叛逆の物語〕　｜　唄：Kalafina　｜　作詞・作曲・編曲：梶浦由記　｜　翻譯：Winterlan</div>`;
+  NIWA_LYRICS.forEach(l=>{
+    html+=`<div class="sb-block${l.r?' sb-refrain':''}">`+
+      `<div class="sb-jp">${l.jp}</div>`+
+      `<div class="sb-zh">${esc(l.zh)}</div></div>`;
+  });
+  return html;
+}
+function niwaRenderLyrics(){
+  document.getElementById('niwaContent').innerHTML=niwaLyricsHTML();
+  document.querySelectorAll('#niwaNav .day-btn').forEach(b=>{
+    const on=b.dataset.kind==='lyric';b.classList.toggle('active',on);b.setAttribute('aria-selected',on?'true':'false');});
+}
+(function(){
+  const nav=document.getElementById('niwaNav');
+  const lb=document.createElement('button');lb.className='day-btn';lb.setAttribute('role','tab');
+  lb.dataset.kind='lyric';
+  lb.innerHTML=`<span class="flower">🎵</span><span class="d-date">歌詞</span>`+
+    `<span class="d-title">君の銀の庭</span><span class="d-count">中日對照</span>`;
+  lb.addEventListener('click',()=>{niwaRenderLyrics();
+    const top=nav.getBoundingClientRect().bottom+window.scrollY-8;window.scrollTo({top,behavior:'smooth'});});
+  nav.appendChild(lb);
+  niwaRenderLyrics();
+})();
+(function(){
+  const inp=document.getElementById('niwaSearch');const clr=document.getElementById('niwaSearchClear');
+  let t=null;
+  function run(q){
+    q=q.trim();clr.classList.toggle('show',q.length>0);
+    if(!q){niwaRenderLyrics();return;}
+    const ql=q.toLowerCase();
+    const hits=NIWA_LYRICS.filter(l=>l.jp.replace(/<[^>]+>/g,'').toLowerCase().includes(ql)||l.zh.toLowerCase().includes(ql));
+    document.querySelectorAll('#niwaNav .day-btn').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');});
+    const el=document.getElementById('niwaContent');
+    if(hits.length===0){el.innerHTML=`<div class="no-result"><span class="big">🌿</span>找不到「${esc(q)}」</div>`;return;}
+    let html=`<div class="results-summary">🔍 找到 ${hits.length} 筆「${esc(q)}」的結果</div>`;
+    hits.forEach(l=>{html+=`<div class="sb-block${l.r?' sb-refrain':''}"><div class="sb-jp">${l.jp}</div><div class="sb-zh">${esc(l.zh)}</div></div>`;});
+    el.innerHTML=html;
+  }
+  inp.addEventListener('input',()=>{clearTimeout(t);t=setTimeout(()=>run(inp.value),120);});
+  clr.addEventListener('click',()=>{inp.value='';clr.classList.remove('show');niwaRenderLyrics();inp.focus();});
+})();
+
 /* ===== 歌曲大頁籤切換 ===== */
 (function(){
   const panes={subaru:document.getElementById('paneSubaru'),
     kuchi:document.getElementById('paneKuchi'),
     maigo:document.getElementById('paneMaigo'),
-    color:document.getElementById('paneColor')};
+    color:document.getElementById('paneColor'),
+    niwa:document.getElementById('paneNiwa')};
   const btns={subaru:document.getElementById('songBtnSubaru'),
     kuchi:document.getElementById('songBtnKuchi'),
     maigo:document.getElementById('songBtnMaigo'),
-    color:document.getElementById('songBtnColor')};
+    color:document.getElementById('songBtnColor'),
+    niwa:document.getElementById('songBtnNiwa')};
   function show(song){
     Object.keys(panes).forEach(k=>{
       const on=k===song;

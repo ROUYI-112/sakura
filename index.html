@@ -48,6 +48,8 @@ h1{font-size:clamp(32px,7vw,48px);margin:.16em 0 .1em;letter-spacing:.05em;color
 .song-nav-5{grid-template-columns:repeat(5,1fr);}
 .song-nav-6{grid-template-columns:repeat(6,1fr);}
 .song-nav-7{grid-template-columns:repeat(7,1fr);}
+.song-nav-8{grid-template-columns:repeat(8,1fr);}
+.song-nav-9{grid-template-columns:repeat(9,1fr);}
 @media(max-width:560px){.song-nav-3{grid-template-columns:1fr 1fr 1fr;gap:8px;}
   .song-nav-3 .song-name{font-size:14px;}.song-nav-3 .song-sub{font-size:10px;}
   .song-nav-4{grid-template-columns:1fr 1fr;gap:8px;}
@@ -57,7 +59,11 @@ h1{font-size:clamp(32px,7vw,48px);margin:.16em 0 .1em;letter-spacing:.05em;color
   .song-nav-5 .song-flower{font-size:19px;}
   .song-nav-6{grid-template-columns:1fr 1fr 1fr;gap:8px;}
   .song-nav-6 .song-name{font-size:10.5px;line-height:1.2;}.song-nav-6 .song-sub{font-size:9px;}
-  .song-nav-6 .song-flower{font-size:18px;}}
+  .song-nav-6 .song-flower{font-size:18px;}
+  .song-nav-7,.song-nav-8,.song-nav-9{grid-template-columns:1fr 1fr 1fr;gap:8px;}
+  .song-nav-7 .song-name,.song-nav-8 .song-name,.song-nav-9 .song-name{font-size:10.5px;line-height:1.2;}
+  .song-nav-7 .song-sub,.song-nav-8 .song-sub,.song-nav-9 .song-sub{font-size:9px;}
+  .song-nav-7 .song-flower,.song-nav-8 .song-flower,.song-nav-9 .song-flower{font-size:18px;}}
 .song-btn{position:relative;cursor:pointer;border:2px solid transparent;background:var(--card);
   border-radius:22px;padding:16px 12px;box-shadow:0 5px 16px var(--shadow);font-family:inherit;
   color:var(--ink);text-align:center;transition:transform .2s cubic-bezier(.34,1.56,.64,1),box-shadow .2s,border-color .2s;}
@@ -244,7 +250,7 @@ footer .f-flower{font-size:18px;display:block;margin-bottom:7px;}
     <div class="sub-zh">張正修 老師　授課筆記</div>
   </header>
 
-  <nav class="song-nav song-nav-7" role="tablist" aria-label="選擇歌曲">
+  <nav class="song-nav song-nav-9" role="tablist" aria-label="選擇歌曲">
     <button class="song-btn" id="songBtnSubaru" role="tab" data-song="subaru">
       <span class="song-flower">✨</span><span class="song-name">昴 -すばる-</span>
       <span class="song-sub">谷村新司</span>
@@ -272,6 +278,14 @@ footer .f-flower{font-size:18px;display:block;margin-bottom:7px;}
     <button class="song-btn" id="songBtnSpeak" role="tab" data-song="speak">
       <span class="song-flower">🎻</span><span class="song-name">Speak Softly Love</span>
       <span class="song-sub">ゴッドファーザー 愛のテーマ</span>
+    </button>
+    <button class="song-btn" id="songBtnKoori" role="tab" data-song="koori">
+      <span class="song-flower">❄️</span><span class="song-name">心凍らせて</span>
+      <span class="song-sub">堀内孝雄</span>
+    </button>
+    <button class="song-btn" id="songBtnMeguri" role="tab" data-song="meguri">
+      <span class="song-flower">💫</span><span class="song-name">そして…めぐり逢い</span>
+      <span class="song-sub">五木ひろし</span>
     </button>
   </nav>
 
@@ -407,7 +421,31 @@ footer .f-flower{font-size:18px;display:block;margin-bottom:7px;}
     <main class="lesson" id="speakContent" tabindex="-1"></main>
   </div>
 
-  <footer><span class="f-flower">🌸 ✨ 🍃 🌈 🌿 🎬 🎻</span>日文歌講義　|　昴 ・ くちなしの花 ・ 想い出迷子 ・ カラフル ・ 君の銀の庭 ・ 哀愁のカサブランカ ・ Speak Softly Love</footer>
+  <!-- ===== 心凍らせて（堀内孝雄） ===== -->
+  <div class="song-pane" id="paneKoori" hidden>
+    <nav class="day-nav" id="kooriNav" aria-label="心凍らせて 內容"></nav>
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input class="search-input" id="kooriSearch" type="search" autocomplete="off"
+        placeholder="搜尋日文、平假名或中文…">
+      <button class="search-clear" id="kooriSearchClear" aria-label="清除">✕</button>
+    </div>
+    <main class="lesson" id="kooriContent" tabindex="-1"></main>
+  </div>
+
+  <!-- ===== そして…めぐり逢い（五木ひろし） ===== -->
+  <div class="song-pane" id="paneMeguri" hidden>
+    <nav class="day-nav" id="meguriNav" aria-label="そして…めぐり逢い 內容"></nav>
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input class="search-input" id="meguriSearch" type="search" autocomplete="off"
+        placeholder="搜尋日文、平假名或中文…">
+      <button class="search-clear" id="meguriSearchClear" aria-label="清除">✕</button>
+    </div>
+    <main class="lesson" id="meguriContent" tabindex="-1"></main>
+  </div>
+
+  <footer><span class="f-flower">🌸 ✨ 🍃 🌈 🌿 🎬 🎻 ❄️ 💫</span>日文歌講義　|　昴 ・ くちなしの花 ・ 想い出迷子 ・ カラフル ・ 君の銀の庭 ・ 哀愁のカサブランカ ・ Speak Softly Love ・ 心凍らせて ・ そして…めぐり逢い</footer>
 </div>
 <button class="scroll-top" id="scrollTop" aria-label="回到頂部">↑</button>
 
@@ -1271,6 +1309,197 @@ function speakRenderLyrics(){
   clr.addEventListener('click',()=>{inp.value='';clr.classList.remove('show');speakRenderLyrics();inp.focus();});
 })();
 
+/* ===== 心凍らせて（堀内孝雄） ===== */
+const KOORI_LYRICS=[
+  {jp:`あなたの${R('愛','あい')}だけは`,zh:"我原以為，只有你的愛"},
+  {jp:`${R('今度','こんど')}の${R('愛','あい')}だけは`,zh:"只有這一次的愛"},
+  {jp:`${R('他','ほか')}の${R('男','ひと')}とは${R('違','ちが')}うと`,zh:"和其他男人不一樣"},
+  {jp:`${R('思','おも')}っていたけど`,zh:"我曾這樣以為……"},
+  {jp:`${R('抱','だ')}かれるその${R('度','たび')}に`,zh:"每次被你擁抱時"},
+  {jp:`${R('背中','せなか')}が${R('悲','かな')}しくて`,zh:"背影總是這樣悲傷"},
+  {jp:`いつか${R('切','き')}り${R('出','だ')}す`,zh:"害怕有一天終究要說出"},
+  {jp:`${R('別','わか')}れの${R('言葉','ことば')}が${R('恐','こわ')}くて`,zh:"那句分手的話"},
+  {jp:`${R('綺麗','きれい')}な${R('愛','あい')}じゃなく`,zh:"那不是美麗純粹的愛"},
+  {jp:`${R('子供','こども')}の${R('愛','あい')}じゃなく`,zh:"也不是孩子氣的愛"},
+  {jp:`${R('生命','いのち')}${R('捨','す')}ててもいいほど`,zh:"曾思慕你到即使捨棄生命也無妨"},
+  {jp:`${R('慕','おも')}っていたけど`,zh:"那樣地思慕著你……"},
+  {jp:`あなたのその${R('胸','むね')}は`,zh:"你的心"},
+  {jp:`いつでも${R('遠','とお')}すぎて`,zh:"卻總是太過遙遠"},
+  {jp:`きっと${R('理想','りそう')}の${R('誰','だれ')}かを`,zh:"你心裡一定住著理想中的某個人"},
+  {jp:`${R('宿','やど')}して${R('生','い')}きてる`,zh:"懷著那個人活著"},
+  {jp:`${R('心','こころ')}${R('流','なが')}されて`,zh:"心隨波逐流",r:1},
+  {jp:`${R('愛','あい')}に${R('流','なが')}されて`,zh:"被愛牽引漂流",r:1},
+  {jp:`${R('今','いま')}も${R('想','おも')}い${R('出','で')}つかまりながら`,zh:"如今仍被回憶緊緊抓住",r:1},
+  {jp:`${R('心','こころ')}${R('凍','こお')}らせて`,zh:"讓心凍結",r:1},
+  {jp:`${R('愛','あい')}を${R('凍','こお')}らせて`,zh:"讓愛凍結",r:1},
+  {jp:`${R('今','いま')}がどこへも${R('行','い')}かないように`,zh:"只為不讓這份「現在」走向任何地方",r:1},
+  {jp:`${R('心','こころ')}${R('凍','こお')}らせて`,zh:"讓心凍結",r:1},
+  {jp:`${R('夢','ゆめ')}を${R('凍','こお')}らせて`,zh:"讓夢凍結",r:1},
+  {jp:`${R('涙','なみだ')}の${R('終','お')}わりにならないように`,zh:"只為不讓它成為眼淚的終點",r:1},
+];
+const KOORI_DAYS = [{"date": "9/22", "title": "〈心凍らせて〉第一堂・だけは・とは違う・被動抱かれる・切り出す", "subtitle": "だけは・他の＋N・男（ひと）・Aとは違う・違う／間違う・と思っていたけど・抱く／抱かれる・その度に・切り出す・て形連接情緒", "sections": [{"t": "lead", "text": "《心凍らせて》（心を凍らせて）堀内孝雄演唱，是一首描寫無法挽回之愛的歌。9/22–10/13 這幾堂課都在講這首歌；10/13 後半才換到另一首〈そして…めぐり逢い〉。第一堂先逐句看歌詞，重點：だけは、Aとは違う、被動「抱かれる」、切り出す，以及用て形把情緒接到下一句。"}, {"t": "h", "text": "一、歌名〈心凍らせて〉"}, {"t": "ex", "jp": "心を凍らせて", "kana": "こころをこおらせて", "zh": "讓心凍結起來。"}, {"t": "note", "text": "歌名省略助詞「を」。凍る（こおる，自動詞，結冰）→ 凍らせる（使役，使…凍結）。心凍らせて＝心を凍らせて＝「讓心凍結」。"}, {"t": "h", "text": "二、你的愛和別人不一樣"}, {"t": "ex", "jp": "あなたの愛だけは　今度の愛だけは", "kana": "あなたのあいだけは　こんどのあいだけは", "zh": "只有你的愛、只有這一次的愛……"}, {"t": "ex", "jp": "他の男とは違うと思っていたけど", "kana": "ほかのひととはちがうとおもっていたけど", "zh": "我原以為和其他男人不一樣，可是……"}, {"t": "note", "text": "だけは＝「只有……是」，把『只有這一個例外』特別提出來。あなたの愛だけは＝只有你的愛（才……）。"}, {"t": "note", "text": "他の＋名詞＝其他的……（他の男＝其他男人）。歌詞把「男」讀作 ひと，是歌詞中的特殊讀法。"}, {"t": "h", "text": "三、Aとは違う（和 A 不一樣）"}, {"t": "ex", "jp": "色が違う。", "kana": "いろがちがう。", "zh": "顏色不同。"}, {"t": "ex", "jp": "意見が違う。", "kana": "いけんがちがう。", "zh": "意見不同。"}, {"t": "ex", "jp": "私の意見は彼と違います。", "kana": "わたしのいけんはかれとちがいます。", "zh": "我的意見和他不同。"}, {"t": "note", "text": "と思っていたけど＝原本一直以為……，可是（後面出現轉折）。"}, {"t": "h", "text": "四、違う vs 間違う（別搞混）"}, {"t": "table", "head": ["日文", "平假名", "中文", "說明"], "rows": [["違う", "ちがう", "不同、不一樣", "兩者相異"], ["間違う", "まちがう", "弄錯、搞錯", "做錯、出錯"], ["間違える", "まちがえる", "弄錯", "他動詞，常用"]]}, {"t": "ex", "jp": "名前を間違えました。", "kana": "なまえをまちがえました。", "zh": "弄錯了名字。"}, {"t": "h", "text": "五、每次被擁抱，背影都悲傷"}, {"t": "ex", "jp": "抱かれるその度に　背中が悲しくて", "kana": "だかれるそのたびに　せなかがかなしくて", "zh": "每次被你擁抱，背影都讓人悲傷……"}, {"t": "ex", "jp": "いつか切り出す　別れの言葉が恐くて", "kana": "いつかきりだす　わかれのことばがこわくて", "zh": "害怕有一天終究要說出的那句分手話。"}, {"t": "h", "text": "六、抱く／抱かれる（被動）"}, {"t": "ex", "jp": "子供を抱く。", "kana": "こどもをだく。", "zh": "抱孩子。"}, {"t": "ex", "jp": "子供が母に抱かれる。", "kana": "こどもがははにだかれる。", "zh": "孩子被母親抱著。"}, {"t": "note", "text": "被動變換：A が B を抱く → B が A に抱かれる。歌詞「抱かれる」＝（我）被（你）擁抱。"}, {"t": "h", "text": "七、その度に（每當……就……）"}, {"t": "ex", "jp": "先生が来る度に、皆が逃げる。", "kana": "せんせいがくるたびに、みんながにげる。", "zh": "老師每次一來，大家就逃跑。"}, {"t": "note", "text": "（動詞辭書形／名詞の）＋度に＝每當……就……。"}, {"t": "h", "text": "八、切り出す（開口提難講的話）"}, {"t": "ex", "jp": "別れを切り出す。", "kana": "わかれをきりだす。", "zh": "開口提分手。"}, {"t": "ex", "jp": "相談を切り出す。", "kana": "そうだんをきりだす。", "zh": "開口談事情、找人商量。"}, {"t": "h", "text": "九、て形連接情緒：悲しくて・恐くて"}, {"t": "note", "text": "「背中が悲しくて」「別れの言葉が恐くて」都是用形容詞て形，把心情接到下一句，帶出『因為……所以……』『……而……』的語氣，而不是單純並列。"}]}, {"date": "9/29", "title": "じゃなく・〜てもいいほど・慕う・宿す／宿る・いつでも・疑問詞＋でも", "subtitle": "じゃなく（＝ではなく）・〜てもいいほど・死ぬほど・生命（いのち）特殊讀法・慕う（おもう/したう）・遠すぎる・い形＋すぎる・誰か・宿す／宿る・いつでも・疑問詞＋でも＋肯定", "sections": [{"t": "lead", "text": "第二堂續看歌詞 3、4 段。重點：じゃなく、〜てもいいほど、宿す／宿る、以及『疑問詞＋でも＋肯定』（いつでも／誰でも／何でも）。"}, {"t": "h", "text": "一、不是純粹的愛，而是深深思慕"}, {"t": "ex", "jp": "綺麗な愛じゃなく　子供の愛じゃなく", "kana": "きれいなあいじゃなく　こどものあいじゃなく", "zh": "那不是美麗純粹的愛，也不是孩子氣的愛……"}, {"t": "ex", "jp": "生命捨ててもいいほど　慕っていたけど", "kana": "いのちすててもいいほど　おもっていたけど", "zh": "曾思慕你到即使捨棄生命也無妨的程度……"}, {"t": "h", "text": "二、じゃなく＝ではなく"}, {"t": "ex", "jp": "これは夢じゃなく、現実です。", "kana": "これはゆめじゃなく、げんじつです。", "zh": "這不是夢，是現實。"}, {"t": "note", "text": "じゃなく是 ではなく 的口語縮短，＝「不是……（而是）」。"}, {"t": "h", "text": "三、〜てもいいほど（到了即使……也行的程度）"}, {"t": "ex", "jp": "命を捨ててもいいほど愛していた。", "kana": "いのちをすててもいいほどあいしていた。", "zh": "愛到連生命都可以捨棄的程度。"}, {"t": "ex", "jp": "死ぬほど疲れた。", "kana": "しぬほどつかれた。", "zh": "累得要命（累到快死）。"}, {"t": "note", "text": "〜ほど 表示程度。〜てもいい＝即使……也可以；合起來＝到了即使……也無妨的地步。"}, {"t": "h", "text": "四、特殊讀法：生命（いのち）・慕う"}, {"t": "note", "text": "歌詞把「生命」標作 いのち（特殊讀法），一般也常寫「命（いのち）」。"}, {"t": "note", "text": "歌詞把「慕っていた」標作 おもっていた。一般動詞「慕う」讀 したう，意思是仰慕、思念、依戀；此處依課堂歌詞標註唸 おもう。"}, {"t": "h", "text": "五、你的心太遙遠，住著理想中的某個人"}, {"t": "ex", "jp": "あなたのその胸は　いつでも遠すぎて", "kana": "あなたのそのむねは　いつでもとおすぎて", "zh": "你的心總是太過遙遠……"}, {"t": "ex", "jp": "きっと理想の誰かを　宿して生きてる", "kana": "きっとりそうのだれかを　やどしていきてる", "zh": "你心裡一定住著理想中的某個人，懷著那人活著。"}, {"t": "h", "text": "六、い形容詞＋すぎる（太……）"}, {"t": "table", "head": ["原形", "變化", "中文"], "rows": [["遠い", "遠すぎる", "太遙遠"], ["高い", "高すぎる", "太高"], ["若い", "若すぎる", "太年輕"]]}, {"t": "note", "text": "い形容詞去掉「い」＋すぎる＝太……、過於……。"}, {"t": "h", "text": "七、宿す／宿る"}, {"t": "ex", "jp": "心に希望を宿す。", "kana": "こころにきぼうをやどす。", "zh": "心中懷抱希望。（他動詞，使某物存在於內心）"}, {"t": "ex", "jp": "胸に夢を宿す。", "kana": "むねにゆめをやどす。", "zh": "胸中懷抱夢想。"}, {"t": "ex", "jp": "心に希望が宿る。", "kana": "こころにきぼうがやどる。", "zh": "希望寄宿在心中。（自動詞）"}, {"t": "note", "text": "宿す（やどす，他動詞）＝使…存在於內心/身體；宿る（やどる，自動詞）＝寄宿、存在於某處。"}, {"t": "h", "text": "八、いつでも・疑問詞＋でも＋肯定（全面肯定）"}, {"t": "ex", "jp": "いつでもいい。", "kana": "いつでもいい。", "zh": "什麼時候都可以。"}, {"t": "ex", "jp": "誰でもいい。", "kana": "だれでもいい。", "zh": "誰都可以。"}, {"t": "ex", "jp": "何でもいい。", "kana": "なんでもいい。", "zh": "什麼都可以。"}, {"t": "ex", "jp": "どこでもいい。", "kana": "どこでもいい。", "zh": "哪裡都可以。"}, {"t": "warn", "text": "對照 10/6 的『疑問詞＋も＋否定＝全面否定』（どこへも行かない／誰もいない）。でも＋肯定＝全面肯定；も＋否定＝全面否定，兩者要分清楚。"}]}, {"date": "10/6", "title": "流す／流される・つかまる・ます形＋ながら・凍る／凍らせる・使役形", "subtitle": "心流されて・愛に流されて・流す／流される・想い出につかまりながら・捕まえる／捕まる・ます形＋ながら・凍る／凍らせる・ない形＋ように・どこへも＋否定・使役形（食べさせる・来させる）", "sections": [{"t": "lead", "text": "第三堂看副歌『心流されて…』『心凍らせて…』。重點：被動「流される」、自他動詞「捕まえる／捕まる」、ます形＋ながら、使役形，以及『ない形＋ように＝為了不……』。"}, {"t": "h", "text": "一、心被愛與回憶牽引"}, {"t": "ex", "jp": "心流されて　愛に流されて", "kana": "こころながされて　あいにながされて", "zh": "心隨波逐流，被愛牽引……"}, {"t": "ex", "jp": "今も想い出つかまりながら", "kana": "いまもおもいでつかまりながら", "zh": "如今仍被回憶緊緊抓住。"}, {"t": "note", "text": "歌詞省略助詞，整理成完整句為『心が愛に流されて』『想い出に捕まりながら』。"}, {"t": "h", "text": "二、流す／流される"}, {"t": "ex", "jp": "溝に水を流す。", "kana": "みぞにみずをながす。", "zh": "把水排進溝裡。（他動詞）"}, {"t": "ex", "jp": "水に流される。", "kana": "みずにながされる。", "zh": "被水沖走。（被動）"}, {"t": "ex", "jp": "愛に流される。", "kana": "あいにながされる。", "zh": "被愛情牽引、隨愛漂流。"}, {"t": "note", "text": "流す（ながす）＝使某物流動／沖走；流される＝被沖走、被帶著走（被動）。"}, {"t": "h", "text": "三、捕まえる／捕まる（自他動詞）"}, {"t": "ex", "jp": "警察が泥棒を捕まえた。", "kana": "けいさつがどろぼうをつかまえた。", "zh": "警察抓住了小偷。（他動詞，抓住別人）"}, {"t": "ex", "jp": "泥棒が警察に捕まった。", "kana": "どろぼうがけいさつにつかまった。", "zh": "小偷被警察抓住了。（自動詞，被抓住）"}, {"t": "warn", "text": "本堂最重要的不混淆之一：捕まえる＝抓住別人；捕まる＝（自己）被抓住／抓著。"}, {"t": "h", "text": "四、動詞ます形＋ながら（一邊……一邊……）"}, {"t": "ex", "jp": "歩きながら食べる。", "kana": "あるきながらたべる。", "zh": "邊走邊吃。"}, {"t": "ex", "jp": "想い出につかまりながら生きる。", "kana": "おもいでにつかまりながらいきる。", "zh": "一邊被回憶抓著一邊活下去。"}, {"t": "note", "text": "（動詞ます形去ます）＋ながら＝一邊……一邊……。歌詞的ながら描寫『仍被回憶抓住』的狀態。"}, {"t": "h", "text": "五、凍結現在與夢，不讓它們走向結束"}, {"t": "ex", "jp": "心凍らせて　愛を凍らせて", "kana": "こころこおらせて　あいをこおらせて", "zh": "讓心凍結、讓愛凍結……"}, {"t": "ex", "jp": "今がどこへも行かないように", "kana": "いまがどこへもいかないように", "zh": "為了不讓『現在』走向任何地方。"}, {"t": "ex", "jp": "心凍らせて　夢を凍らせて", "kana": "こころこおらせて　ゆめをこおらせて", "zh": "讓心凍結、讓夢凍結……"}, {"t": "ex", "jp": "涙の終わりにならないように", "kana": "なみだのおわりにならないように", "zh": "為了不讓它成為眼淚的終點。"}, {"t": "h", "text": "六、凍る／凍らせる"}, {"t": "ex", "jp": "水が凍る。", "kana": "みずがこおる。", "zh": "水結冰。（自動詞）"}, {"t": "ex", "jp": "心を凍らせる。", "kana": "こころをこおらせる。", "zh": "讓心凍結。（使役／他動詞化）"}, {"t": "note", "text": "凍る（こおる，自動詞）→ 凍らせる（使…凍結）。歌詞『心凍らせて』＝心を凍らせて。"}, {"t": "h", "text": "七、どこへも＋否定（哪裡也不……）"}, {"t": "ex", "jp": "どこへも行きません。", "kana": "どこへもいきません。", "zh": "哪裡也不去。"}, {"t": "ex", "jp": "誰もいません。", "kana": "だれもいません。", "zh": "一個人也沒有。"}, {"t": "h", "text": "八、動詞ない形＋ように（為了不……、希望不要……）"}, {"t": "ex", "jp": "風邪をひかないように、早く寝てください。", "kana": "かぜをひかないように、はやくねてください。", "zh": "為了不要感冒，請早點睡。"}, {"t": "ex", "jp": "忘れないように、メモしてください。", "kana": "わすれないように、メモしてください。", "zh": "為了不要忘記，請記下來。"}, {"t": "note", "text": "『今がどこへも行かないように』＝希望『現在』不要離開、不要改變。這裡的ように是『希望某狀態成立』，不是『像……一樣』。"}, {"t": "h", "text": "九、使役形：使／讓某人做某事"}, {"t": "table", "head": ["原形", "使役形", "中文"], "rows": [["凍る", "凍らせる", "使……凍結"], ["食べる", "食べさせる", "讓……吃"], ["来る（くる）", "来させる（こさせる）", "讓……來"]]}, {"t": "ex", "jp": "母は子供にご飯を食べさせる。", "kana": "ははがこどもにごはんをたべさせる。", "zh": "媽媽讓孩子吃飯。"}, {"t": "ex", "jp": "母は子供を来させる。", "kana": "ははがこどもをこさせる。", "zh": "媽媽讓孩子來。"}, {"t": "ex", "jp": "心を凍らせてください。", "kana": "こころをこおらせてください。", "zh": "請讓心凍結。"}]}, {"date": "10/13", "title": "心流されて複習＋後半另一首〈そして…めぐり逢い〉", "subtitle": "前半：複習〈心凍らせて〉「心流されて」段落｜後半（新歌）：語り明かす・尽きない・過ぎてみれば・今では vs 今も・ふたり暮したあの部屋・めぐり逢い・帰したくない vs 帰りたくない・Aより・〜みたいだ・〜ては・情にもろい", "sections": [{"t": "lead", "text": "這堂前半複習〈心凍らせて〉的「心流されて」段落（見 10/6）。後半從『そしてめぐり逢い』開始已經是另一首歌〈そして…めぐり逢い〉（五木ひろし），這首也另外開了專屬頁籤。以下整理後半新歌的重點。"}, {"t": "h", "text": "一、前半複習：心流されて"}, {"t": "ex", "jp": "心流されて　愛に流されて　今も想い出つかまりながら", "kana": "こころながされて　あいにながされて　いまもおもいでつかまりながら", "zh": "心隨波逐流、被愛牽引，如今仍被回憶抓住。"}, {"t": "note", "text": "流される（被動）、つかまりながら（ます形＋ながら）、今も＝直到現在仍然……。詳見 10/6。"}, {"t": "h", "text": "二、後半另一首：〈そして…めぐり逢い〉"}, {"t": "note", "text": "標題常寫作〈そして…めぐり逢い〉。以下為課堂逐句解析。"}, {"t": "h", "text": "三、聊一整夜也聊不完"}, {"t": "ex", "jp": "語りあかせば　尽きないけれど", "kana": "かたりあかせば　つきないけれど", "zh": "如果徹夜聊起往事，話題永遠也聊不完……"}, {"t": "ex", "jp": "過ぎてみれば　いまでは笑い話だね", "kana": "すぎてみれば　いまではわらいばなしだね", "zh": "可是回頭看，如今都成了笑談呢。"}, {"t": "h", "text": "四、語り明かす・〜ば"}, {"t": "ex", "jp": "友人と昔話を語り明かした。", "kana": "ゆうじんとむかしばなしをかたりあかした。", "zh": "和朋友聊了一整夜往事。"}, {"t": "ex", "jp": "彼らは一晩中語り明かした。", "kana": "かれらはひとばんじゅうかたりあかした。", "zh": "他們聊了一整晚。"}, {"t": "note", "text": "語り明かす（かたりあかす）＝語る＋明かす＝聊到天亮、談了一整夜。語りあかせば＝一旦聊起來／如果聊到天亮（〜ば表假設條件）。"}, {"t": "h", "text": "五、尽きる／尽きない"}, {"t": "ex", "jp": "資源が尽きる。", "kana": "しげんがつきる。", "zh": "資源用盡。"}, {"t": "ex", "jp": "話題が尽きる。", "kana": "わだいがつきる。", "zh": "話題聊完。"}, {"t": "note", "text": "尽きる（つきる）＝用盡、耗盡；尽きない＝不會用盡、聊不完。"}, {"t": "h", "text": "六、過ぎてみれば・今では vs 今も"}, {"t": "note", "text": "過ぎてみれば＝時間過去之後回頭看（過ぎる＋てみる）。笑い話＝如今可以笑著談的往事。"}, {"t": "warn", "text": "今では＝到了現在、如今已經……（強調狀態已改變）；對照〈心凍らせて〉的 今も＝直到現在仍然……（強調不變）。兩者不同。"}, {"t": "h", "text": "七、一起住過的房間，鑰匙仍留在心裡"}, {"t": "ex", "jp": "ふたり暮したあの部屋の　鍵は心に今もある", "kana": "ふたりくらしたあのへやの　かぎはこころにいまもある", "zh": "兩人一起生活過的那間房間的鑰匙，如今仍留在心裡。"}, {"t": "note", "text": "暮らす（くらす）＝生活、居住。『ふたり暮らしたあの部屋』＝動詞過去形＋名詞，修飾後面的名詞。鍵は心にある＝回憶仍留在心中的比喻。"}, {"t": "h", "text": "八、そして めぐり逢い"}, {"t": "ex", "jp": "そして めぐり逢い　あゝ 今夜は帰したくない", "kana": "そして めぐりあい　あゝ こんやはかえしたくない", "zh": "然後再次相逢——啊，今夜不想讓你回去。"}, {"t": "note", "text": "巡り逢う／めぐり逢う＝經過一番流轉後相遇、重逢。めぐり逢い＝相逢、重逢（動詞名詞化）。"}, {"t": "h", "text": "九、帰したくない vs 帰りたくない（主體不同）"}, {"t": "table", "head": ["日文", "平假名", "中文", "主體"], "rows": [["帰したくない", "かえしたくない", "不想讓你回去", "對方回去（帰す，他動詞）"], ["帰りたくない", "かえりたくない", "我不想回去", "自己回去（帰る，自動詞）"]]}, {"t": "warn", "text": "本堂最重要的不混淆之二：帰したくない＝不想讓你回去；帰りたくない＝我（自己）不想回去。"}, {"t": "h", "text": "十、Aより・〜みたいだ"}, {"t": "ex", "jp": "あの頃より綺麗になったみたいだね", "kana": "あのころよりきれいになったみたいだね", "zh": "好像變得比那時候更漂亮了呢。"}, {"t": "note", "text": "Aより＝比 A……；〜みたいだ＝好像……、看起來……。綺麗になったみたい＝好像變漂亮了。"}, {"t": "h", "text": "十一、その他歌詞句型"}, {"t": "ex", "jp": "グラスをゆらす白い指　昔とおなじそのしぐさ", "kana": "グラスをゆらすしろいゆび　むかしとおなじそのしぐさ", "zh": "搖晃酒杯的白皙手指，和從前一樣的那個舉止。"}, {"t": "ex", "jp": "いまでも憶えているよ", "kana": "いまでもおぼえているよ", "zh": "直到現在我仍記得。"}, {"t": "note", "text": "グラスをゆらす＝搖動酒杯；しぐさ＝動作、舉止；昔とおなじ＝和以前一樣；いまでも＝直到現在仍然……；憶えている＝記得（憶える也可寫覚える）。"}, {"t": "h", "text": "十二、情にもろい・〜ては・困らせる"}, {"t": "ex", "jp": "情にもろいところも昔のままだね", "kana": "じょうにもろいところもむかしのままだね", "zh": "容易心軟這一點，也和從前一樣呢。"}, {"t": "ex", "jp": "無理を言っては こまらせた", "kana": "むりをいっては こまらせた", "zh": "以前常任性地提出要求，讓你為難。"}, {"t": "note", "text": "情にもろい＝容易被情感打動、心軟。〜ところも昔のまま＝……的地方也和以前一樣。無理を言う＝提出不合理的要求。困らせる（こまらせる）＝使人為難。〜ては＝反覆做某事而造成後面的結果。"}]}];
+function kooriLyricsHTML(){
+  let html=`<div class="subaru-credit" style="border:none;padding:0;margin:0 0 16px">心凍らせて　｜　唄：堀内孝雄</div>`;
+  KOORI_LYRICS.forEach(l=>{
+    html+=`<div class="sb-block${l.r?' sb-refrain':''}"><div class="sb-jp">${l.jp}</div><div class="sb-zh">${esc(l.zh)}</div></div>`;
+  });
+  return html;
+}
+let kooriView={kind:'lyric',idx:0};
+function kooriRenderLyrics(){kooriView={kind:'lyric',idx:0};document.getElementById('kooriContent').innerHTML=kooriLyricsHTML();kooriMarkActive();}
+function kooriRenderDay(idx){
+  kooriView={kind:'day',idx};const d=KOORI_DAYS[idx];let secNo=0;
+  let html=`<div class="lesson-head"><span class="lesson-date">${esc(d.date)}</span><span class="lesson-title">${esc(d.title)}</span></div>`+
+    `<div class="lesson-sub">${esc(d.subtitle)}</div>`+
+    `<div class="lesson-meta">❄️ 共 ${d.sections.filter(s=>s.t==='h').length} 個主題 ・ ${countItemsG(d)} 個例句／詞條</div>`;
+  d.sections.forEach(s=>{if(s.t==='h'){secNo++;html+=renderSection(s,CN_NUM[secNo]||secNo);}else html+=renderSection(s);});
+  document.getElementById('kooriContent').innerHTML=html;kooriMarkActive();
+}
+function kooriMarkActive(){
+  document.querySelectorAll('#kooriNav .day-btn').forEach(b=>{
+    let on=false;if(b.dataset.kind==='lyric')on=kooriView.kind==='lyric';
+    else on=kooriView.kind==='day'&&Number(b.dataset.idx)===kooriView.idx;
+    b.classList.toggle('active',on);b.setAttribute('aria-selected',on?'true':'false');});
+}
+function kooriScroll(){const top=document.getElementById('kooriNav').getBoundingClientRect().bottom+window.scrollY-8;window.scrollTo({top,behavior:'smooth'});}
+(function(){
+  const nav=document.getElementById('kooriNav');
+  const lb=document.createElement('button');lb.className='day-btn';lb.setAttribute('role','tab');lb.dataset.kind='lyric';
+  lb.innerHTML=`<span class="flower">🎵</span><span class="d-date">歌詞</span><span class="d-title">心凍らせて</span><span class="d-count">中日對照</span>`;
+  lb.addEventListener('click',()=>{kooriRenderLyrics();kooriScroll();});nav.appendChild(lb);
+  KOORI_DAYS.forEach((d,i)=>{
+    const b=document.createElement('button');b.className='day-btn';b.setAttribute('role','tab');b.dataset.kind='day';b.dataset.idx=i;
+    b.innerHTML=`<span class="flower">❄️</span><span class="d-date">${esc(d.date)}</span><span class="d-title">${esc(d.title)}</span><span class="d-count">${countItemsG(d)} 句</span>`;
+    b.addEventListener('click',()=>{kooriRenderDay(i);kooriScroll();});nav.appendChild(b);
+  });
+  kooriRenderLyrics();
+})();
+const KOORI_INDEX=[];
+KOORI_LYRICS.forEach(l=>KOORI_INDEX.push({di:-1,date:'🎵 歌詞',jp:l.jp.replace(/<[^>]+>/g,''),kana:'',zh:l.zh,ruby:l.jp}));
+KOORI_DAYS.forEach((d,di)=>{d.sections.forEach(s=>{
+  if(s.t==='ex'||s.t==='line')KOORI_INDEX.push({di,date:d.date,jp:s.jp||'',kana:s.kana||'',zh:s.zh||''});
+  else if(s.t==='table')s.rows.forEach(r=>KOORI_INDEX.push({di,date:d.date,jp:r.join(' / '),kana:'',zh:''}));
+  else if(['note','poem','sub','warn','lead'].includes(s.t))KOORI_INDEX.push({di,date:d.date,jp:s.text||'',kana:'',zh:''});
+});});
+(function(){
+  const inp=document.getElementById('kooriSearch');const clr=document.getElementById('kooriSearchClear');let t=null;
+  function run(q){
+    q=q.trim();clr.classList.toggle('show',q.length>0);
+    if(!q){if(kooriView.kind==='lyric')kooriRenderLyrics();else kooriRenderDay(kooriView.idx);return;}
+    const ql=q.toLowerCase();
+    const hits=KOORI_INDEX.filter(r=>r.jp.toLowerCase().includes(ql)||(r.kana||'').toLowerCase().includes(ql)||r.zh.toLowerCase().includes(ql));
+    document.querySelectorAll('#kooriNav .day-btn').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');});
+    const el=document.getElementById('kooriContent');
+    if(hits.length===0){el.innerHTML=`<div class="no-result"><span class="big">❄️</span>找不到「${esc(q)}」</div>`;return;}
+    const groups={};hits.forEach(hh=>{(groups[hh.date]=groups[hh.date]||[]).push(hh);});
+    let html=`<div class="results-summary">🔍 找到 ${hits.length} 筆「${esc(q)}」的結果</div>`;
+    Object.keys(groups).forEach(date=>{
+      const arr=groups[date];const di=arr[0].di;
+      html+=`<div class="result-group"><button class="result-day" data-di="${di}">❄️ ${esc(date)}（${arr.length}）</button>`;
+      arr.forEach(r=>{
+        if(r.ruby){html+=`<div class="sb-block"><div class="sb-jp">${r.ruby}</div><div class="sb-zh">${hl(r.zh,q)}</div></div>`;}
+        else{html+=`<div class="ex"><div class="jp"><span class="mk">❄️</span>${hl(r.jp,q)}</div>`+(r.kana?`<div class="kana">${hl(r.kana,q)}</div>`:``)+(r.zh?`<div class="zh">${hl(r.zh,q)}</div>`:``)+`</div>`;}
+      });
+      html+=`</div>`;
+    });
+    el.innerHTML=html;
+    el.querySelectorAll('.result-day').forEach(btn=>btn.addEventListener('click',()=>{inp.value='';clr.classList.remove('show');const di=Number(btn.dataset.di);if(di<0)kooriRenderLyrics();else kooriRenderDay(di);kooriScroll();}));
+  }
+  inp.addEventListener('input',()=>{clearTimeout(t);t=setTimeout(()=>run(inp.value),120);});
+  clr.addEventListener('click',()=>{inp.value='';clr.classList.remove('show');if(kooriView.kind==='lyric')kooriRenderLyrics();else kooriRenderDay(kooriView.idx);inp.focus();});
+})();
+
+/* ===== そして…めぐり逢い（五木ひろし） ===== */
+const MEGURI_LYRICS=[
+  {jp:`${R('語','かた')}りあかせば ${R('尽','つ')}きないけれど`,zh:"如果徹夜聊起往事，話題永遠也聊不完"},
+  {jp:`${R('過','す')}ぎてみれば いまでは${R('笑','わら')}い${R('話','ばなし')}だね`,zh:"可是回頭看，如今都成了笑談呢"},
+  {jp:`ふたり${R('暮','くら')}した あの${R('部屋','へや')}の`,zh:"兩人一起生活過的那間房間的"},
+  {jp:`${R('鍵','かぎ')}は${R('心','こころ')}に いまもある`,zh:"鑰匙，如今仍留在心裡"},
+  {jp:`あゝ ${R('今夜','こんや')}は ${R('帰','かえ')}したくない`,zh:"啊——今夜不想讓你回去",r:1},
+  {jp:`ひと${R('春','はる')}ふた${R('春','はる')} そしてめぐり${R('逢','あ')}い`,zh:"一個春天、兩個春天，然後再次相逢",r:1},
+  {jp:`「そうかよかった」 ${R('幸','しあわ')}せなのか`,zh:"「這樣啊，太好了」——你是幸福的嗎"},
+  {jp:`あの${R('頃','ころ')}より${R('綺麗','きれい')}に なったみたいだね`,zh:"好像變得比那時候更漂亮了呢"},
+  {jp:`${R('グラス','ぐらす')}をゆらす ${R('白','しろ')}い${R('指','ゆび')} ${R('昔','むかし')}とおなじ そのしぐさ`,zh:"搖晃酒杯的白皙手指，和從前一樣的那個舉止"},
+  {jp:`あゝ いまでも ${R('憶','おぼ')}えているよ`,zh:"啊——直到現在我仍記得",r:1},
+  {jp:`ひと${R('夢','ゆめ')}ふた${R('夢','ゆめ')} そしてめぐり${R('逢','あ')}い`,zh:"一個夢、兩個夢，然後再次相逢",r:1},
+  {jp:`${R('涙','なみだ')}うかべる ${R('笑顔','えがお')}がつらい`,zh:"你強忍淚水的笑容讓人心疼"},
+  {jp:`${R('情','じょう')}にもろいところも ${R('昔','むかし')}のままだね`,zh:"容易心軟這一點，也和從前一樣呢"},
+  {jp:`${R('無理','むり')}を${R('言','い')}っては こまらせた ${R('子供','こども')}すぎてた あの${R('頃','ころ')}は`,zh:"老是任性地提出要求讓你為難，那時的我太孩子氣了"},
+  {jp:`あゝ いまでも ${R('愛','あい')}しているよ`,zh:"啊——直到現在我仍愛著你",r:1},
+  {jp:`ひと${R('冬','ふゆ')}ふた${R('冬','ふゆ')} そしてめぐり${R('逢','あ')}い`,zh:"一個冬天、兩個冬天，然後再次相逢",r:1},
+];
+const MEGURI_DAYS = [{"date": "10/13", "title": "〈そして…めぐり逢い〉語り明かす・尽きない・めぐり逢い・帰したくない", "subtitle": "語り明かす・〜ば・尽きる／尽きない・過ぎてみれば・今では vs 今も・ふたり暮したあの部屋・めぐり逢い・帰したくない vs 帰りたくない・Aより・〜みたいだ・〜ては・情にもろい・困らせる", "sections": [{"t": "lead", "text": "《そして…めぐり逢い》（五木ひろし）。這首歌在 10/13 後半上到，講久別重逢的情景。重點：語り明かす、尽きない、めぐり逢い，以及『帰したくない（不想讓你回去）vs 帰りたくない（我不想回去）』。"}, {"t": "h", "text": "一、後半另一首：〈そして…めぐり逢い〉"}, {"t": "note", "text": "標題常寫作〈そして…めぐり逢い〉。以下為課堂逐句解析。"}, {"t": "h", "text": "二、聊一整夜也聊不完"}, {"t": "ex", "jp": "語りあかせば　尽きないけれど", "kana": "かたりあかせば　つきないけれど", "zh": "如果徹夜聊起往事，話題永遠也聊不完……"}, {"t": "ex", "jp": "過ぎてみれば　いまでは笑い話だね", "kana": "すぎてみれば　いまではわらいばなしだね", "zh": "可是回頭看，如今都成了笑談呢。"}, {"t": "h", "text": "三、語り明かす・〜ば"}, {"t": "ex", "jp": "友人と昔話を語り明かした。", "kana": "ゆうじんとむかしばなしをかたりあかした。", "zh": "和朋友聊了一整夜往事。"}, {"t": "ex", "jp": "彼らは一晩中語り明かした。", "kana": "かれらはひとばんじゅうかたりあかした。", "zh": "他們聊了一整晚。"}, {"t": "note", "text": "語り明かす（かたりあかす）＝語る＋明かす＝聊到天亮、談了一整夜。語りあかせば＝一旦聊起來／如果聊到天亮（〜ば表假設條件）。"}, {"t": "h", "text": "四、尽きる／尽きない"}, {"t": "ex", "jp": "資源が尽きる。", "kana": "しげんがつきる。", "zh": "資源用盡。"}, {"t": "ex", "jp": "話題が尽きる。", "kana": "わだいがつきる。", "zh": "話題聊完。"}, {"t": "note", "text": "尽きる（つきる）＝用盡、耗盡；尽きない＝不會用盡、聊不完。"}, {"t": "h", "text": "五、過ぎてみれば・今では vs 今も"}, {"t": "note", "text": "過ぎてみれば＝時間過去之後回頭看（過ぎる＋てみる）。笑い話＝如今可以笑著談的往事。"}, {"t": "warn", "text": "今では＝到了現在、如今已經……（強調狀態已改變）；對照〈心凍らせて〉的 今も＝直到現在仍然……（強調不變）。兩者不同。"}, {"t": "h", "text": "六、一起住過的房間，鑰匙仍留在心裡"}, {"t": "ex", "jp": "ふたり暮したあの部屋の　鍵は心に今もある", "kana": "ふたりくらしたあのへやの　かぎはこころにいまもある", "zh": "兩人一起生活過的那間房間的鑰匙，如今仍留在心裡。"}, {"t": "note", "text": "暮らす（くらす）＝生活、居住。『ふたり暮らしたあの部屋』＝動詞過去形＋名詞，修飾後面的名詞。鍵は心にある＝回憶仍留在心中的比喻。"}, {"t": "h", "text": "七、そして めぐり逢い"}, {"t": "ex", "jp": "そして めぐり逢い　あゝ 今夜は帰したくない", "kana": "そして めぐりあい　あゝ こんやはかえしたくない", "zh": "然後再次相逢——啊，今夜不想讓你回去。"}, {"t": "note", "text": "巡り逢う／めぐり逢う＝經過一番流轉後相遇、重逢。めぐり逢い＝相逢、重逢（動詞名詞化）。"}, {"t": "h", "text": "八、帰したくない vs 帰りたくない（主體不同）"}, {"t": "table", "head": ["日文", "平假名", "中文", "主體"], "rows": [["帰したくない", "かえしたくない", "不想讓你回去", "對方回去（帰す，他動詞）"], ["帰りたくない", "かえりたくない", "我不想回去", "自己回去（帰る，自動詞）"]]}, {"t": "warn", "text": "本堂最重要的不混淆之二：帰したくない＝不想讓你回去；帰りたくない＝我（自己）不想回去。"}, {"t": "h", "text": "九、Aより・〜みたいだ"}, {"t": "ex", "jp": "あの頃より綺麗になったみたいだね", "kana": "あのころよりきれいになったみたいだね", "zh": "好像變得比那時候更漂亮了呢。"}, {"t": "note", "text": "Aより＝比 A……；〜みたいだ＝好像……、看起來……。綺麗になったみたい＝好像變漂亮了。"}, {"t": "h", "text": "十、その他歌詞句型"}, {"t": "ex", "jp": "グラスをゆらす白い指　昔とおなじそのしぐさ", "kana": "グラスをゆらすしろいゆび　むかしとおなじそのしぐさ", "zh": "搖晃酒杯的白皙手指，和從前一樣的那個舉止。"}, {"t": "ex", "jp": "いまでも憶えているよ", "kana": "いまでもおぼえているよ", "zh": "直到現在我仍記得。"}, {"t": "note", "text": "グラスをゆらす＝搖動酒杯；しぐさ＝動作、舉止；昔とおなじ＝和以前一樣；いまでも＝直到現在仍然……；憶えている＝記得（憶える也可寫覚える）。"}, {"t": "h", "text": "十一、情にもろい・〜ては・困らせる"}, {"t": "ex", "jp": "情にもろいところも昔のままだね", "kana": "じょうにもろいところもむかしのままだね", "zh": "容易心軟這一點，也和從前一樣呢。"}, {"t": "ex", "jp": "無理を言っては こまらせた", "kana": "むりをいっては こまらせた", "zh": "以前常任性地提出要求，讓你為難。"}, {"t": "note", "text": "情にもろい＝容易被情感打動、心軟。〜ところも昔のまま＝……的地方也和以前一樣。無理を言う＝提出不合理的要求。困らせる（こまらせる）＝使人為難。〜ては＝反覆做某事而造成後面的結果。"}]}];
+function meguriLyricsHTML(){
+  let html=`<div class="subaru-credit" style="border:none;padding:0;margin:0 0 16px">そして…めぐり逢い　｜　唄：五木ひろし　｜　作詞：荒木豊久　｜　作曲：中村泰士</div>`;
+  MEGURI_LYRICS.forEach(l=>{
+    html+=`<div class="sb-block${l.r?' sb-refrain':''}"><div class="sb-jp">${l.jp}</div><div class="sb-zh">${esc(l.zh)}</div></div>`;
+  });
+  return html;
+}
+let meguriView={kind:'lyric',idx:0};
+function meguriRenderLyrics(){meguriView={kind:'lyric',idx:0};document.getElementById('meguriContent').innerHTML=meguriLyricsHTML();meguriMarkActive();}
+function meguriRenderDay(idx){
+  meguriView={kind:'day',idx};const d=MEGURI_DAYS[idx];let secNo=0;
+  let html=`<div class="lesson-head"><span class="lesson-date">${esc(d.date)}</span><span class="lesson-title">${esc(d.title)}</span></div>`+
+    `<div class="lesson-sub">${esc(d.subtitle)}</div>`+
+    `<div class="lesson-meta">💫 共 ${d.sections.filter(s=>s.t==='h').length} 個主題 ・ ${countItemsG(d)} 個例句／詞條</div>`;
+  d.sections.forEach(s=>{if(s.t==='h'){secNo++;html+=renderSection(s,CN_NUM[secNo]||secNo);}else html+=renderSection(s);});
+  document.getElementById('meguriContent').innerHTML=html;meguriMarkActive();
+}
+function meguriMarkActive(){
+  document.querySelectorAll('#meguriNav .day-btn').forEach(b=>{
+    let on=false;if(b.dataset.kind==='lyric')on=meguriView.kind==='lyric';
+    else on=meguriView.kind==='day'&&Number(b.dataset.idx)===meguriView.idx;
+    b.classList.toggle('active',on);b.setAttribute('aria-selected',on?'true':'false');});
+}
+function meguriScroll(){const top=document.getElementById('meguriNav').getBoundingClientRect().bottom+window.scrollY-8;window.scrollTo({top,behavior:'smooth'});}
+(function(){
+  const nav=document.getElementById('meguriNav');
+  const lb=document.createElement('button');lb.className='day-btn';lb.setAttribute('role','tab');lb.dataset.kind='lyric';
+  lb.innerHTML=`<span class="flower">🎵</span><span class="d-date">歌詞</span><span class="d-title">そして…めぐり逢い</span><span class="d-count">中日對照</span>`;
+  lb.addEventListener('click',()=>{meguriRenderLyrics();meguriScroll();});nav.appendChild(lb);
+  MEGURI_DAYS.forEach((d,i)=>{
+    const b=document.createElement('button');b.className='day-btn';b.setAttribute('role','tab');b.dataset.kind='day';b.dataset.idx=i;
+    b.innerHTML=`<span class="flower">💫</span><span class="d-date">${esc(d.date)}</span><span class="d-title">${esc(d.title)}</span><span class="d-count">${countItemsG(d)} 句</span>`;
+    b.addEventListener('click',()=>{meguriRenderDay(i);meguriScroll();});nav.appendChild(b);
+  });
+  meguriRenderLyrics();
+})();
+const MEGURI_INDEX=[];
+MEGURI_LYRICS.forEach(l=>MEGURI_INDEX.push({di:-1,date:'🎵 歌詞',jp:l.jp.replace(/<[^>]+>/g,''),kana:'',zh:l.zh,ruby:l.jp}));
+MEGURI_DAYS.forEach((d,di)=>{d.sections.forEach(s=>{
+  if(s.t==='ex'||s.t==='line')MEGURI_INDEX.push({di,date:d.date,jp:s.jp||'',kana:s.kana||'',zh:s.zh||''});
+  else if(s.t==='table')s.rows.forEach(r=>MEGURI_INDEX.push({di,date:d.date,jp:r.join(' / '),kana:'',zh:''}));
+  else if(['note','poem','sub','warn','lead'].includes(s.t))MEGURI_INDEX.push({di,date:d.date,jp:s.text||'',kana:'',zh:''});
+});});
+(function(){
+  const inp=document.getElementById('meguriSearch');const clr=document.getElementById('meguriSearchClear');let t=null;
+  function run(q){
+    q=q.trim();clr.classList.toggle('show',q.length>0);
+    if(!q){if(meguriView.kind==='lyric')meguriRenderLyrics();else meguriRenderDay(meguriView.idx);return;}
+    const ql=q.toLowerCase();
+    const hits=MEGURI_INDEX.filter(r=>r.jp.toLowerCase().includes(ql)||(r.kana||'').toLowerCase().includes(ql)||r.zh.toLowerCase().includes(ql));
+    document.querySelectorAll('#meguriNav .day-btn').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');});
+    const el=document.getElementById('meguriContent');
+    if(hits.length===0){el.innerHTML=`<div class="no-result"><span class="big">💫</span>找不到「${esc(q)}」</div>`;return;}
+    const groups={};hits.forEach(hh=>{(groups[hh.date]=groups[hh.date]||[]).push(hh);});
+    let html=`<div class="results-summary">🔍 找到 ${hits.length} 筆「${esc(q)}」的結果</div>`;
+    Object.keys(groups).forEach(date=>{
+      const arr=groups[date];const di=arr[0].di;
+      html+=`<div class="result-group"><button class="result-day" data-di="${di}">💫 ${esc(date)}（${arr.length}）</button>`;
+      arr.forEach(r=>{
+        if(r.ruby){html+=`<div class="sb-block"><div class="sb-jp">${r.ruby}</div><div class="sb-zh">${hl(r.zh,q)}</div></div>`;}
+        else{html+=`<div class="ex"><div class="jp"><span class="mk">💫</span>${hl(r.jp,q)}</div>`+(r.kana?`<div class="kana">${hl(r.kana,q)}</div>`:``)+(r.zh?`<div class="zh">${hl(r.zh,q)}</div>`:``)+`</div>`;}
+      });
+      html+=`</div>`;
+    });
+    el.innerHTML=html;
+    el.querySelectorAll('.result-day').forEach(btn=>btn.addEventListener('click',()=>{inp.value='';clr.classList.remove('show');const di=Number(btn.dataset.di);if(di<0)meguriRenderLyrics();else meguriRenderDay(di);meguriScroll();}));
+  }
+  inp.addEventListener('input',()=>{clearTimeout(t);t=setTimeout(()=>run(inp.value),120);});
+  clr.addEventListener('click',()=>{inp.value='';clr.classList.remove('show');if(meguriView.kind==='lyric')meguriRenderLyrics();else meguriRenderDay(meguriView.idx);inp.focus();});
+})();
+
 /* ===== 歌曲大頁籤切換 ===== */
 (function(){
   const panes={subaru:document.getElementById('paneSubaru'),
@@ -1279,14 +1508,18 @@ function speakRenderLyrics(){
     color:document.getElementById('paneColor'),
     niwa:document.getElementById('paneNiwa'),
     casa:document.getElementById('paneCasa'),
-    speak:document.getElementById('paneSpeak')};
+    speak:document.getElementById('paneSpeak'),
+    koori:document.getElementById('paneKoori'),
+    meguri:document.getElementById('paneMeguri')};
   const btns={subaru:document.getElementById('songBtnSubaru'),
     kuchi:document.getElementById('songBtnKuchi'),
     maigo:document.getElementById('songBtnMaigo'),
     color:document.getElementById('songBtnColor'),
     niwa:document.getElementById('songBtnNiwa'),
     casa:document.getElementById('songBtnCasa'),
-    speak:document.getElementById('songBtnSpeak')};
+    speak:document.getElementById('songBtnSpeak'),
+    koori:document.getElementById('songBtnKoori'),
+    meguri:document.getElementById('songBtnMeguri')};
   function show(song){
     Object.keys(panes).forEach(k=>{
       const on=k===song;

@@ -56,6 +56,8 @@ h1{font-size:clamp(32px,7vw,48px);margin:.16em 0 .1em;letter-spacing:.05em;color
 .song-nav-13{grid-template-columns:repeat(8,1fr);}
 .song-nav-14{grid-template-columns:repeat(8,1fr);}
 .song-nav-15{grid-template-columns:repeat(8,1fr);}
+.song-nav-16{grid-template-columns:repeat(8,1fr);}
+.song-nav-17{grid-template-columns:repeat(8,1fr);}
 @media(max-width:560px){.song-nav-3{grid-template-columns:1fr 1fr 1fr;gap:8px;}
   .song-nav-3 .song-name{font-size:14px;}.song-nav-3 .song-sub{font-size:10px;}
   .song-nav-4{grid-template-columns:1fr 1fr;gap:8px;}
@@ -66,10 +68,10 @@ h1{font-size:clamp(32px,7vw,48px);margin:.16em 0 .1em;letter-spacing:.05em;color
   .song-nav-6{grid-template-columns:1fr 1fr 1fr;gap:8px;}
   .song-nav-6 .song-name{font-size:10.5px;line-height:1.2;}.song-nav-6 .song-sub{font-size:9px;}
   .song-nav-6 .song-flower{font-size:18px;}
-  .song-nav-7,.song-nav-8,.song-nav-9,.song-nav-10,.song-nav-11,.song-nav-12,.song-nav-13,.song-nav-14,.song-nav-15{grid-template-columns:1fr 1fr 1fr;gap:8px;}
-  .song-nav-7 .song-name,.song-nav-8 .song-name,.song-nav-9 .song-name,.song-nav-10 .song-name,.song-nav-11 .song-name,.song-nav-12 .song-name,.song-nav-13 .song-name,.song-nav-14 .song-name,.song-nav-15 .song-name{font-size:10.5px;line-height:1.2;}
-  .song-nav-7 .song-sub,.song-nav-8 .song-sub,.song-nav-9 .song-sub,.song-nav-10 .song-sub,.song-nav-11 .song-sub,.song-nav-12 .song-sub,.song-nav-13 .song-sub,.song-nav-14 .song-sub,.song-nav-15 .song-sub{font-size:9px;}
-  .song-nav-7 .song-flower,.song-nav-8 .song-flower,.song-nav-9 .song-flower,.song-nav-10 .song-flower,.song-nav-11 .song-flower,.song-nav-12 .song-flower,.song-nav-13 .song-flower,.song-nav-14 .song-flower,.song-nav-15 .song-flower{font-size:18px;}}
+  .song-nav-7,.song-nav-8,.song-nav-9,.song-nav-10,.song-nav-11,.song-nav-12,.song-nav-13,.song-nav-14,.song-nav-15,.song-nav-16,.song-nav-17{grid-template-columns:1fr 1fr 1fr;gap:8px;}
+  .song-nav-7 .song-name,.song-nav-8 .song-name,.song-nav-9 .song-name,.song-nav-10 .song-name,.song-nav-11 .song-name,.song-nav-12 .song-name,.song-nav-13 .song-name,.song-nav-14 .song-name,.song-nav-15 .song-name,.song-nav-16 .song-name,.song-nav-17 .song-name{font-size:10.5px;line-height:1.2;}
+  .song-nav-7 .song-sub,.song-nav-8 .song-sub,.song-nav-9 .song-sub,.song-nav-10 .song-sub,.song-nav-11 .song-sub,.song-nav-12 .song-sub,.song-nav-13 .song-sub,.song-nav-14 .song-sub,.song-nav-15 .song-sub,.song-nav-16 .song-sub,.song-nav-17 .song-sub{font-size:9px;}
+  .song-nav-7 .song-flower,.song-nav-8 .song-flower,.song-nav-9 .song-flower,.song-nav-10 .song-flower,.song-nav-11 .song-flower,.song-nav-12 .song-flower,.song-nav-13 .song-flower,.song-nav-14 .song-flower,.song-nav-15 .song-flower,.song-nav-16 .song-flower,.song-nav-17 .song-flower{font-size:18px;}}
 .song-btn{position:relative;cursor:pointer;border:2px solid transparent;background:var(--card);
   border-radius:22px;padding:16px 12px;box-shadow:0 5px 16px var(--shadow);font-family:inherit;
   color:var(--ink);text-align:center;transition:transform .2s cubic-bezier(.34,1.56,.64,1),box-shadow .2s,border-color .2s;}
@@ -256,7 +258,7 @@ footer .f-flower{font-size:18px;display:block;margin-bottom:7px;}
     <div class="sub-zh">張正修 老師　授課筆記</div>
   </header>
 
-  <nav class="song-nav song-nav-15" role="tablist" aria-label="選擇歌曲">
+  <nav class="song-nav song-nav-17" role="tablist" aria-label="選擇歌曲">
     <button class="song-btn" id="songBtnSubaru" role="tab" data-song="subaru">
       <span class="song-flower">✨</span><span class="song-name">昴 -すばる-</span>
       <span class="song-sub">谷村新司</span>
@@ -316,6 +318,14 @@ footer .f-flower{font-size:18px;display:block;margin-bottom:7px;}
     <button class="song-btn" id="songBtnSusume" role="tab" data-song="susume">
       <span class="song-flower">✈️</span><span class="song-name">365日の紙飛行機</span>
       <span class="song-sub">AKB48</span>
+    </button>
+    <button class="song-btn" id="songBtnKanashiki" role="tab" data-song="kanashiki">
+      <span class="song-flower">👼</span><span class="song-name">悲しき天使</span>
+      <span class="song-sub">森山良子</span>
+    </button>
+    <button class="song-btn" id="songBtnItoshiki" role="tab" data-song="itoshiki">
+      <span class="song-flower">🌅</span><span class="song-name">愛しき日々</span>
+      <span class="song-sub">堀内孝雄</span>
     </button>
   </nav>
 
@@ -547,7 +557,39 @@ footer .f-flower{font-size:18px;display:block;margin-bottom:7px;}
     <main class="lesson" id="susumeContent" tabindex="-1"></main>
   </div>
 
-  <footer><span class="f-flower">🌸 ✨ 🍃 🌈 🌿 🎬 🎻 ❄️ 💫 🍶 🍂 🤝 🌨️ 📞 ✈️</span>日文歌講義　|　昴 ・ くちなしの花 ・ 想い出迷子 ・ カラフル ・ 君の銀の庭 ・ 哀愁のカサブランカ ・ Speak Softly Love ・ 心凍らせて ・ そして…めぐり逢い ・ 恋歌綴り ・ わかってください ・ ふれあい ・ なごり雪 ・ 恋に落ちて ・ 365日の紙飛行機</footer>
+  <!-- ===== 悲しき天使 ===== -->
+  <div class="song-pane" id="paneKanashiki" hidden>
+    <div class="video-card">
+      <div class="vtitle"><span class="mk">👼</span>悲しき天使 ・ 森山良子<span class="mk">👼</span></div>
+      <a class="video-thumb" href="https://www.youtube.com/watch?v=P36hRghR538" target="_blank" rel="noopener" aria-label="在 YouTube 觀看 悲しき天使">
+        <img src="https://i.ytimg.com/vi/P36hRghR538/hqdefault.jpg" alt="悲しき天使 影片封面" loading="lazy">
+        <span class="play-btn" aria-hidden="true">▶</span>
+        <span class="yt-badge">在 YouTube 觀看 ↗</span>
+      </a>
+    </div>
+    <nav class="day-nav" id="kanashikiNav" aria-label="悲しき天使 內容"></nav>
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input class="search-input" id="kanashikiSearch" type="search" autocomplete="off"
+        placeholder="搜尋日文、平假名或中文…">
+      <button class="search-clear" id="kanashikiSearchClear" aria-label="清除">✕</button>
+    </div>
+    <main class="lesson" id="kanashikiContent" tabindex="-1"></main>
+  </div>
+
+  <!-- ===== 愛しき日々 ===== -->
+  <div class="song-pane" id="paneItoshiki" hidden>
+    <nav class="day-nav" id="itoshikiNav" aria-label="愛しき日々 內容"></nav>
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input class="search-input" id="itoshikiSearch" type="search" autocomplete="off"
+        placeholder="搜尋日文、平假名或中文…">
+      <button class="search-clear" id="itoshikiSearchClear" aria-label="清除">✕</button>
+    </div>
+    <main class="lesson" id="itoshikiContent" tabindex="-1"></main>
+  </div>
+
+  <footer><span class="f-flower">🌸 ✨ 🍃 🌈 🌿 🎬 🎻 ❄️ 💫 🍶 🍂 🤝 🌨️ 📞 ✈️ 👼 🌅</span>日文歌講義　|　昴 ・ くちなしの花 ・ 想い出迷子 ・ カラフル ・ 君の銀の庭 ・ 哀愁のカサブランカ ・ Speak Softly Love ・ 心凍らせて ・ そして…めぐり逢い ・ 恋歌綴り ・ わかってください ・ ふれあい ・ なごり雪 ・ 恋に落ちて ・ 365日の紙飛行機 ・ 悲しき天使 ・ 愛しき日々</footer>
 </div>
 <button class="scroll-top" id="scrollTop" aria-label="回到頂部">↑</button>
 
@@ -1985,6 +2027,188 @@ function susumeRenderLyrics(){
   clr.addEventListener('click',()=>{inp.value='';clr.classList.remove('show');susumeRenderLyrics();inp.focus();});
 })();
 
+/* ===== 悲しき天使 ===== */
+const KANASHIKI_LYRICS=[
+  {jp:`こがらしの${R('街','まち')}を${R('行','ゆ')}く　${R('一人','ひとり')}ぼっちのわたし`,zh:"走在寒風蕭瑟的街上，孤單一人的我"},
+  {jp:`${R('想','おも')}い${R('出','で')}の${R('広場','ひろば')}で　おもわず${R('足','あし')}をとめる`,zh:"在滿是回憶的廣場上，不由得停下了腳步"},
+  {jp:`${R('思','おも')}い${R('出','だ')}すのはあの${R('日','ひ')}のこと`,zh:"想起的是那一天的事"},
+  {jp:`${R('暖','あたた')}かい${R('恋','こい')}の${R('夢','ゆめ')}`,zh:"那溫暖的戀愛之夢",r:1},
+  {jp:`${R('春','はる')}の${R('風','かぜ')}と${R('鳥','とり')}の${R('歌','うた')}と`,zh:"春天的風、鳥兒的歌",r:1},
+  {jp:`やさしいあなたがいた`,zh:"還有溫柔的你",r:1},
+  {jp:`ラララ…`,zh:"啦啦啦……",r:1},
+  {jp:`つめたい${R('風','かぜ')}に${R('思','おも')}う　${R('年月','としつき')}の${R('流','なが')}れ`,zh:"在冷風中想起，歲月的流逝"},
+  {jp:`ほほえみもささやきも　もう${R('帰','かえ')}ってこない`,zh:"那微笑、那細語，都已不再回來"},
+  {jp:`${R('思','おも')}い${R('出','だ')}すのはあの${R('日','ひ')}のこと`,zh:"想起的是那一天的事"},
+  {jp:`${R('暖','あたた')}かい${R('恋','こい')}の${R('夢','ゆめ')}`,zh:"那溫暖的戀愛之夢",r:1},
+  {jp:`${R('春','はる')}の${R('風','かぜ')}と${R('鳥','とり')}の${R('歌','うた')}と`,zh:"春天的風、鳥兒的歌",r:1},
+  {jp:`やさしいあなたがいた`,zh:"還有溫柔的你",r:1},
+  {jp:`ラララ…`,zh:"啦啦啦……",r:1},
+  {jp:`あなたの${R('腕','うで')}の${R('中','なか')}で　よろこびにふるえた`,zh:"在你的懷抱中，因喜悅而顫抖"},
+  {jp:`おさなき${R('日','ひ')}の${R('私','わたし')}　もう${R('帰','かえ')}ってこない`,zh:"那年幼時的我，再也回不來了"},
+  {jp:`${R('思','おも')}い${R('出','だ')}すのはあの${R('日','ひ')}のこと`,zh:"想起的是那一天的事"},
+  {jp:`${R('暖','あたた')}かい${R('恋','こい')}の${R('夢','ゆめ')}`,zh:"那溫暖的戀愛之夢",r:1},
+  {jp:`${R('春','はる')}の${R('風','かぜ')}と${R('鳥','とり')}の${R('歌','うた')}と`,zh:"春天的風、鳥兒的歌",r:1},
+  {jp:`やさしいあなたがいた`,zh:"還有溫柔的你",r:1},
+  {jp:`ラララ…`,zh:"啦啦啦……",r:1},
+];
+const KANASHIKI_DAYS = [{"date": "文法解析", "title": "悲しき（文語連體）・思い出す vs 思い出・帰ってこない・おさなき・一人ぼっち", "subtitle": "悲しき天使＝Those Were the Days／那些日子・悲しき（文語連體形）・こがらし・一人ぼっち・想い出 vs 思い出す・おもわず・年月の流れ・もう帰ってこない・おさなき日・よろこびにふるえた", "sections": [{"t": "lead", "text": "《悲しき天使》（森山良子，1968）原曲是俄羅斯民謠《漫漫長路》，經 Gene Raskin 改編英文詞〈Those Were the Days〉後，由 Mary Hopkin 於 1968 年演唱爆紅。日文版把對青春與逝去歲月的追憶填成這首歌。"}, {"t": "h", "text": "一、歌名：悲しき天使"}, {"t": "ex", "jp": "悲しき天使", "kana": "かなしきてんし", "zh": "悲傷的天使。"}, {"t": "note", "text": "悲しき（かなしき）是文語連體形，＝現代語的『悲しい』。文語的い形容詞連體形以『〜き』結尾（美しき＝美しい、白き＝白い）。"}, {"t": "h", "text": "二、こがらしの街を行く一人ぼっちのわたし"}, {"t": "ex", "jp": "こがらしの街を行く一人ぼっちのわたし。", "kana": "こがらしのまちをゆくひとりぼっちのわたし。", "zh": "走在寒風蕭瑟街上、孤單一人的我。"}, {"t": "note", "text": "こがらし（木枯らし）＝秋冬之交的冷風。〜を行く＝走在……（移動性動詞的を）。一人ぼっち（ひとりぼっち）＝孤零零一個人。"}, {"t": "h", "text": "三、想い出 vs 思い出す（別混淆）"}, {"t": "table", "head": ["日文", "平假名", "中文", "詞性"], "rows": [["想い出／思い出", "おもいで", "回憶", "名詞"], ["思い出す", "おもいだす", "想起來", "動詞"]]}, {"t": "ex", "jp": "想い出の広場でおもわず足をとめる。", "kana": "おもいでのひろばでおもわずあしをとめる。", "zh": "在滿是回憶的廣場上，不由得停下腳步。"}, {"t": "ex", "jp": "思い出すのはあの日のこと。", "kana": "おもいだすのはあのひのこと。", "zh": "想起的是那一天的事。"}, {"t": "note", "text": "おもわず＝不由得、不自覺地。足をとめる＝停下腳步。"}, {"t": "h", "text": "四、年月の流れ・つめたい風に思う"}, {"t": "ex", "jp": "つめたい風に思う年月の流れ。", "kana": "つめたいかぜにおもうとしつきのながれ。", "zh": "在冷風中感受到歲月的流逝。"}, {"t": "note", "text": "年月（としつき）＝歲月、年月。流れ＝（時間的）流動、流逝。"}, {"t": "h", "text": "五、もう帰ってこない"}, {"t": "ex", "jp": "ほほえみもささやきももう帰ってこない。", "kana": "ほほえみもささやきももうかえってこない。", "zh": "微笑與細語，都已不再回來。"}, {"t": "note", "text": "もう＋否定＝已經不再……。帰ってくる＝回來；帰ってこない＝（再也）不回來。AもBも＝A也、B也（並列）。"}, {"t": "h", "text": "六、おさなき日の私"}, {"t": "ex", "jp": "おさなき日の私もう帰ってこない。", "kana": "おさなきひのわたしもうかえってこない。", "zh": "那年幼時的我，再也回不來了。"}, {"t": "note", "text": "おさなき（幼き）＝文語連體形，＝現代語『幼い（おさない）』。おさなき日＝年幼的日子。"}, {"t": "h", "text": "七、よろこびにふるえた"}, {"t": "ex", "jp": "あなたの腕の中でよろこびにふるえた。", "kana": "あなたのうでのなかでよろこびにふるえた。", "zh": "在你的懷抱中因喜悅而顫抖。"}, {"t": "note", "text": "よろこび（喜び）＝喜悅。〜にふるえる＝因……而顫抖（ふるえる＝發抖、顫動）。"}]}];
+function kanashikiLyricsHTML(){
+  let html=`<div class="subaru-credit" style="border:none;padding:0;margin:0 0 16px">`+"悲しき天使（Those Were the Days）　｜　唄：森山良子（1968）　｜　原曲：ロシア民謡／英詞：Gene Raskin"+`</div>`;
+  KANASHIKI_LYRICS.forEach(l=>{html+=`<div class="sb-block${l.r?' sb-refrain':''}"><div class="sb-jp">${l.jp}</div><div class="sb-zh">${esc(l.zh)}</div></div>`;});
+  return html;
+}
+let kanashikiView={kind:'lyric',idx:0};
+function kanashikiRenderLyrics(){kanashikiView={kind:'lyric',idx:0};document.getElementById('kanashikiContent').innerHTML=kanashikiLyricsHTML();kanashikiMarkActive();}
+function kanashikiRenderDay(idx){
+  kanashikiView={kind:'day',idx};const dd=KANASHIKI_DAYS[idx];let secNo=0;
+  let html=`<div class="lesson-head"><span class="lesson-date">${esc(dd.date)}</span><span class="lesson-title">${esc(dd.title)}</span></div>`+
+    `<div class="lesson-sub">${esc(dd.subtitle)}</div>`+
+    `<div class="lesson-meta">👼 共 ${dd.sections.filter(s=>s.t==='h').length} 個主題 ・ ${countItemsG(dd)} 個例句／詞條</div>`;
+  dd.sections.forEach(s=>{if(s.t==='h'){secNo++;html+=renderSection(s,CN_NUM[secNo]||secNo);}else html+=renderSection(s);});
+  document.getElementById('kanashikiContent').innerHTML=html;kanashikiMarkActive();
+}
+function kanashikiMarkActive(){
+  document.querySelectorAll('#kanashikiNav .day-btn').forEach(b=>{let on=false;if(b.dataset.kind==='lyric')on=kanashikiView.kind==='lyric';else on=kanashikiView.kind==='day'&&Number(b.dataset.idx)===kanashikiView.idx;b.classList.toggle('active',on);b.setAttribute('aria-selected',on?'true':'false');});
+}
+function kanashikiScroll(){const top=document.getElementById('kanashikiNav').getBoundingClientRect().bottom+window.scrollY-8;window.scrollTo({top,behavior:'smooth'});}
+(function(){
+  const nav=document.getElementById('kanashikiNav');
+  const lb=document.createElement('button');lb.className='day-btn';lb.setAttribute('role','tab');lb.dataset.kind='lyric';
+  lb.innerHTML=`<span class="flower">🎵</span><span class="d-date">歌詞</span><span class="d-title">悲しき天使</span><span class="d-count">中日對照</span>`;
+  lb.addEventListener('click',()=>{kanashikiRenderLyrics();kanashikiScroll();});nav.appendChild(lb);
+  KANASHIKI_DAYS.forEach((dd,i)=>{
+    const b=document.createElement('button');b.className='day-btn';b.setAttribute('role','tab');b.dataset.kind='day';b.dataset.idx=i;
+    b.innerHTML=`<span class="flower">👼</span><span class="d-date">${esc(dd.date)}</span><span class="d-title">${esc(dd.title)}</span><span class="d-count">${countItemsG(dd)} 句</span>`;
+    b.addEventListener('click',()=>{kanashikiRenderDay(i);kanashikiScroll();});nav.appendChild(b);
+  });
+  kanashikiRenderLyrics();
+})();
+const KANASHIKI_INDEX=[];
+KANASHIKI_LYRICS.forEach(l=>KANASHIKI_INDEX.push({di:-1,date:'🎵 歌詞',jp:l.jp.replace(/<[^>]+>/g,''),kana:'',zh:l.zh,ruby:l.jp}));
+KANASHIKI_DAYS.forEach((dd,di)=>{dd.sections.forEach(s=>{
+  if(s.t==='ex'||s.t==='line')KANASHIKI_INDEX.push({di,date:dd.date,jp:s.jp||'',kana:s.kana||'',zh:s.zh||''});
+  else if(s.t==='table')s.rows.forEach(r=>KANASHIKI_INDEX.push({di,date:dd.date,jp:r.join(' / '),kana:'',zh:''}));
+  else if(['note','poem','sub','warn','lead'].includes(s.t))KANASHIKI_INDEX.push({di,date:dd.date,jp:s.text||'',kana:'',zh:''});
+});});
+(function(){
+  const inp=document.getElementById('kanashikiSearch');const clr=document.getElementById('kanashikiSearchClear');let t=null;
+  function run(q){
+    q=q.trim();clr.classList.toggle('show',q.length>0);
+    if(!q){if(kanashikiView.kind==='lyric')kanashikiRenderLyrics();else kanashikiRenderDay(kanashikiView.idx);return;}
+    const ql=q.toLowerCase();
+    const hits=KANASHIKI_INDEX.filter(r=>r.jp.toLowerCase().includes(ql)||(r.kana||'').toLowerCase().includes(ql)||r.zh.toLowerCase().includes(ql));
+    document.querySelectorAll('#kanashikiNav .day-btn').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');});
+    const el=document.getElementById('kanashikiContent');
+    if(hits.length===0){el.innerHTML=`<div class="no-result"><span class="big">👼</span>找不到「${esc(q)}」</div>`;return;}
+    const groups={};hits.forEach(hh=>{(groups[hh.date]=groups[hh.date]||[]).push(hh);});
+    let html=`<div class="results-summary">🔍 找到 ${hits.length} 筆「${esc(q)}」的結果</div>`;
+    Object.keys(groups).forEach(date=>{
+      const arr=groups[date];const di=arr[0].di;
+      html+=`<div class="result-group"><button class="result-day" data-di="${di}">👼 ${esc(date)}（${arr.length}）</button>`;
+      arr.forEach(r=>{
+        if(r.ruby){html+=`<div class="sb-block"><div class="sb-jp">${r.ruby}</div><div class="sb-zh">${hl(r.zh,q)}</div></div>`;}
+        else{html+=`<div class="ex"><div class="jp"><span class="mk">👼</span>${hl(r.jp,q)}</div>`+(r.kana?`<div class="kana">${hl(r.kana,q)}</div>`:``)+(r.zh?`<div class="zh">${hl(r.zh,q)}</div>`:``)+`</div>`;}
+      });
+      html+=`</div>`;
+    });
+    el.innerHTML=html;
+    el.querySelectorAll('.result-day').forEach(btn=>btn.addEventListener('click',()=>{inp.value='';clr.classList.remove('show');const di=Number(btn.dataset.di);if(di<0)kanashikiRenderLyrics();else kanashikiRenderDay(di);kanashikiScroll();}));
+  }
+  inp.addEventListener('input',()=>{clearTimeout(t);t=setTimeout(()=>run(inp.value),120);});
+  clr.addEventListener('click',()=>{inp.value='';clr.classList.remove('show');if(kanashikiView.kind==='lyric')kanashikiRenderLyrics();else kanashikiRenderDay(kanashikiView.idx);inp.focus();});
+})();
+
+/* ===== 愛しき日々 ===== */
+const ITOSHIKI_LYRICS=[
+  {jp:`${R('風','かぜ')}の${R('流','なが')}れの　${R('激','はげ')}しさに`,zh:"在風勢的猛烈中"},
+  {jp:`${R('告','つ')}げる${R('思','おも')}いも　ゆれ${R('惑','まど')}う`,zh:"想要訴說的心意也動搖迷惘"},
+  {jp:`かたくなまでの　${R('一筋','ひとすじ')}の${R('道','みち')}`,zh:"固執到近乎倔強的一條路"},
+  {jp:`${R('愚','おろ')}か${R('者','もの')}だと${R('笑','わら')}いますか`,zh:"你會笑我是傻子嗎"},
+  {jp:`もう${R('少','すこ')}し　${R('時','とき')}がゆるやかであったなら……`,zh:"若時間能再從容一些就好了……"},
+  {jp:`いとしき${R('日々','ひび')}の はかなさは`,zh:"那些珍愛日子的虛幻",r:1},
+  {jp:`${R('消','き')}え${R('残','のこ')}る${R('夢','ゆめ')} ${R('青春','せいしゅん')}の${R('影','かげ')}`,zh:"是殘留未滅的夢、青春的身影",r:1},
+  {jp:`${R('雲','くも')}の${R('切','き')}れ${R('間','ま')}に　${R('輝','かがや')}いて`,zh:"在雲的縫隙間閃爍"},
+  {jp:`${R('空','むな')}しき${R('願','ねが')}い　また${R('浮','う')}かぶ`,zh:"空虛的願望又再度浮現"},
+  {jp:`ひたすら${R('夜','よる')}を　${R('飛','と')}ぶ${R('流','なが')}れ${R('星','ぼし')}`,zh:"一心一意劃過夜空的流星"},
+  {jp:`${R('急','いそ')}ぐ${R('命','いのち')}を　${R('笑','わら')}いますか`,zh:"你會笑這匆匆奔忙的生命嗎"},
+  {jp:`もう${R('少','すこ')}し　${R('時','とき')}がやさしさを${R('投','な')}げたなら……`,zh:"若時間能再多給一點溫柔就好了……"},
+  {jp:`いとしき${R('日々','ひび')}の はかなさは`,zh:"那些珍愛日子的虛幻",r:1},
+  {jp:`${R('消','き')}え${R('残','のこ')}る${R('夢','ゆめ')} ${R('青春','せいしゅん')}の${R('影','かげ')}`,zh:"是殘留未滅的夢、青春的身影",r:1},
+  {jp:`きまじめすぎた　まっすぐな${R('愛','あい')}`,zh:"過於一本正經、筆直的愛"},
+  {jp:`${R('不器用者','ぶきようしゃ')}と　${R('笑','わら')}いますか`,zh:"你會笑我是個笨拙的人嗎"},
+  {jp:`もう${R('少','すこ')}し　${R('時','とき')}が　たおやかに${R('過','す')}ぎたなら……`,zh:"若時間能再柔和地流過就好了……"},
+  {jp:`${R('愛','いと')}しき${R('日々','ひび')}は　ほろ${R('苦','にが')}く`,zh:"那些珍愛的日子帶著微微的苦澀"},
+  {jp:`${R('一人','ひとり')}${R('夕日','ゆうひ')}に　${R('浮','う')}かべる${R('涙','なみだ')}`,zh:"獨自一人，在夕陽下泛起的淚"},
+  {jp:`いとしき${R('日々','ひび')}の はかなさは`,zh:"那些珍愛日子的虛幻",r:1},
+  {jp:`${R('消','き')}え${R('残','のこ')}る${R('夢','ゆめ')} ${R('青春','せいしゅん')}の${R('影','かげ')}`,zh:"是殘留未滅的夢、青春的身影",r:1},
+];
+const ITOSHIKI_DAYS = [{"date": "文法解析", "title": "愛しき（文語連體）・〜ますか・〜たなら・はかなさ・消え残る・一筋・かたくな", "subtitle": "愛しき日々（白虎隊の悲歌）・いとしき（文語連體）・かたくな・一筋の道・愚か者／不器用者・〜と笑いますか・もう少し〜たなら・はかなさ（形容詞名詞化）・消え残る・青春の影・ほろ苦い", "sections": [{"t": "lead", "text": "《愛しき日々》（堀内孝雄，作詞 小椋佳）是日劇『白虎隊』的主題歌，又稱〈白虎隊の悲歌〉。歌詞用文語風格詠嘆逝去的青春與珍愛的歲月。"}, {"t": "h", "text": "一、歌名：愛しき日々"}, {"t": "ex", "jp": "愛しき日々", "kana": "いとしきひび", "zh": "珍愛的日子。"}, {"t": "note", "text": "愛しき（いとしき）是文語連體形，＝現代語『愛しい（いとしい）』＝可愛的、憐愛的、珍愛的。日々（ひび）＝每一天、日子。（歌詞中亦讀作 かなしき 的『悲しき』同為文語連體，可對照〈悲しき天使〉。）"}, {"t": "h", "text": "二、かたくなまでの一筋の道"}, {"t": "ex", "jp": "かたくなまでの一筋の道。", "kana": "かたくなまでのひとすじのみち。", "zh": "固執到近乎倔強的、一心一意的一條路。"}, {"t": "note", "text": "かたくな（頑な）＝固執、倔強。〜までの＝到了……程度的。一筋（ひとすじ）＝一條、專心一意。"}, {"t": "h", "text": "三、愚か者だと笑いますか（〜と笑いますか）"}, {"t": "ex", "jp": "愚か者だと笑いますか。", "kana": "おろかものだとわらいますか。", "zh": "你會笑我是傻子嗎？"}, {"t": "ex", "jp": "不器用者と笑いますか。", "kana": "ぶきようしゃとわらいますか。", "zh": "你會笑我是個笨拙的人嗎？"}, {"t": "note", "text": "愚か者（おろかもの）＝傻子、愚蠢的人；不器用者（ぶきようしゃ）＝笨拙、不靈巧的人。〜と笑う＝（把對方／自己）當作……而嘲笑。と＝引用的と。"}, {"t": "h", "text": "四、もう少し時がゆるやかであったなら（〜たなら＝假設）"}, {"t": "ex", "jp": "もう少し時がゆるやかであったなら……", "kana": "もうすこしときがゆるやかであったなら……", "zh": "若時間能再從容一些就好了……"}, {"t": "ex", "jp": "もう少し時がやさしさを投げたなら……", "kana": "もうすこしときがやさしさをなげたなら……", "zh": "若時間能再多給一點溫柔就好了……"}, {"t": "note", "text": "もう少し＝再多一點。〜たなら＝假設語氣『如果（當時）……的話』，常帶惋惜、後悔。ゆるやか＝和緩、從容；たおやか＝柔美、柔和。"}, {"t": "h", "text": "五、いとしき日々のはかなさは"}, {"t": "ex", "jp": "いとしき日々のはかなさは消え残る夢青春の影。", "kana": "いとしきひびのはかなさはきえのこるゆめせいしゅんのかげ。", "zh": "那些珍愛日子的虛幻，是殘留未滅的夢、是青春的身影。"}, {"t": "note", "text": "はかなさ＝『はかない（虛幻、短暫）』的名詞化（い形容詞去い＋さ＝……的程度／……之感）。消え残る（きえのこる）＝消失後仍殘留。青春の影＝青春的身影／殘影。"}, {"t": "h", "text": "六、ほろ苦い・一人夕日に浮かべる涙"}, {"t": "ex", "jp": "愛しき日々はほろ苦く、一人夕日に浮かべる涙。", "kana": "いとしきひびはほろにがく、ひとりゆうひにうかべるなみだ。", "zh": "那些珍愛的日子帶著微微苦澀，獨自在夕陽下泛起的淚。"}, {"t": "note", "text": "ほろ苦い（ほろにがい）＝微苦、略帶苦澀（ほろ＝稍微）。浮かべる＝使浮現（涙を浮かべる＝泛起淚水）。"}]}];
+function itoshikiLyricsHTML(){
+  let html=`<div class="subaru-credit" style="border:none;padding:0;margin:0 0 16px">`+"愛しき日々（白虎隊の悲歌）　｜　唄・作曲：堀内孝雄　｜　作詞：小椋佳"+`</div>`;
+  ITOSHIKI_LYRICS.forEach(l=>{html+=`<div class="sb-block${l.r?' sb-refrain':''}"><div class="sb-jp">${l.jp}</div><div class="sb-zh">${esc(l.zh)}</div></div>`;});
+  return html;
+}
+let itoshikiView={kind:'lyric',idx:0};
+function itoshikiRenderLyrics(){itoshikiView={kind:'lyric',idx:0};document.getElementById('itoshikiContent').innerHTML=itoshikiLyricsHTML();itoshikiMarkActive();}
+function itoshikiRenderDay(idx){
+  itoshikiView={kind:'day',idx};const dd=ITOSHIKI_DAYS[idx];let secNo=0;
+  let html=`<div class="lesson-head"><span class="lesson-date">${esc(dd.date)}</span><span class="lesson-title">${esc(dd.title)}</span></div>`+
+    `<div class="lesson-sub">${esc(dd.subtitle)}</div>`+
+    `<div class="lesson-meta">🌅 共 ${dd.sections.filter(s=>s.t==='h').length} 個主題 ・ ${countItemsG(dd)} 個例句／詞條</div>`;
+  dd.sections.forEach(s=>{if(s.t==='h'){secNo++;html+=renderSection(s,CN_NUM[secNo]||secNo);}else html+=renderSection(s);});
+  document.getElementById('itoshikiContent').innerHTML=html;itoshikiMarkActive();
+}
+function itoshikiMarkActive(){
+  document.querySelectorAll('#itoshikiNav .day-btn').forEach(b=>{let on=false;if(b.dataset.kind==='lyric')on=itoshikiView.kind==='lyric';else on=itoshikiView.kind==='day'&&Number(b.dataset.idx)===itoshikiView.idx;b.classList.toggle('active',on);b.setAttribute('aria-selected',on?'true':'false');});
+}
+function itoshikiScroll(){const top=document.getElementById('itoshikiNav').getBoundingClientRect().bottom+window.scrollY-8;window.scrollTo({top,behavior:'smooth'});}
+(function(){
+  const nav=document.getElementById('itoshikiNav');
+  const lb=document.createElement('button');lb.className='day-btn';lb.setAttribute('role','tab');lb.dataset.kind='lyric';
+  lb.innerHTML=`<span class="flower">🎵</span><span class="d-date">歌詞</span><span class="d-title">愛しき日々</span><span class="d-count">中日對照</span>`;
+  lb.addEventListener('click',()=>{itoshikiRenderLyrics();itoshikiScroll();});nav.appendChild(lb);
+  ITOSHIKI_DAYS.forEach((dd,i)=>{
+    const b=document.createElement('button');b.className='day-btn';b.setAttribute('role','tab');b.dataset.kind='day';b.dataset.idx=i;
+    b.innerHTML=`<span class="flower">🌅</span><span class="d-date">${esc(dd.date)}</span><span class="d-title">${esc(dd.title)}</span><span class="d-count">${countItemsG(dd)} 句</span>`;
+    b.addEventListener('click',()=>{itoshikiRenderDay(i);itoshikiScroll();});nav.appendChild(b);
+  });
+  itoshikiRenderLyrics();
+})();
+const ITOSHIKI_INDEX=[];
+ITOSHIKI_LYRICS.forEach(l=>ITOSHIKI_INDEX.push({di:-1,date:'🎵 歌詞',jp:l.jp.replace(/<[^>]+>/g,''),kana:'',zh:l.zh,ruby:l.jp}));
+ITOSHIKI_DAYS.forEach((dd,di)=>{dd.sections.forEach(s=>{
+  if(s.t==='ex'||s.t==='line')ITOSHIKI_INDEX.push({di,date:dd.date,jp:s.jp||'',kana:s.kana||'',zh:s.zh||''});
+  else if(s.t==='table')s.rows.forEach(r=>ITOSHIKI_INDEX.push({di,date:dd.date,jp:r.join(' / '),kana:'',zh:''}));
+  else if(['note','poem','sub','warn','lead'].includes(s.t))ITOSHIKI_INDEX.push({di,date:dd.date,jp:s.text||'',kana:'',zh:''});
+});});
+(function(){
+  const inp=document.getElementById('itoshikiSearch');const clr=document.getElementById('itoshikiSearchClear');let t=null;
+  function run(q){
+    q=q.trim();clr.classList.toggle('show',q.length>0);
+    if(!q){if(itoshikiView.kind==='lyric')itoshikiRenderLyrics();else itoshikiRenderDay(itoshikiView.idx);return;}
+    const ql=q.toLowerCase();
+    const hits=ITOSHIKI_INDEX.filter(r=>r.jp.toLowerCase().includes(ql)||(r.kana||'').toLowerCase().includes(ql)||r.zh.toLowerCase().includes(ql));
+    document.querySelectorAll('#itoshikiNav .day-btn').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');});
+    const el=document.getElementById('itoshikiContent');
+    if(hits.length===0){el.innerHTML=`<div class="no-result"><span class="big">🌅</span>找不到「${esc(q)}」</div>`;return;}
+    const groups={};hits.forEach(hh=>{(groups[hh.date]=groups[hh.date]||[]).push(hh);});
+    let html=`<div class="results-summary">🔍 找到 ${hits.length} 筆「${esc(q)}」的結果</div>`;
+    Object.keys(groups).forEach(date=>{
+      const arr=groups[date];const di=arr[0].di;
+      html+=`<div class="result-group"><button class="result-day" data-di="${di}">🌅 ${esc(date)}（${arr.length}）</button>`;
+      arr.forEach(r=>{
+        if(r.ruby){html+=`<div class="sb-block"><div class="sb-jp">${r.ruby}</div><div class="sb-zh">${hl(r.zh,q)}</div></div>`;}
+        else{html+=`<div class="ex"><div class="jp"><span class="mk">🌅</span>${hl(r.jp,q)}</div>`+(r.kana?`<div class="kana">${hl(r.kana,q)}</div>`:``)+(r.zh?`<div class="zh">${hl(r.zh,q)}</div>`:``)+`</div>`;}
+      });
+      html+=`</div>`;
+    });
+    el.innerHTML=html;
+    el.querySelectorAll('.result-day').forEach(btn=>btn.addEventListener('click',()=>{inp.value='';clr.classList.remove('show');const di=Number(btn.dataset.di);if(di<0)itoshikiRenderLyrics();else itoshikiRenderDay(di);itoshikiScroll();}));
+  }
+  inp.addEventListener('input',()=>{clearTimeout(t);t=setTimeout(()=>run(inp.value),120);});
+  clr.addEventListener('click',()=>{inp.value='';clr.classList.remove('show');if(itoshikiView.kind==='lyric')itoshikiRenderLyrics();else itoshikiRenderDay(itoshikiView.idx);inp.focus();});
+})();
+
 /* ===== 歌曲大頁籤切換 ===== */
 (function(){
   const panes={subaru:document.getElementById('paneSubaru'),
@@ -2001,7 +2225,9 @@ function susumeRenderLyrics(){
     fureai:document.getElementById('paneFureai'),
     nagori:document.getElementById('paneNagori'),
     koini:document.getElementById('paneKoini'),
-    susume:document.getElementById('paneSusume')};
+    susume:document.getElementById('paneSusume'),
+    kanashiki:document.getElementById('paneKanashiki'),
+    itoshiki:document.getElementById('paneItoshiki')};
   const btns={subaru:document.getElementById('songBtnSubaru'),
     kuchi:document.getElementById('songBtnKuchi'),
     maigo:document.getElementById('songBtnMaigo'),
@@ -2016,7 +2242,9 @@ function susumeRenderLyrics(){
     fureai:document.getElementById('songBtnFureai'),
     nagori:document.getElementById('songBtnNagori'),
     koini:document.getElementById('songBtnKoini'),
-    susume:document.getElementById('songBtnSusume')};
+    susume:document.getElementById('songBtnSusume'),
+    kanashiki:document.getElementById('songBtnKanashiki'),
+    itoshiki:document.getElementById('songBtnItoshiki')};
   function show(song){
     Object.keys(panes).forEach(k=>{
       const on=k===song;

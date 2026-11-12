@@ -58,6 +58,8 @@ h1{font-size:clamp(32px,7vw,48px);margin:.16em 0 .1em;letter-spacing:.05em;color
 .song-nav-15{grid-template-columns:repeat(8,1fr);}
 .song-nav-16{grid-template-columns:repeat(8,1fr);}
 .song-nav-17{grid-template-columns:repeat(8,1fr);}
+.song-nav-18{grid-template-columns:repeat(8,1fr);}
+.song-nav-19{grid-template-columns:repeat(8,1fr);}
 @media(max-width:560px){.song-nav-3{grid-template-columns:1fr 1fr 1fr;gap:8px;}
   .song-nav-3 .song-name{font-size:14px;}.song-nav-3 .song-sub{font-size:10px;}
   .song-nav-4{grid-template-columns:1fr 1fr;gap:8px;}
@@ -68,10 +70,10 @@ h1{font-size:clamp(32px,7vw,48px);margin:.16em 0 .1em;letter-spacing:.05em;color
   .song-nav-6{grid-template-columns:1fr 1fr 1fr;gap:8px;}
   .song-nav-6 .song-name{font-size:10.5px;line-height:1.2;}.song-nav-6 .song-sub{font-size:9px;}
   .song-nav-6 .song-flower{font-size:18px;}
-  .song-nav-7,.song-nav-8,.song-nav-9,.song-nav-10,.song-nav-11,.song-nav-12,.song-nav-13,.song-nav-14,.song-nav-15,.song-nav-16,.song-nav-17{grid-template-columns:1fr 1fr 1fr;gap:8px;}
-  .song-nav-7 .song-name,.song-nav-8 .song-name,.song-nav-9 .song-name,.song-nav-10 .song-name,.song-nav-11 .song-name,.song-nav-12 .song-name,.song-nav-13 .song-name,.song-nav-14 .song-name,.song-nav-15 .song-name,.song-nav-16 .song-name,.song-nav-17 .song-name{font-size:10.5px;line-height:1.2;}
-  .song-nav-7 .song-sub,.song-nav-8 .song-sub,.song-nav-9 .song-sub,.song-nav-10 .song-sub,.song-nav-11 .song-sub,.song-nav-12 .song-sub,.song-nav-13 .song-sub,.song-nav-14 .song-sub,.song-nav-15 .song-sub,.song-nav-16 .song-sub,.song-nav-17 .song-sub{font-size:9px;}
-  .song-nav-7 .song-flower,.song-nav-8 .song-flower,.song-nav-9 .song-flower,.song-nav-10 .song-flower,.song-nav-11 .song-flower,.song-nav-12 .song-flower,.song-nav-13 .song-flower,.song-nav-14 .song-flower,.song-nav-15 .song-flower,.song-nav-16 .song-flower,.song-nav-17 .song-flower{font-size:18px;}}
+  .song-nav-7,.song-nav-8,.song-nav-9,.song-nav-10,.song-nav-11,.song-nav-12,.song-nav-13,.song-nav-14,.song-nav-15,.song-nav-16,.song-nav-17,.song-nav-18,.song-nav-19{grid-template-columns:1fr 1fr 1fr;gap:8px;}
+  .song-nav-7 .song-name,.song-nav-8 .song-name,.song-nav-9 .song-name,.song-nav-10 .song-name,.song-nav-11 .song-name,.song-nav-12 .song-name,.song-nav-13 .song-name,.song-nav-14 .song-name,.song-nav-15 .song-name,.song-nav-16 .song-name,.song-nav-17 .song-name,.song-nav-18 .song-name,.song-nav-19 .song-name{font-size:10.5px;line-height:1.2;}
+  .song-nav-7 .song-sub,.song-nav-8 .song-sub,.song-nav-9 .song-sub,.song-nav-10 .song-sub,.song-nav-11 .song-sub,.song-nav-12 .song-sub,.song-nav-13 .song-sub,.song-nav-14 .song-sub,.song-nav-15 .song-sub,.song-nav-16 .song-sub,.song-nav-17 .song-sub,.song-nav-18 .song-sub,.song-nav-19 .song-sub{font-size:9px;}
+  .song-nav-7 .song-flower,.song-nav-8 .song-flower,.song-nav-9 .song-flower,.song-nav-10 .song-flower,.song-nav-11 .song-flower,.song-nav-12 .song-flower,.song-nav-13 .song-flower,.song-nav-14 .song-flower,.song-nav-15 .song-flower,.song-nav-16 .song-flower,.song-nav-17 .song-flower,.song-nav-18 .song-flower,.song-nav-19 .song-flower{font-size:18px;}}
 .song-btn{position:relative;cursor:pointer;border:2px solid transparent;background:var(--card);
   border-radius:22px;padding:16px 12px;box-shadow:0 5px 16px var(--shadow);font-family:inherit;
   color:var(--ink);text-align:center;transition:transform .2s cubic-bezier(.34,1.56,.64,1),box-shadow .2s,border-color .2s;}
@@ -258,7 +260,7 @@ footer .f-flower{font-size:18px;display:block;margin-bottom:7px;}
     <div class="sub-zh">張正修 老師　授課筆記</div>
   </header>
 
-  <nav class="song-nav song-nav-17" role="tablist" aria-label="選擇歌曲">
+  <nav class="song-nav song-nav-19" role="tablist" aria-label="選擇歌曲">
     <button class="song-btn" id="songBtnSubaru" role="tab" data-song="subaru">
       <span class="song-flower">✨</span><span class="song-name">昴 -すばる-</span>
       <span class="song-sub">谷村新司</span>
@@ -326,6 +328,14 @@ footer .f-flower{font-size:18px;display:block;margin-bottom:7px;}
     <button class="song-btn" id="songBtnItoshiki" role="tab" data-song="itoshiki">
       <span class="song-flower">🌅</span><span class="song-name">愛しき日々</span>
       <span class="song-sub">堀内孝雄</span>
+    </button>
+    <button class="song-btn" id="songBtnGodfather" role="tab" data-song="godfather">
+      <span class="song-flower">🎩</span><span class="song-name">ゴッドファーザー～愛のテーマ</span>
+      <span class="song-sub">愛的主題曲（日文版）</span>
+    </button>
+    <button class="song-btn" id="songBtnOnna" role="tab" data-song="onna">
+      <span class="song-flower">🌙</span><span class="song-name">私は女</span>
+      <span class="song-sub">（演歌・歌謡曲）</span>
     </button>
   </nav>
 
@@ -589,7 +599,31 @@ footer .f-flower{font-size:18px;display:block;margin-bottom:7px;}
     <main class="lesson" id="itoshikiContent" tabindex="-1"></main>
   </div>
 
-  <footer><span class="f-flower">🌸 ✨ 🍃 🌈 🌿 🎬 🎻 ❄️ 💫 🍶 🍂 🤝 🌨️ 📞 ✈️ 👼 🌅</span>日文歌講義　|　昴 ・ くちなしの花 ・ 想い出迷子 ・ カラフル ・ 君の銀の庭 ・ 哀愁のカサブランカ ・ Speak Softly Love ・ 心凍らせて ・ そして…めぐり逢い ・ 恋歌綴り ・ わかってください ・ ふれあい ・ なごり雪 ・ 恋に落ちて ・ 365日の紙飛行機 ・ 悲しき天使 ・ 愛しき日々</footer>
+  <!-- ===== ゴッドファーザー～愛のテーマ ===== -->
+  <div class="song-pane" id="paneGodfather" hidden>
+    <nav class="day-nav" id="godfatherNav" aria-label="ゴッドファーザー～愛のテーマ 內容"></nav>
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input class="search-input" id="godfatherSearch" type="search" autocomplete="off"
+        placeholder="搜尋日文、平假名或中文…">
+      <button class="search-clear" id="godfatherSearchClear" aria-label="清除">✕</button>
+    </div>
+    <main class="lesson" id="godfatherContent" tabindex="-1"></main>
+  </div>
+
+  <!-- ===== 私は女 ===== -->
+  <div class="song-pane" id="paneOnna" hidden>
+    <nav class="day-nav" id="onnaNav" aria-label="私は女 內容"></nav>
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input class="search-input" id="onnaSearch" type="search" autocomplete="off"
+        placeholder="搜尋日文、平假名或中文…">
+      <button class="search-clear" id="onnaSearchClear" aria-label="清除">✕</button>
+    </div>
+    <main class="lesson" id="onnaContent" tabindex="-1"></main>
+  </div>
+
+  <footer><span class="f-flower">🌸 ✨ 🍃 🌈 🌿 🎬 🎻 ❄️ 💫 🍶 🍂 🤝 🌨️ 📞 ✈️ 👼 🌅 🎩 🌙</span>日文歌講義　|　昴 ・ くちなしの花 ・ 想い出迷子 ・ カラフル ・ 君の銀の庭 ・ 哀愁のカサブランカ ・ Speak Softly Love ・ 心凍らせて ・ そして…めぐり逢い ・ 恋歌綴り ・ わかってください ・ ふれあい ・ なごり雪 ・ 恋に落ちて ・ 365日の紙飛行機 ・ 悲しき天使 ・ 愛しき日々 ・ ゴッドファーザー～愛のテーマ ・ 私は女</footer>
 </div>
 <button class="scroll-top" id="scrollTop" aria-label="回到頂部">↑</button>
 
@@ -2209,6 +2243,173 @@ ITOSHIKI_DAYS.forEach((dd,di)=>{dd.sections.forEach(s=>{
   clr.addEventListener('click',()=>{inp.value='';clr.classList.remove('show');if(itoshikiView.kind==='lyric')itoshikiRenderLyrics();else itoshikiRenderDay(itoshikiView.idx);inp.focus();});
 })();
 
+/* ===== ゴッドファーザー～愛のテーマ ===== */
+const GODFATHER_LYRICS=[
+  {jp:`${R('広','ひろ')}い${R('世界','せかい')}の${R('片隅','かたすみ')}に`,zh:"在廣闊世界的一隅"},
+  {jp:`やがて${R('二人','ふたり')}の${R('朝','あさ')}が${R('来','く')}る`,zh:"兩人的早晨終將到來"},
+  {jp:`あふれる${R('光','ひかり')}が`,zh:"滿溢而出的光"},
+  {jp:`ほほの${R('涙','なみだ')}をうつし${R('出','だ')}す`,zh:"映照出臉頰上的淚水"},
+  {jp:`${R('愛','あい')}する${R('心','こころ')}に　${R('言葉','ことば')}はいらない`,zh:"相愛的心，並不需要言語",r:1},
+  {jp:`どうぞ${R('一人','ひとり')}で${R('泣','な')}かないで`,zh:"請別獨自哭泣"},
+  {jp:`${R('忘','わす')}れかけてる${R('悲','かな')}しみを`,zh:"把那快要忘卻的悲傷"},
+  {jp:`${R('窓','まど')}から${R('逃','に')}がして`,zh:"從窗邊放走它"},
+  {jp:`そっと${R('二人','ふたり')}で${R('見送','みおく')}ろう`,zh:"輕輕地兩人一起目送它離去"},
+  {jp:`${R('愛','あい')}する${R('心','こころ')}に　${R('言葉','ことば')}はいらない`,zh:"相愛的心，並不需要言語",r:1},
+  {jp:`どうぞどこにも${R('行','い')}かないで`,zh:"請你哪裡都別去"},
+  {jp:`そばに${R('来','き')}ている${R('幸','しあわ')}せに`,zh:"對這近在身旁的幸福"},
+  {jp:`${R('両手','りょうて')}を${R('伸','の')}ばして`,zh:"伸出雙手"},
+  {jp:`そっと${R('二人','ふたり')}で${R('育','そだ')}てよう`,zh:"輕輕地兩人一起培育它"},
+  {jp:`${R('愛','あい')}する${R('心','こころ')}に　${R('言葉','ことば')}はいらない`,zh:"相愛的心，並不需要言語",r:1},
+];
+const GODFATHER_DAYS = [{"date": "11/12", "title": "テーマ・S＋V／S＋V＋O・片隅・やがて・来る（カ變）・行く vs 来る・あふれる（修飾名詞）・映す／映る／映し出す・愛する心・要る", "subtitle": "ゴッドファーザー～愛のテーマ・テーマ・あなたの腕の中で・おさなき日・もう帰ってこない・二人の朝がくる（S/V）・片／隅・やがて・来る（カ行變格）・行く↔来る（看說話者位置）・光が涙を映し出す（S/V/O）・あふれる光（動詞修飾名詞）・映す（他）／映る（自）／映し出す・〜出す（開始）・愛する心・言葉はいらない・要る（五段・いらない）", "sections": [{"t": "lead", "text": "〈ゴッドファーザー～愛のテーマ〉日文演唱版（11/12）。這是電影《教父》主題曲的日文歌唱版（和 Speak Softly Love 英文版是不同歌詞）。重點：句子主幹 S・V／S・V・O、来る（カ變）、行く↔来る、動詞修飾名詞（あふれる光）、映す／映る／映し出す、要る。"}, {"t": "h", "text": "一、歌名與「テーマ」"}, {"t": "ex", "jp": "ゴッドファーザー～愛のテーマ", "kana": "ゴッドファーザー～あいのテーマ", "zh": "《教父》～愛的主題曲。"}, {"t": "note", "text": "テーマ＝主題、主題思想。論文のテーマ＝論文的主題；講演のテーマ＝演講的主題；テーマパーク＝主題樂園（theme park）。"}, {"t": "h", "text": "二、あなたの腕の中で　よろこびにふるえた"}, {"t": "ex", "jp": "あなたの腕の中で　よろこびにふるえた", "kana": "あなたのうでのなかで　よろこびにふるえた", "zh": "在你的臂彎裡，曾因喜悅而顫抖。"}, {"t": "note", "text": "あなたの腕の中で＝在你的手臂之中（で＝動作發生的場所）。よろこびに＝因為喜悅（に＝引發情緒的原因）。ふるえた＝顫抖了（原形ふるえる，五段動詞）。這句省略主詞，依脈絡理解為『我曾經顫抖』。"}, {"t": "h", "text": "三、おさなき日の私　もう帰ってこない"}, {"t": "ex", "jp": "おさなき日の私　もう帰ってこない", "kana": "おさなきひのわたし　もうかえってこない", "zh": "年幼時的我，已經不會再回來了。"}, {"t": "note", "text": "おさなき＝詩歌的古典、文學語氣，＝年幼的（現代常說『幼い日』）。帰ってくる＝回來；もう＋否定＝已經不再……（這裡的もう不是『再一次』，而是『已經不再』）。"}, {"t": "h", "text": "四、広い世界の片隅に　やがて二人の朝がくる"}, {"t": "ex", "jp": "広い世界の片隅に　やがて二人の朝がくる", "kana": "ひろいせかいのかたすみに　やがてふたりのあさがくる", "zh": "在廣闊世界的一隅，兩人的早晨終將到來。"}, {"t": "note", "text": "句子主幹 S・V：『二人の朝（S，が）＋くる（V，來／到來）』。其餘補充時間與地點：広い世界の片隅に（地點）、やがて（不久、終將）、二人の朝（兩人的早晨）。"}, {"t": "h", "text": "五、片・隅"}, {"t": "table", "head": ["日文", "讀音", "中文"], "rows": [["片目", "かため", "一隻眼睛"], ["片足", "かたあし", "一隻腳"], ["片隅", "かたすみ", "角落、一隅"], ["部屋の隅", "へやのすみ", "房間的角落"], ["隅田川", "すみだがわ", "隅田川"]]}, {"t": "ex", "jp": "鞄を部屋の隅に置く。", "kana": "かばんをへやのすみにおく。", "zh": "把包包放在房間角落。（鞄を＝受詞；部屋の隅に＝位置；置く＝放置）"}, {"t": "h", "text": "六、やがて・来る（カ行變格動詞）"}, {"t": "ex", "jp": "やがて冬が来る。", "kana": "やがてふゆがくる。", "zh": "冬天終將到來。（やがて＝不久、終將，表示未來某時發生）"}, {"t": "table", "head": ["形式", "例子"], "rows": [["字典形", "来る（くる）"], ["禮貌形", "来ます（きます）"], ["否定形", "来ない（こない）"], ["過去形", "来た（きた）"], ["て形", "来て（きて）"]]}, {"t": "note", "text": "来る（くる）是不規則的カ行變格動詞，讀音會變（くる／きます／こない／きた／きて）。"}, {"t": "h", "text": "七、行く vs 来る（看說話者的位置）"}, {"t": "ex", "jp": "私は日本に行く。", "kana": "わたしはにほんにいく。", "zh": "我要去日本。（從現在位置出發，前往日本）"}, {"t": "ex", "jp": "私は日本に来る。", "kana": "わたしはにほんにくる。", "zh": "我來日本。（把日本當抵達點，或說話時已在日本）"}, {"t": "h", "text": "八、あふれる光が　ほほの涙をうつし出す"}, {"t": "ex", "jp": "あふれる光が　ほほの涙をうつし出す", "kana": "あふれるひかりが　ほほのなみだをうつしだす", "zh": "溢出的光，映照出臉頰上的淚水。"}, {"t": "note", "text": "句子主幹 S・V・O：『光（S，が）＋涙（O，を）＋映し出す（V）』。映し出す是他動詞，動作由主詞施加在受詞上。"}, {"t": "h", "text": "九、あふれる光（動詞修飾名詞）"}, {"t": "ex", "jp": "光があふれる。／あふれる光。", "kana": "ひかりがあふれる。／あふれるひかり。", "zh": "光滿溢而出。／滿溢而出的光。"}, {"t": "note", "text": "あふれる＝動詞『溢出、滿溢』，放在名詞『光』前面直接修飾它；它仍是動詞，沒有變成形容詞。"}, {"t": "ex", "jp": "コップの水があふれた。", "kana": "コップのみずがあふれた。", "zh": "杯子裡的水溢出來了。"}, {"t": "ex", "jp": "駅は人であふれていた。", "kana": "えきはひとであふれていた。", "zh": "車站裡擠滿了人。"}, {"t": "ex", "jp": "窓からあふれる光。", "kana": "まどからあふれるひかり。", "zh": "從窗戶滿溢而出的光。"}, {"t": "h", "text": "十、映す／映る／映し出す"}, {"t": "table", "head": ["日文", "自他", "中文"], "rows": [["映す", "うつす（他動詞）", "把影像映在某處"], ["映る", "うつる（自動詞）", "影像呈現在某處"], ["映し出す", "うつしだす", "映出、呈現出來（映す＋出す）"]]}, {"t": "ex", "jp": "水に姿を映す。", "kana": "みずにすがたをうつす。", "zh": "把身影映在水中。（他動詞；姿を＝受詞，水に＝位置）"}, {"t": "ex", "jp": "姿は水に映る。", "kana": "すがたはみずにうつる。", "zh": "身影映在水中。（自動詞）"}, {"t": "note", "text": "映し出す＝映す＋出す，表示『映出、呈現出來』。類似『〜出す＝開始……』：歩き出す（開始走）、走り出す（開始跑）、降り出す（開始下雨）。"}, {"t": "ex", "jp": "雨が降り出した。", "kana": "あめがふりだした。", "zh": "雨開始下了。"}, {"t": "h", "text": "十一、愛する心に　言葉はいらない"}, {"t": "ex", "jp": "愛する心に　言葉はいらない", "kana": "あいするこころに　ことばはいらない", "zh": "相愛的心，並不需要言語。"}, {"t": "note", "text": "愛する心＝相愛的心（『愛する』放在名詞『心』前面修飾它）。言葉は＝提示主題（は）。いらない＝不需要（原形『要る（いる）』）。"}, {"t": "h", "text": "十二、要る（需要）"}, {"t": "ex", "jp": "お茶が要る。／お茶が要りますか。", "kana": "おちゃがいる。／おちゃがいりますか。", "zh": "需要茶。／需要茶嗎？"}, {"t": "ex", "jp": "言葉はいらない。", "kana": "ことばはいらない。", "zh": "不需要言語。"}, {"t": "warn", "text": "要る（いる）是五段動詞，否定形為『要らない（いらない）』——不是一段動詞，別誤用成『要ない』。『需要的東西』常用『が』：お茶が要る。"}]}];
+function godfatherLyricsHTML(){
+  let html=`<div class="subaru-credit" style="border:none;padding:0;margin:0 0 16px">`+"ゴッドファーザー～愛のテーマ（日文演唱版）　｜　映画『ゴッドファーザー』愛のテーマ　｜　作曲：Nino Rota"+`</div>`;
+  GODFATHER_LYRICS.forEach(l=>{html+=`<div class="sb-block${l.r?' sb-refrain':''}"><div class="sb-jp">${l.jp}</div><div class="sb-zh">${esc(l.zh)}</div></div>`;});
+  return html;
+}
+let godfatherView={kind:'lyric',idx:0};
+function godfatherRenderLyrics(){godfatherView={kind:'lyric',idx:0};document.getElementById('godfatherContent').innerHTML=godfatherLyricsHTML();godfatherMarkActive();}
+function godfatherRenderDay(idx){
+  godfatherView={kind:'day',idx};const dd=GODFATHER_DAYS[idx];let secNo=0;
+  let html=`<div class="lesson-head"><span class="lesson-date">${esc(dd.date)}</span><span class="lesson-title">${esc(dd.title)}</span></div>`+
+    `<div class="lesson-sub">${esc(dd.subtitle)}</div>`+
+    `<div class="lesson-meta">🎩 共 ${dd.sections.filter(s=>s.t==='h').length} 個主題 ・ ${countItemsG(dd)} 個例句／詞條</div>`;
+  dd.sections.forEach(s=>{if(s.t==='h'){secNo++;html+=renderSection(s,CN_NUM[secNo]||secNo);}else html+=renderSection(s);});
+  document.getElementById('godfatherContent').innerHTML=html;godfatherMarkActive();
+}
+function godfatherMarkActive(){
+  document.querySelectorAll('#godfatherNav .day-btn').forEach(b=>{let on=false;if(b.dataset.kind==='lyric')on=godfatherView.kind==='lyric';else on=godfatherView.kind==='day'&&Number(b.dataset.idx)===godfatherView.idx;b.classList.toggle('active',on);b.setAttribute('aria-selected',on?'true':'false');});
+}
+function godfatherScroll(){const top=document.getElementById('godfatherNav').getBoundingClientRect().bottom+window.scrollY-8;window.scrollTo({top,behavior:'smooth'});}
+(function(){
+  const nav=document.getElementById('godfatherNav');
+  const lb=document.createElement('button');lb.className='day-btn';lb.setAttribute('role','tab');lb.dataset.kind='lyric';
+  lb.innerHTML=`<span class="flower">🎵</span><span class="d-date">歌詞</span><span class="d-title">ゴッドファーザー～愛のテーマ</span><span class="d-count">中日對照</span>`;
+  lb.addEventListener('click',()=>{godfatherRenderLyrics();godfatherScroll();});nav.appendChild(lb);
+  GODFATHER_DAYS.forEach((dd,i)=>{
+    const b=document.createElement('button');b.className='day-btn';b.setAttribute('role','tab');b.dataset.kind='day';b.dataset.idx=i;
+    b.innerHTML=`<span class="flower">🎩</span><span class="d-date">${esc(dd.date)}</span><span class="d-title">${esc(dd.title)}</span><span class="d-count">${countItemsG(dd)} 句</span>`;
+    b.addEventListener('click',()=>{godfatherRenderDay(i);godfatherScroll();});nav.appendChild(b);
+  });
+  godfatherRenderLyrics();
+})();
+const GODFATHER_INDEX=[];
+GODFATHER_LYRICS.forEach(l=>GODFATHER_INDEX.push({di:-1,date:'🎵 歌詞',jp:l.jp.replace(/<[^>]+>/g,''),kana:'',zh:l.zh,ruby:l.jp}));
+GODFATHER_DAYS.forEach((dd,di)=>{dd.sections.forEach(s=>{
+  if(s.t==='ex'||s.t==='line')GODFATHER_INDEX.push({di,date:dd.date,jp:s.jp||'',kana:s.kana||'',zh:s.zh||''});
+  else if(s.t==='table')s.rows.forEach(r=>GODFATHER_INDEX.push({di,date:dd.date,jp:r.join(' / '),kana:'',zh:''}));
+  else if(['note','poem','sub','warn','lead'].includes(s.t))GODFATHER_INDEX.push({di,date:dd.date,jp:s.text||'',kana:'',zh:''});
+});});
+(function(){
+  const inp=document.getElementById('godfatherSearch');const clr=document.getElementById('godfatherSearchClear');let t=null;
+  function run(q){
+    q=q.trim();clr.classList.toggle('show',q.length>0);
+    if(!q){if(godfatherView.kind==='lyric')godfatherRenderLyrics();else godfatherRenderDay(godfatherView.idx);return;}
+    const ql=q.toLowerCase();
+    const hits=GODFATHER_INDEX.filter(r=>r.jp.toLowerCase().includes(ql)||(r.kana||'').toLowerCase().includes(ql)||r.zh.toLowerCase().includes(ql));
+    document.querySelectorAll('#godfatherNav .day-btn').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');});
+    const el=document.getElementById('godfatherContent');
+    if(hits.length===0){el.innerHTML=`<div class="no-result"><span class="big">🎩</span>找不到「${esc(q)}」</div>`;return;}
+    const groups={};hits.forEach(hh=>{(groups[hh.date]=groups[hh.date]||[]).push(hh);});
+    let html=`<div class="results-summary">🔍 找到 ${hits.length} 筆「${esc(q)}」的結果</div>`;
+    Object.keys(groups).forEach(date=>{
+      const arr=groups[date];const di=arr[0].di;
+      html+=`<div class="result-group"><button class="result-day" data-di="${di}">🎩 ${esc(date)}（${arr.length}）</button>`;
+      arr.forEach(r=>{
+        if(r.ruby){html+=`<div class="sb-block"><div class="sb-jp">${r.ruby}</div><div class="sb-zh">${hl(r.zh,q)}</div></div>`;}
+        else{html+=`<div class="ex"><div class="jp"><span class="mk">🎩</span>${hl(r.jp,q)}</div>`+(r.kana?`<div class="kana">${hl(r.kana,q)}</div>`:``)+(r.zh?`<div class="zh">${hl(r.zh,q)}</div>`:``)+`</div>`;}
+      });
+      html+=`</div>`;
+    });
+    el.innerHTML=html;
+    el.querySelectorAll('.result-day').forEach(btn=>btn.addEventListener('click',()=>{inp.value='';clr.classList.remove('show');const di=Number(btn.dataset.di);if(di<0)godfatherRenderLyrics();else godfatherRenderDay(di);godfatherScroll();}));
+  }
+  inp.addEventListener('input',()=>{clearTimeout(t);t=setTimeout(()=>run(inp.value),120);});
+  clr.addEventListener('click',()=>{inp.value='';clr.classList.remove('show');if(godfatherView.kind==='lyric')godfatherRenderLyrics();else godfatherRenderDay(godfatherView.idx);inp.focus();});
+})();
+
+/* ===== 私は女 ===== */
+const ONNA_LYRICS=[
+  {jp:`ときめく${R('愛','あい')}は　${R('一夜','ひとよ')}の${R('夢','ゆめ')}の${R('中','なか')}`,zh:"令人心動的愛情，彷彿存在於一夜的夢境之中"},
+  {jp:`${R('月','つき')}の${R('光','ひかり')}は${R('蒼','あお')}く　${R('心','こころ')}${R('彷徨','さまよ')}う`,zh:"月光幽藍，心卻徬徨迷惘"},
+  {jp:`${R('凍','こご')}えた${R('指','ゆび')}が　${R('温','ぬく')}もり${R('探','さが')}してる`,zh:"凍僵的手指，正在尋找溫暖"},
+  {jp:`こらえきれない　${R('悲','かな')}しみが${R('突','つ')}き${R('抜','ぬ')}ける`,zh:"無法忍受的悲傷，穿透了內心"},
+  {jp:`${R('私','わたし')}は${R('女','おんな')}`,zh:"我是一個女人",r:1},
+  {jp:`${R('愛','あい')}されて　${R('愛','あい')}に${R('答','こた')}える`,zh:"被愛著，也以愛回應",r:1},
+  {jp:`それだけで　${R('生','い')}きてゆけるの`,zh:"只要這樣，我就能繼續活下去",r:1},
+  {jp:`あなたのために　${R('愛','あい')}して……`,zh:"為了你，我深愛著你……",r:1},
+  {jp:`${R('見','み')}せかけだけの　${R('幸','しあわ')}せ${R('求','もと')}めても`,zh:"即使追求表面上的幸福……"},
+  {jp:`${R('ガラス','がらす')}${R('細工','ざいく')}の${R('暮','くら')}らし　ひび${R('割','わ')}れてゆく`,zh:"玻璃般脆弱的生活，逐漸產生裂痕"},
+  {jp:`${R('闇','やみ')}の${R('向','む')}こうに　あなたの${R('強','つよ')}い${R('香','かお')}り`,zh:"在黑暗的另一端，仍有你濃烈的氣息"},
+  {jp:`${R('見','み')}つめあえない　${R('寂','さび')}しさに${R('崩','くず')}れそう`,zh:"無法彼此凝視的寂寞，讓我幾乎崩潰"},
+];
+const ONNA_DAYS = [{"date": "11/10", "title": "ときめく・彷徨う・凍える・堪える・突き抜ける・動詞＋きる／きれない・て形・〜そうだ・蒼い／青い・夜的讀法", "subtitle": "私は女・ときめく・彷徨う・凍える・温もり探してる・こらえきれない・突き抜ける（突く＋抜ける）・動詞連用形＋きる／きれない（食べ切る／食べ切れない）・て形連接動作・動詞＋そうだ（快要）・蒼い vs 青い・夜（よる／よ／や）・光る／光・愛に答える／応える", "sections": [{"t": "lead", "text": "〈私は女〉11/10 課。逐句看歌詞，整理單字讀音與動詞變化。本堂兩個核心：『堪える（忍耐）』與『突き抜ける（穿透）』，以及『動詞＋きる／きれない』。"}, {"t": "h", "text": "一、第一段歌詞"}, {"t": "ex", "jp": "ときめく愛は 一夜の夢の中", "kana": "ときめくあいは ひとよのゆめのなか", "zh": "令人心動的愛情，彷彿存在於一夜的夢境之中。"}, {"t": "ex", "jp": "月の光は蒼く 心彷徨う", "kana": "つきのひかりはあおく こころさまよう", "zh": "月光幽藍，心卻徬徨迷惘。"}, {"t": "ex", "jp": "凍えた指が 温もり探してる", "kana": "こごえたゆびが ぬくもりさがしてる", "zh": "凍僵的手指，正在尋找溫暖。"}, {"t": "ex", "jp": "こらえきれない 悲しみが突き抜ける", "kana": "こらえきれない かなしみがつきぬける", "zh": "無法忍受的悲傷，穿透了內心。（本堂核心句）"}, {"t": "h", "text": "二、副歌"}, {"t": "ex", "jp": "私は女", "kana": "わたしはおんな", "zh": "我是一個女人。"}, {"t": "ex", "jp": "愛されて 愛に答える", "kana": "あいされて あいにこたえる", "zh": "被愛著，也以愛回應。"}, {"t": "ex", "jp": "それだけで 生きてゆけるの", "kana": "それだけで いきてゆけるの", "zh": "只要這樣，我就能繼續活下去。"}, {"t": "ex", "jp": "あなたのために 愛して……", "kana": "あなたのために あいして……", "zh": "為了你，我深愛著你……"}, {"t": "h", "text": "三、第二段歌詞"}, {"t": "ex", "jp": "見せかけだけの 幸せ求めても", "kana": "みせかけだけの しあわせもとめても", "zh": "即使追求表面上的幸福……"}, {"t": "ex", "jp": "ガラス細工の暮らし ひび割れてゆく", "kana": "ガラスざいくのくらし ひびわれてゆく", "zh": "玻璃般脆弱的生活，逐漸產生裂痕。"}, {"t": "ex", "jp": "闇の向こうに あなたの強い香り", "kana": "やみのむこうに あなたのつよいかおり", "zh": "在黑暗的另一端，仍有你濃烈的氣息。"}, {"t": "ex", "jp": "見つめあえない 寂しさに崩れそう", "kana": "みつめあえない さびしさにくずれそう", "zh": "無法彼此凝視的寂寞，讓我幾乎崩潰。"}, {"t": "h", "text": "四、單字：心情與感情"}, {"t": "table", "head": ["日文", "平假名", "中文"], "rows": [["ときめく", "ときめく", "心動、怦然心動"], ["初恋", "はつこい", "初戀"], ["再会", "さいかい", "再會、重逢"], ["悲しみ", "かなしみ", "悲傷"], ["悲しむ", "かなしむ", "感到悲傷"], ["寂しさ", "さびしさ", "寂寞"], ["笑顔", "えがお", "笑容"], ["微笑む", "ほほえむ", "微笑"], ["怒り", "いかり", "憤怒"]]}, {"t": "h", "text": "五、單字：動作類"}, {"t": "table", "head": ["日文", "平假名", "中文"], "rows": [["彷徨う", "さまよう", "徬徨"], ["凍える", "こごえる", "凍僵、冷得發抖"], ["探す", "さがす", "尋找"], ["堪える", "こらえる", "忍耐、忍住"], ["突く", "つく", "刺、戳"], ["抜ける", "ぬける", "穿過、脫落"], ["突き抜ける", "つきぬける", "穿透、貫穿"], ["消える", "きえる", "消失"], ["感じる", "かんじる", "感受"], ["見つめる", "みつめる", "凝視"]]}, {"t": "h", "text": "六、單字：其他名詞"}, {"t": "table", "head": ["日文", "平假名", "中文"], "rows": [["一夜", "ひとよ", "一夜"], ["十五夜", "じゅうごや", "十五夜"], ["夜叉", "やしゃ", "夜叉"], ["宝箱", "たからばこ", "寶箱"], ["宝島", "たからじま", "寶島"], ["瞬間", "しゅんかん", "瞬間"], ["鴎", "かもめ", "海鷗"], ["温もり", "ぬくもり", "溫暖"], ["光", "ひかり", "光芒"], ["壁", "かべ", "牆壁"], ["飛行機", "ひこうき", "飛機"], ["雲", "くも", "雲"]]}, {"t": "h", "text": "七、老師課堂例句：ときめく・彷徨う・凍える"}, {"t": "ex", "jp": "初恋の人に再会して、心がときめいた。", "kana": "はつこいのひとにさいかいして、こころがときめいた。", "zh": "和初戀的人重逢，心裡怦然心動。"}, {"t": "ex", "jp": "彼の笑顔を見ると、胸がときめく。", "kana": "かれのえがおをみると、むねがときめく。", "zh": "看到他的笑容，心裡就會心動。"}, {"t": "ex", "jp": "宝箱を開ける瞬間、とてもときめいた。", "kana": "たからばこをあけるしゅんかん、とてもときめいた。", "zh": "打開寶箱的瞬間，心情非常激動。"}, {"t": "ex", "jp": "彼は夜の街を彷徨っていた。", "kana": "かれはよるのまちをさまよっていた。", "zh": "他曾經在夜晚的街道上徘徊。"}, {"t": "ex", "jp": "心が彷徨っている。", "kana": "こころがさまよっている。", "zh": "心裡正處於徬徨的狀態。"}, {"t": "ex", "jp": "手が凍えている。／足が凍えた。", "kana": "てがこごえている。／あしがこごえた。", "zh": "手凍僵了。／腳凍僵了。"}, {"t": "ex", "jp": "鴎が凍えそうだ。", "kana": "かもめがこごえそうだ。", "zh": "海鷗看起來快要凍僵了。"}, {"t": "ex", "jp": "別れの悲しみは簡単には消えない。", "kana": "わかれのかなしみはかんたんにはきえない。", "zh": "離別的悲傷不容易消失。"}, {"t": "ex", "jp": "彼女は悲しみをこらえて微笑んだ。", "kana": "かのじょはかなしみをこらえてほほえんだ。", "zh": "她忍住悲傷，露出了微笑。"}, {"t": "h", "text": "八、文法：動詞連用形＋きる／きれない"}, {"t": "note", "text": "『きる』接在動詞連用形後面，表示完全做完、徹底完成；『きれない』表示無法完全完成。"}, {"t": "table", "head": ["日文", "平假名", "中文"], "rows": [["食べ切る", "たべきる", "全部吃完"], ["食べ切った", "たべきった", "全部吃完了"], ["食べ切れない", "たべきれない", "吃不完"], ["読み切る", "よみきる", "全部讀完"], ["読み切れない", "よみきれない", "讀不完"], ["こらえきれない", "こらえきれない", "無法忍受"]]}, {"t": "warn", "text": "歌詞『こらえきれない』的『きれない』是『きる』的可能形否定（無法徹底做完），不是單純『切不開』的『切れない』。"}, {"t": "h", "text": "九、文法：動詞て形（連接動作）"}, {"t": "table", "head": ["原形", "て形", "中文"], "rows": [["堪える", "堪えて", "忍住"], ["彷徨う", "彷徨って", "徬徨著"], ["探す", "探して", "尋找著"], ["微笑む", "微笑んで", "微笑著"], ["抜ける", "抜けて", "穿過"]]}, {"t": "ex", "jp": "悲しみをこらえて微笑んだ。", "kana": "かなしみをこらえてほほえんだ。", "zh": "忍住悲傷而微笑。（て連接兩個動作）"}, {"t": "h", "text": "十、文法：動詞＋そうだ（看起來快要……）"}, {"t": "ex", "jp": "鴎が凍えそうだ。", "kana": "かもめがこごえそうだ。", "zh": "海鷗看起來快要凍僵了。"}, {"t": "note", "text": "『そうだ』接在動詞連用形後，表示看起來即將發生某事。對照歌詞『崩れそう』＝幾乎要崩潰。"}, {"t": "h", "text": "十一、突き抜ける（穿透）"}, {"t": "note", "text": "突き抜ける（つきぬける）＝穿透、貫穿、穿越。拆解：突く（つく，刺、戳）＋抜ける（ぬける，穿過、脫落）＝突き抜ける。"}, {"t": "table", "head": ["日文", "平假名", "中文"], "rows": [["飛行機が雲を突き抜ける", "ひこうきがくもをつきぬける", "飛機穿越雲層"], ["汽車がトンネルを突き抜ける", "きしゃがとんねるをつきぬける", "火車穿過隧道"], ["ハンマーが壁を突き抜けた", "はんまーがかべをつきぬけた", "鐵鎚穿透了牆壁"], ["悲しみが心を突き抜ける", "かなしみがこころをつきぬける", "悲傷穿透了內心"]]}, {"t": "h", "text": "十二、容易混淆的讀音"}, {"t": "table", "head": ["漢字／日文", "讀音", "意思／備註"], "rows": [["夜", "よる", "夜晚"], ["夜", "よ", "夜的讀法之一（一夜＝ひとよ）"], ["夜", "や", "夜的讀法之一（夜叉＝やしゃ）"], ["十五夜", "じゅうごや", "十五夜"], ["光る", "ひかる", "發光（動詞）"], ["光", "ひかり", "光芒（名詞）"], ["蒼い", "あおい", "蒼藍色，較具文學色彩"], ["青い", "あおい", "藍色、青色"]]}, {"t": "note", "text": "老師也提到宇多田ヒカル（うただ ひかる），可藉此記住『ひかる』的讀音。"}, {"t": "h", "text": "十三、逐字稿校正提醒"}, {"t": "note", "text": "『心彷徨う』是歌詞省略式；補上主語助詞為『心が彷徨う』。『温もり探してる』省略了『を』，較完整為『温もりを探してる』。『愛に答える』依『回應愛情』之意通常寫作『愛に応える（あいにこたえる）』，兩者讀音相同，此處保留逐字稿原文並附註常見寫法。"}, {"t": "h", "text": "十四、本堂核心句"}, {"t": "ex", "jp": "こらえきれない 悲しみが突き抜ける。", "kana": "こらえきれない かなしみがつきぬける。", "zh": "無法忍受的悲傷，穿透了內心。"}, {"t": "note", "text": "本句包含本堂兩個重要學習內容：『堪える』與『突き抜ける』。"}]}];
+function onnaLyricsHTML(){
+  let html=`<div class="subaru-credit" style="border:none;padding:0;margin:0 0 16px">`+"私は女"+`</div>`;
+  ONNA_LYRICS.forEach(l=>{html+=`<div class="sb-block${l.r?' sb-refrain':''}"><div class="sb-jp">${l.jp}</div><div class="sb-zh">${esc(l.zh)}</div></div>`;});
+  return html;
+}
+let onnaView={kind:'lyric',idx:0};
+function onnaRenderLyrics(){onnaView={kind:'lyric',idx:0};document.getElementById('onnaContent').innerHTML=onnaLyricsHTML();onnaMarkActive();}
+function onnaRenderDay(idx){
+  onnaView={kind:'day',idx};const dd=ONNA_DAYS[idx];let secNo=0;
+  let html=`<div class="lesson-head"><span class="lesson-date">${esc(dd.date)}</span><span class="lesson-title">${esc(dd.title)}</span></div>`+
+    `<div class="lesson-sub">${esc(dd.subtitle)}</div>`+
+    `<div class="lesson-meta">🌙 共 ${dd.sections.filter(s=>s.t==='h').length} 個主題 ・ ${countItemsG(dd)} 個例句／詞條</div>`;
+  dd.sections.forEach(s=>{if(s.t==='h'){secNo++;html+=renderSection(s,CN_NUM[secNo]||secNo);}else html+=renderSection(s);});
+  document.getElementById('onnaContent').innerHTML=html;onnaMarkActive();
+}
+function onnaMarkActive(){
+  document.querySelectorAll('#onnaNav .day-btn').forEach(b=>{let on=false;if(b.dataset.kind==='lyric')on=onnaView.kind==='lyric';else on=onnaView.kind==='day'&&Number(b.dataset.idx)===onnaView.idx;b.classList.toggle('active',on);b.setAttribute('aria-selected',on?'true':'false');});
+}
+function onnaScroll(){const top=document.getElementById('onnaNav').getBoundingClientRect().bottom+window.scrollY-8;window.scrollTo({top,behavior:'smooth'});}
+(function(){
+  const nav=document.getElementById('onnaNav');
+  const lb=document.createElement('button');lb.className='day-btn';lb.setAttribute('role','tab');lb.dataset.kind='lyric';
+  lb.innerHTML=`<span class="flower">🎵</span><span class="d-date">歌詞</span><span class="d-title">私は女</span><span class="d-count">中日對照</span>`;
+  lb.addEventListener('click',()=>{onnaRenderLyrics();onnaScroll();});nav.appendChild(lb);
+  ONNA_DAYS.forEach((dd,i)=>{
+    const b=document.createElement('button');b.className='day-btn';b.setAttribute('role','tab');b.dataset.kind='day';b.dataset.idx=i;
+    b.innerHTML=`<span class="flower">🌙</span><span class="d-date">${esc(dd.date)}</span><span class="d-title">${esc(dd.title)}</span><span class="d-count">${countItemsG(dd)} 句</span>`;
+    b.addEventListener('click',()=>{onnaRenderDay(i);onnaScroll();});nav.appendChild(b);
+  });
+  onnaRenderLyrics();
+})();
+const ONNA_INDEX=[];
+ONNA_LYRICS.forEach(l=>ONNA_INDEX.push({di:-1,date:'🎵 歌詞',jp:l.jp.replace(/<[^>]+>/g,''),kana:'',zh:l.zh,ruby:l.jp}));
+ONNA_DAYS.forEach((dd,di)=>{dd.sections.forEach(s=>{
+  if(s.t==='ex'||s.t==='line')ONNA_INDEX.push({di,date:dd.date,jp:s.jp||'',kana:s.kana||'',zh:s.zh||''});
+  else if(s.t==='table')s.rows.forEach(r=>ONNA_INDEX.push({di,date:dd.date,jp:r.join(' / '),kana:'',zh:''}));
+  else if(['note','poem','sub','warn','lead'].includes(s.t))ONNA_INDEX.push({di,date:dd.date,jp:s.text||'',kana:'',zh:''});
+});});
+(function(){
+  const inp=document.getElementById('onnaSearch');const clr=document.getElementById('onnaSearchClear');let t=null;
+  function run(q){
+    q=q.trim();clr.classList.toggle('show',q.length>0);
+    if(!q){if(onnaView.kind==='lyric')onnaRenderLyrics();else onnaRenderDay(onnaView.idx);return;}
+    const ql=q.toLowerCase();
+    const hits=ONNA_INDEX.filter(r=>r.jp.toLowerCase().includes(ql)||(r.kana||'').toLowerCase().includes(ql)||r.zh.toLowerCase().includes(ql));
+    document.querySelectorAll('#onnaNav .day-btn').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');});
+    const el=document.getElementById('onnaContent');
+    if(hits.length===0){el.innerHTML=`<div class="no-result"><span class="big">🌙</span>找不到「${esc(q)}」</div>`;return;}
+    const groups={};hits.forEach(hh=>{(groups[hh.date]=groups[hh.date]||[]).push(hh);});
+    let html=`<div class="results-summary">🔍 找到 ${hits.length} 筆「${esc(q)}」的結果</div>`;
+    Object.keys(groups).forEach(date=>{
+      const arr=groups[date];const di=arr[0].di;
+      html+=`<div class="result-group"><button class="result-day" data-di="${di}">🌙 ${esc(date)}（${arr.length}）</button>`;
+      arr.forEach(r=>{
+        if(r.ruby){html+=`<div class="sb-block"><div class="sb-jp">${r.ruby}</div><div class="sb-zh">${hl(r.zh,q)}</div></div>`;}
+        else{html+=`<div class="ex"><div class="jp"><span class="mk">🌙</span>${hl(r.jp,q)}</div>`+(r.kana?`<div class="kana">${hl(r.kana,q)}</div>`:``)+(r.zh?`<div class="zh">${hl(r.zh,q)}</div>`:``)+`</div>`;}
+      });
+      html+=`</div>`;
+    });
+    el.innerHTML=html;
+    el.querySelectorAll('.result-day').forEach(btn=>btn.addEventListener('click',()=>{inp.value='';clr.classList.remove('show');const di=Number(btn.dataset.di);if(di<0)onnaRenderLyrics();else onnaRenderDay(di);onnaScroll();}));
+  }
+  inp.addEventListener('input',()=>{clearTimeout(t);t=setTimeout(()=>run(inp.value),120);});
+  clr.addEventListener('click',()=>{inp.value='';clr.classList.remove('show');if(onnaView.kind==='lyric')onnaRenderLyrics();else onnaRenderDay(onnaView.idx);inp.focus();});
+})();
+
 /* ===== 歌曲大頁籤切換 ===== */
 (function(){
   const panes={subaru:document.getElementById('paneSubaru'),
@@ -2227,7 +2428,9 @@ ITOSHIKI_DAYS.forEach((dd,di)=>{dd.sections.forEach(s=>{
     koini:document.getElementById('paneKoini'),
     susume:document.getElementById('paneSusume'),
     kanashiki:document.getElementById('paneKanashiki'),
-    itoshiki:document.getElementById('paneItoshiki')};
+    itoshiki:document.getElementById('paneItoshiki'),
+    godfather:document.getElementById('paneGodfather'),
+    onna:document.getElementById('paneOnna')};
   const btns={subaru:document.getElementById('songBtnSubaru'),
     kuchi:document.getElementById('songBtnKuchi'),
     maigo:document.getElementById('songBtnMaigo'),
@@ -2244,7 +2447,9 @@ ITOSHIKI_DAYS.forEach((dd,di)=>{dd.sections.forEach(s=>{
     koini:document.getElementById('songBtnKoini'),
     susume:document.getElementById('songBtnSusume'),
     kanashiki:document.getElementById('songBtnKanashiki'),
-    itoshiki:document.getElementById('songBtnItoshiki')};
+    itoshiki:document.getElementById('songBtnItoshiki'),
+    godfather:document.getElementById('songBtnGodfather'),
+    onna:document.getElementById('songBtnOnna')};
   function show(song){
     Object.keys(panes).forEach(k=>{
       const on=k===song;
